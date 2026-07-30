@@ -757,7 +757,7 @@ thèque. La « Prière de la bénédiction » noc nozeu une-
 
 MANUSCRITS COPTES. 99
 
-KA4OG .… (90 r.) ne se trouve que dans les manuscrits 65
+KA4OG .… (90 r.) ne se trouve que dans les manuscrits
 et 72. Elle est suivie d'un Memento pour le patriarche défunt
 api ueri noc NfTrxH .
 
@@ -4720,7 +4720,7 @@ Volume; parchemin; 0,19 ><0,15; 62 fol.; 3 col.; 23 lignes ;
 XIXUS:
 Antiennes pour le carême, Soma dequa.
 
-; 35
+;
 
 OR. QUART. 1004.
 
@@ -6103,7 +6103,7 @@ Noa «ho Lame) Luds Ro be Ja,
 La Jyoopo ados us .Jl Des rl ls si
 uso D Lao Loos; RES UN opel Rial
 
-LS JRassafs Jlosinskso we .J + YO 100
+LS JRassafs Jlosinskso we .J + YO
 Lsoofl L-D09 CUBES Las JLiasosl NE JAN
 
 O5 .fsoofl vise Lans) Less Jsls ls “SOS RATS
@@ -6200,7 +6200,7 @@ de sa conversion et de la formation du manuserit 195 :
 
 Hoo latkaso ass Lo foi Jisaxso Ras Loose Rulofs Lui Lo «oo
 .auAa) aLANases J'oy oc JS® :a0,8/ ana for oo .aoka) JRass Lo oo
-POS MJradas 40010 aauro aausfo ,JRaueds Jloiatl os CRC 230
+POS MJradas 40010 aauro aausfo ,JRaueds Jloiatl os CRC
 Naaudo JR" pe ByS 400025 Goofam .A/osy las asauS faxaso fasausdo .fsadsy
 P QU Hlibo ILSS coollsoo . Jon Hpo noi Loos Kaas (aKr> . Ras JASéas
 LRO His JSpS IR INA Lans fie fine Jloïour Lncoss
@@ -6209,8 +6209,8 @@ Iso) polo .fhsosy Lo coasas Ellis Hi Es} isa Hoho : Bas Ruso! Ba, LES à
 S Hi po .Rasoil] H Gsanodo Raow| &24 oparas oo .Jisog Fius saseux ss Joy
 amas No jpso .R'00 JLooks ca .JRaïæ Ko» LU Ausslo las Au 1,88
 small fupo fuois Autos Hbso PS <utos RoaKl] Co . 00 pra Hudas Jisc
-EUR DS] MR Fsoaus fsa Jpe «9! Loos HKiois Iio So por .Lpas fro Ne) 45
-uno Emo EN Jade CE Mise Luis) Euois JR user pul .Rcoo Ho pulr Etuis 550
+EUR DS] MR Fsoaus fsa Jpe «9! Loos HKiois Iio So por .Lpas fro Ne)
+uno Emo EN Jade CE Mise Luis) Euois JR user pul .Rcoo Ho pulr Etuis
 GS ao LOS Jogo .Esops fils ofisyo AKKUO Jaïr Hilopssoo Ftacmiado «au i(o
 .}5hù Los Ram'olo Haï4o) Hu ps Mao! fsrao Jléis/r HSsaso Ko fcwoias f;cslil Rs'hsol
 ass pAullo okalo . Ets Jo ES Dos Haas 21e os Jour Hal Eh ++ ose
@@ -6734,7 +6734,7 @@ destiné à l’abstinence ». Koran, 11, 181.
 
 Mahomet se fit apporter les corps des victimes, il pria sur eux et chaque fois.
 sur Hamza, en sorte, dit Aboulféda, qu’il pria soixante-dix fois sur celui-ci. Ara-
-Die, p. 163. — Notons aussi qu'Abou-Taleb mourut au mois de Schewal de l’an 10
+Die, p. 163. — Notons aussi qu'Abou-Taleb mourut au mois de Schewal de l’an
 (632). Arabie, p. 141.
 
 prier pour obtenir son pardon. Arabie, 201. d
@@ -6832,7 +6832,7 @@ CoLonne 4. — Cette colonne compte vingt-deux lignes dont
 la dernière :
 
 Ia s sie 5 sas
-Îl 2 S à 430
+Îl 2 S à
 [/]] à » uso Nul [Jus 0 ls Rodase
 
 Osée (Hou$a’), fils de Sagraï, deux sicles d'argent.
@@ -7815,7 +7815,7 @@ am ho: :: (F. 59 v° b suite) Veillez donc, puisque vous ne
 connaïssez pas le jour et l'heure où le Fils de l'homme
 viendra.
 
-5. — Lévitique, xx, 1-3. — Le sABBAT (fol. 59 v° b à fol. 60
+5. — Lévitique, xx, 1-3. — Le sABBAT (fol. 59 v° b à fol.
 rh):
 
 Incipit : (F. 59 v° b suite) Ag : HA PO-P7 : DIN : A7
@@ -8033,7 +8033,7 @@ Incipit : (F. 33 v° b suite) ant : @AAd't : hù-t-Nnd-?
 F2 AL CAS : PQ : 16 : RE SI à NON À AAML AN,
 € : APAN : ohé : AC : NCUPD : ADASL : AI. AN
 dC : ... (F. 33 v° b suite) Prière, demande el supplication,
-(tirées) à nouveau d'un sermon de Saint Mar Éphrem. 0
+(tirées) à nouveau d'un sermon de Saint Mar Éphrem.
 Seigneur, Dieu miséricordieux, Jésus-Christ, 6 Fuls du Seigneur…
 
 Desinit : (F. 45 r° b fin) 4718-24 + @teNN :: Aer : Ah :
@@ -9179,7 +9179,7 @@ Mais il y a plus. Nous retrouvons dans ce petit répons un
 
 tome IV, 1899, p. 346 sq. Les textes complets ont été réunis dans Patr. Or., IL
 
-LE TROPAIRE O Movoyevñc. 255
+LE TROPAIRE O Movoyevñc.
 
 abrégé de la théologie de Sévère sur l'Incarnation, les lignes
 bien nettes et jusqu'aux expressions favorites de la christologie
@@ -9590,7 +9590,7 @@ On aura remarqué également l'importance attribuée par Bar
 Salibi aux croix tracées sur les espèces. Les Jacobites des derniers siècles ont encore renchéri là-dessus, et leurs prêtres
 aujourd'hui prononcent les mots de »s et «+, qui accompa-
 
-LE TROPAIRE ‘O Movoyevñc. 20
+LE TROPAIRE ‘O Movoyevñc.
 
 gnent ces croix, avec une lenteur et un respect presque superstitieux, au lieu que le reste de la formule est récité avec une
 volubilité déconcertante. Dans les missels, cés deux mots sont
@@ -10015,7 +10015,7 @@ ronoduv,
 
 mivéey ç pLivoy
 
-‘O xaréhoyoc obroc avreyoton mors &x roù ür” dpbuèv 150
+‘O xaréhoyoc obroc avreyoton mors &x roù ür” dpbuèv
 p P pan |
 
 XOÔ1LOS TAC povñs Merapoppocews The HAT oyav xzhoUUÉVIS Me-
@@ -10219,7 +10219,7 @@ LE LAANE
 LATITAILE
 
 O xaréhoyos oûùros Phliwv, es dv év Téde éricuvénrerar xai à
-GNAYPAPR ÉTÉPOV creudiv, xeîrat ëv p. 113% ro5 dr œprôuov 160
+GNAYPAPR ÉTÉPOV creudiv, xeîrat ëv p. 113% ro5 dr œprôuov
 60 uw0s Toù Marecoov, yeypxpuévos xura Toy IS'-IZ' aiüvæ. [eoi rie
 povñs ÊTÜhou rüy Mereépov EUTO[LEV 19 avoréow. Enpetwtét %
 Vos délx This dvaypapis TaiTnc, Év À TapaxrnpovTae EuVnTixù
@@ -10235,7 +10235,7 @@ Bn6 ia + povxenpi” raôra
 
 Tp@TOY x(al) dpyt Paciherns 6 péy(xs)
 deÛTepov 1Joù Bouhyæpias copôc re É
-rpiroy dé pot Bapivos pabwotvos 5
+rpiroy dé pot Bapivos pabwotvos
 TÉTApTOov yap 6% à OÜnxapac dv meravoits
 TÉUTTOV Te, h maaG x(ai) véa dixOnx(n)
 
@@ -10243,7 +10243,7 @@ HAAAIOI KATAAOTOT. 279
 
 mmtLroV yÉp x(ai) ixrpixôv Yakivdc iarpôc
 26dopov x(xi) Bauwas(ov) rareouxdv za révu
-Evværov dé cor oÙXe 6 AUTax® 10
+Evværov dé cor oÙXe 6 AUTax®
 x(xi) mhéoy dé un Cire rd FapaTay 00TOS
 ._ VEdpÜTOs doddos c% YÉYexQEY
 ARAVTEA 49 CUVAYLÉVA OTApY"V

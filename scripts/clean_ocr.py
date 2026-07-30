@@ -27,32 +27,42 @@ STEP 0  rstrip   Strip trailing whitespace from every line.
                  have trailing spaces on almost every line; without this the
                  hyphen at end-of-line is invisible.)
 STEP 2  dehyph   Join `word-\\n continuation`, protecting legitimate
-                 hyphenated compounds attested mid-line in the same file.
+                 hyphenated compounds attested mid-line in the same file, and
+                 refusing the join when the continuation is itself a whole
+                 English word that does not make a real word when joined
+                 (`blue-` + `black`). See COMMON_CONTINUATIONS.
 STEP 3  blanks   Collapse runs of 3+ blank lines to 2.
 STEP 1  linenum  Delete an absorbed marginal line number at end of line.
-                 Runs LAST so the line numbers it reports address the file as
-                 shipped; steps 2 and 3 both shift them. Safe to move, because
-                 a line ending in a hyphen cannot also end in a digit, so the
-                 two passes cannot interact.
+                 Runs LATE so the line numbers it reports address the file as
+                 shipped; steps 2 and 3 both shift them.
                  GATED: requires --step1-approved, and then deletes only the
-                 tiers named by --tiers. Without approval the candidates are
+                 tiers named by --tiers, narrowed by --strict5 to exact
+                 multiples of 5. Without approval the candidates are
                  reported and never deleted, because this rule can bite real
                  text (a date, a quantity, a footnote reference, a folio
                  citation, a number that legitimately ends a sentence).
+STEP 2b/3b       Steps 2 and 3 again. Step 1 can expose a hyphen that was
+                 hiding behind the number it deleted (`…that the Obla- 10`),
+                 so the pipeline must be iterated to a fixed point. Six lines
+                 in the corpus need this.
 
 Idempotence
 -----------
 Every pass is a fixed point after one application: a deleted number cannot be
 re-detected, a joined word no longer ends in a hyphen, and 2 blank lines are
-not a run of 3. Re-running the script on cleaned output makes no changes.
+not a run of 3. The passes are not independent of each other, though — Step 1
+creates work for Step 2 — so Step 2 runs again afterwards. With that second
+pass in place, re-running the script on cleaned output makes no changes; the
+`--selftest` flag asserts exactly this.
 
 Usage
 -----
     python3 scripts/clean_ocr.py --backup    # copy the six to backups/
     python3 scripts/clean_ocr.py --report    # analyse; leave the six untouched
     python3 scripts/clean_ocr.py --apply     # steps 0, 2, 3 — no deletions
-    python3 scripts/clean_ocr.py --apply --step1-approved --tiers A
-                                             # + Step 1, tier A only
+    python3 scripts/clean_ocr.py --apply --step1-approved --tiers A --strict5
+                                             # + Step 1, tier A, multiples of 5
+    python3 scripts/clean_ocr.py --selftest  # assert idempotence, write nothing
 
 Three files are written by --report and --apply alike:
     CLEANING_REPORT.md    every change made, plus the tiered Step 1 candidates
@@ -282,10 +292,25 @@ def step1_candidates(lines: list[str], labels: list[str]) -> list[dict]:
 
 
 def step1_apply(
-    lines: list[str], cands: list[dict], tiers: str = "A"
+    lines: list[str], cands: list[dict], tiers: str = "A", strict5: bool = False
 ) -> tuple[list[str], list[dict]]:
-    """Delete only candidates in the approved tiers (default: tier A alone)."""
-    applied = [c for c in cands if c["skip"] is None and c["tier"] in tiers]
+    """Delete only candidates in the approved tiers (default: tier A alone).
+
+    `strict5` narrows that further to numbers that are an exact multiple of 5.
+    The gate exists because `near_multiple_of_5` — the rule as originally
+    stated — is vacuously true for every integer (see its docstring), so tier A
+    alone still admits values like 62 or 148 that no printer ever set in a
+    margin. Requiring `n % 5 == 0` is what makes the marginal-line-number
+    hypothesis actually testable, and it is the basis on which this pass was
+    approved: 214 deletions rather than 606.
+    """
+    applied = [
+        c
+        for c in cands
+        if c["skip"] is None
+        and c["tier"] in tiers
+        and (c["strict5"] if strict5 else True)
+    ]
     out = list(lines)
     for c in applied:
         out[c["lineno"] - 1] = c["cleaned"]
@@ -299,6 +324,122 @@ def step1_apply(
 HYPHEN_EOL_RE = re.compile(r"([A-Za-zÀ-ÿ]+)-$")
 NEXT_LOWER_RE = re.compile(r"([a-zà-ÿ]+)")
 MIDLINE_COMPOUND_RE = re.compile(r"[A-Za-zÀ-ÿ]+-[A-Za-zÀ-ÿ]+")
+WORD_RE = re.compile(r"[A-Za-zÀ-ÿ]+")
+
+# ---------------------------------------------------------------------------
+# Standalone-word guard (added after pass 1 found three false-positive joins)
+# ---------------------------------------------------------------------------
+#
+# The plain rule joins `stem-` + `fragment` whenever the fragment starts with a
+# lowercase letter. That is right when the fragment is a word-piece — `tion`,
+# `ness`, `ment`, `gneur` — which is the overwhelming majority: 665 distinct
+# fragments across the six files, nearly all of them meaningless alone.
+#
+# It is wrong when the fragment is itself a whole English word, because then
+# the hyphen was never a line-break hyphen. Three ways that happens here:
+#
+#   1. A real orthographic compound: `blue-` / `black` is "blue-black", an eye
+#      colour, and the hyphen belongs to the text.
+#   2. A spurious OCR hyphen between two separate words: `this-` / `type` is
+#      "this type".
+#   3. Two-column footnote interleaving, where the scraper put the wrong
+#      column's first word on the next line: `Phari-` / `the` (true
+#      continuation `bishop`... in the other column), `money-` / `its` (true
+#      continuation `changers`), `Xan-` / `month` (true continuation `thicus`).
+#
+# So: refuse the join when the fragment is a common standalone English word,
+# UNLESS the joined result is itself a known word — `him` + `self` really is
+# "himself", `like` + `wise` really is "likewise". "Known" is decided by
+# CORPUS attestation: the joined form appears somewhere in these same six files
+# as an ordinary unhyphenated token. That keeps the script dependency-free and
+# offline, and uses the strongest evidence available — the text itself.
+#
+# The list is deliberately English-only, matching the brief. Adding common
+# French words to it (for `86-qalementos.md`) was tried and rejected: it took
+# the flag count from 9 to 20 and every one of the 11 extra flags was a false
+# alarm on a correctly-joined French word (`gra-ces`, `deli-ces`, `vipe-res`,
+# `canonia-les`). See CLEANING_REPORT.md for the full audit.
+COMMON_CONTINUATIONS = frozenset(
+    """
+    the this that these those then than them they there their
+    type kind sort form part side line word words name names time day days
+    way ways work works land hand hands head heart house home room place
+    thing things people black white blue red green gold
+    self selves wise son sons man men woman women child children
+    over under out off up down back forth fore half all one two three ten
+    ever every some body where when how who what why
+    right left long short great good god high low new old first last
+    book born bread ground water fire wind earth light dark night morning
+    father mother king lord priest priests deacon deacons bishop bishops
+    church come came go went take give given make made said say see seen
+    know known also even only still well much many more most less least
+    like likewise and or but for nor yet so if as at by to of in on
+    be been being is was are were has have had do did done
+    he she it we you him her his its our your me my thee thou thy
+    from with into upon unto about after before among against between
+    through not no yes any each both same other another such very own
+    soul body spirit flesh blood year years week month
+    full fully able ship hold stone ward wards mind mount stand standing
+    state
+    """.split()
+)
+
+
+# Editor rulings on individual held-back joins, keyed by (file, stem, fragment).
+# The value is the separator to put between the two halves.
+#
+# The guard can only refuse a join; it cannot know what the line should say.
+# These three were resolved by reading the page, so the script performs the
+# merge rather than leaving a dangling hyphen. Keeping them here rather than
+# hand-editing the files is what preserves the invariant the whole script rests
+# on — that the shipped file is exactly `pipeline(backups/<name>.md.bak)` — and
+# therefore that every line number in the reports is correct.
+#
+# The five two-column footnote cases are deliberately absent: their true
+# continuation is elsewhere on the page, so merging the two halves at all would
+# be wrong, whatever separator was chosen. They stay held, and stay listed in
+# MANUAL_REVIEW.md.
+HELD_JOIN_REPAIRS = {
+    # "his left [eye] blue-black" — a colour compound; the hyphen is real.
+    ("84-mashafa-kidan-1.md", "blue", "black"): "-",
+    # "there is this type also in heaven" — two words; the hyphen is OCR noise.
+    ("84-mashafa-kidan-1.md", "this", "type"): " ",
+    # "P absurdly reads: Phari the bishop" — inside a footnote quoting a
+    # manuscript variant, where the split between the words carries the sense.
+    ("87-didascalia.md", "Phari", "the"): " ",
+}
+
+
+def corpus_lexicon(files: dict[str, list[str]]) -> set[str]:
+    """Every lowercase whole word attested unhyphenated across the six files.
+
+    This is the "dictionary" the guard consults. A word split by an
+    end-of-line hyphen contributes neither half, so a form that ONLY ever
+    appears broken never vouches for itself.
+    """
+    lex: set[str] = set()
+    for lines in files.values():
+        for line in lines:
+            hay = line[:-1] if line.endswith("-") else line
+            for m in WORD_RE.finditer(hay):
+                lex.add(m.group(0).lower())
+    return lex
+
+
+def held_back(stem: str, frag: str, joined: str, lexicon: set[str]) -> bool:
+    """True when the standalone-word guard refuses this join.
+
+    Restricted to ASCII stems on purpose. The guard reasons with an English
+    word list, so it has no business judging non-English orthography — and
+    without the restriction it misfires on exactly one join in the corpus,
+    `Haymaa-` / `not` (Takla Haymanot, a Ge'ez name whose tail happens to
+    spell an English word).
+    """
+    if frag.lower() not in COMMON_CONTINUATIONS:
+        return False
+    if not stem.isascii():
+        return False
+    return joined.lower() not in lexicon
 
 
 def legitimate_compounds(lines: list[str]) -> set[str]:
@@ -321,11 +462,24 @@ def legitimate_compounds(lines: list[str]) -> set[str]:
 
 
 def step2_dehyphenate(
-    lines: list[str], labels: list[str]
-) -> tuple[list[str], list[dict]]:
+    lines: list[str],
+    labels: list[str],
+    lexicon: set[str] | None = None,
+    name: str = "",
+) -> tuple[list[str], list[dict], list[dict]]:
+    """Join hyphen line-breaks. Returns (lines, joins made, joins held back).
+
+    `lexicon` is the corpus-wide attestation set consulted by the standalone-
+    word guard; it defaults to this file alone, which is all the evidence
+    available when the function is called in isolation. `name` selects this
+    file's entries in HELD_JOIN_REPAIRS.
+    """
     compounds = legitimate_compounds(lines)
+    if lexicon is None:
+        lexicon = corpus_lexicon({"": lines})
     bstart = body_start(lines)
     joins: list[dict] = []
+    holds: list[dict] = []
 
     out: list[str] = []
     # Keep original line numbers for the log even as lines merge.
@@ -351,6 +505,37 @@ def step2_dehyphenate(
             compound = f"{m.group(1)}-{nm.group(1)}".lower()
             if compound in compounds:
                 break  # legitimate compound: leave the hyphen alone
+            if held_back(m.group(1), nm.group(1), joined_word, lexicon):
+                sep = HELD_JOIN_REPAIRS.get((name, m.group(1), nm.group(1)))
+                if sep is None:
+                    holds.append(
+                        {
+                            "lineno": cur_lineno,
+                            "second_lineno": i + 2,
+                            "stem": m.group(1),
+                            "fragment": nm.group(1),
+                            "would_have_joined": joined_word,
+                            "context": f"{cur} ⏎ {nxt}",
+                        }
+                    )
+                    break  # fragment is a whole word: not a line-break hyphen
+                # An editor has ruled on this one; merge as instructed.
+                before = f"{cur} ⏎ {nxt}"
+                repaired = m.group(1) + sep + nm.group(1)
+                cur = cur[: m.start(1)] + repaired + nxt[nm.end(1) :]
+                joins.append(
+                    {
+                        "lineno": cur_lineno,
+                        "second_lineno": i + 2,
+                        "word_before": f"{m.group(1)}- / {nm.group(1)}",
+                        "word_after": repaired,
+                        "before": before,
+                        "after": cur,
+                        "repair": True,
+                    }
+                )
+                i += 1
+                continue
             before = f"{cur} ⏎ {nxt}"
             cur = cur[: m.start(1)] + joined_word + nxt[nm.end(1) :]
             joins.append(
@@ -366,7 +551,7 @@ def step2_dehyphenate(
             i += 1  # the next line has been consumed into cur
         out.append(cur)
         i += 1
-    return out, joins
+    return out, joins, holds
 
 
 # ---------------------------------------------------------------------------
@@ -551,8 +736,49 @@ def do_backup() -> list[str]:
     return done
 
 
+def relocate_step1(
+    cands: list[dict], applied: list[dict], final: list[str]
+) -> None:
+    """Re-anchor Step 1 line numbers against the text after the second Step 2.
+
+    Mutates `lineno` in place, keeping the pre-join value as `lineno_pre`.
+
+    An applied candidate is matched by its `cleaned` text, a pending one by its
+    `full` text. Either may have been *extended* by the second de-hyphenation
+    (`…Obla-` picked up `tion is the Body of Christ…`), so a prefix match
+    counts. Both lists are in file order and the scan only ever moves forward,
+    so a repeated line matches the right occurrence. If no match is found the
+    original number is left alone — a wrong number is bad, an invented one is
+    worse.
+    """
+    was_applied = {id(c) for c in applied}
+    entries = sorted(
+        {id(c): c for c in list(cands) + list(applied)}.values(),
+        key=lambda c: c["lineno"],
+    )
+    cursor = 0
+    for c in entries:
+        # An applied candidate lost its trailing number, so the line now reads
+        # `cleaned`; a pending one still reads `full`.
+        probe = c["cleaned"] if id(c) in was_applied else c["full"]
+        if not probe:
+            continue
+        for j in range(cursor, len(final)):
+            if final[j].startswith(probe):
+                c["lineno_pre"] = c["lineno"]
+                c["lineno"] = j + 1
+                cursor = j
+                break
+
+
 def run_passes(
-    lines: list[str], step1_approved: bool, tiers: str, raw: str
+    lines: list[str],
+    step1_approved: bool,
+    tiers: str,
+    raw: str,
+    lexicon: set[str] | None = None,
+    strict5: bool = False,
+    name: str = "",
 ) -> tuple[list[str], dict]:
     """The whole pipeline over one file's lines. Pure; returns lines + stats."""
     info: dict = {
@@ -566,18 +792,31 @@ def run_passes(
     # Re-label after rstrip: `## Text ` vs `## Text` changes detection.
     labels = region_map(lines)
 
-    lines, joins = step2_dehyphenate(lines, labels)
+    lines, joins, holds = step2_dehyphenate(lines, labels, lexicon, name)
     info["step2"] = joins
+    info["step2_held"] = holds
 
     lines, collapsed = step3_blanks(lines)
     info["step3"] = collapsed
 
-    # Step 1 runs LAST, on the final line numbering, so that the line
-    # numbers in CLEANING_REPORT.md address the file as shipped. Steps 2
-    # and 3 both shift line numbers (87-didascalia.md by 230 lines), and
-    # the order is safe because the two passes cannot interact: a line
-    # ending in a hyphen cannot also end in a digit, so joining never
-    # creates or destroys a Step 1 candidate — it only moves one.
+    # Step 1 runs LAST, on the line numbering produced by Steps 2 and 3, which
+    # between them shift 87-didascalia.md by 230 lines.
+    #
+    # The passes are NOT independent, though the first version of this script
+    # claimed they were. The claim was that a line ending in a hyphen cannot
+    # also end in a digit, so joining can never create or destroy a Step 1
+    # candidate. True in that direction — but false in the other. Step 1
+    # deletes a trailing number and can thereby EXPOSE a hyphen that was
+    # sitting behind it:
+    #
+    #     Concerning the reminder that the Obla- 10   <- Step 2 sees no `-$`
+    #     Concerning the reminder that the Obla-      <- after Step 1 it does
+    #
+    # Six lines in the corpus are like this (four in 80-serata-seyon.md, two in
+    # 81-teezaz.md). Left unhandled they made the script non-idempotent: a
+    # second `--apply` produced different output from the first, which is
+    # exactly the property the header promises. So Steps 2 and 3 run a second
+    # time after Step 1, and the pipeline is iterated to a fixed point.
     labels = region_map(lines)
     cands = step1_candidates(lines, labels)
     info["step1"] = cands
@@ -586,9 +825,32 @@ def run_passes(
             c["skip"] = c["skip"] or "file has **N** verse markers"
 
     applied1: list[dict] = []
+    joins_b: list[dict] = []
+    holds_b: list[dict] = []
     if step1_approved:
-        lines, applied1 = step1_apply(lines, cands, tiers=tiers)
+        lines, applied1 = step1_apply(lines, cands, tiers=tiers, strict5=strict5)
+        # Second de-hyphenation, over the hyphens Step 1 just uncovered.
+        labels = region_map(lines)
+        lines, joins_b, holds_b = step2_dehyphenate(lines, labels, lexicon, name)
+        lines, collapsed_b = step3_blanks(lines)
+        info["step3"] = collapsed + collapsed_b
+        # A held-back join still ends in a hyphen, so the second Step 2 meets
+        # it again and refuses it again. Report each hold once, keeping the
+        # second sighting because its line number addresses the final text.
+        again = {(h["stem"], h["fragment"], h["context"]) for h in holds_b}
+        holds = [
+            h for h in holds if (h["stem"], h["fragment"], h["context"]) not in again
+        ]
+        info["step2_held"] = holds
+        # Those joins removed lines, so every Step 1 line number below one of
+        # them is now stale. Re-anchor them against the final text rather than
+        # letting the report quote a number that does not address the file as
+        # shipped — the property the rest of this script goes to some trouble
+        # to maintain.
+        relocate_step1(cands, applied1, lines)
     info["step1_applied"] = applied1
+    info["step2b"] = joins_b
+    info["step2b_held"] = holds_b
 
     info["lines_after"] = len(lines)
     info["review"] = scan_manual_review("", lines, region_map(lines))
@@ -596,7 +858,9 @@ def run_passes(
     return lines, info
 
 
-def process(apply: bool, step1_approved: bool, tiers: str = "A") -> dict:
+def process(
+    apply: bool, step1_approved: bool, tiers: str = "A", strict5: bool = False
+) -> dict:
     """Clean each target, and report stats against the pre-pass baseline.
 
     Stats are computed from `backups/<name>.md.bak` when it exists, not from
@@ -608,6 +872,19 @@ def process(apply: bool, step1_approved: bool, tiers: str = "A") -> dict:
     same output.
     """
     results: dict = {}
+
+    # The standalone-word guard asks "is the joined form a real word?" and
+    # answers it from the corpus. Build that attestation set once, over all six
+    # files at once, so a word whole in one file can vouch for the same word
+    # broken in another. Built from the backups where they exist, i.e. from the
+    # text as scraped, for the same reason the statistics are.
+    corpus: dict[str, list[str]] = {}
+    for name in TARGETS:
+        backup = BACKUPS / f"{name}.bak"
+        src = backup if backup.exists() else CANON / name
+        corpus[name], _ = load(src)
+    lexicon = corpus_lexicon(corpus)
+
     for name in TARGETS:
         path = CANON / name
         backup = BACKUPS / f"{name}.bak"
@@ -615,18 +892,21 @@ def process(apply: bool, step1_approved: bool, tiers: str = "A") -> dict:
         live_lines, tnl = load(path)
         original = list(live_lines)
         out, _ = run_passes(
-            list(live_lines), step1_approved, tiers, "\n".join(live_lines)
+            list(live_lines), step1_approved, tiers, "\n".join(live_lines), lexicon,
+            strict5, name,
         )
 
         if backup.exists():
             base_lines, _ = load(backup)
             _, info = run_passes(
-                list(base_lines), step1_approved, tiers, "\n".join(base_lines)
+                list(base_lines), step1_approved, tiers, "\n".join(base_lines),
+                lexicon, strict5, name,
             )
             info["baseline"] = "backups/%s.bak" % name
         else:
             _, info = run_passes(
-                list(live_lines), step1_approved, tiers, "\n".join(live_lines)
+                list(live_lines), step1_approved, tiers, "\n".join(live_lines),
+                lexicon, strict5, name,
             )
             info["baseline"] = "live file (no backup found)"
 
@@ -638,7 +918,7 @@ def process(apply: bool, step1_approved: bool, tiers: str = "A") -> dict:
 
 
 def write_cleaning_report(
-    res: dict, applied_step1: bool, apply: bool, tiers: str = "A"
+    res: dict, applied_step1: bool, apply: bool, tiers: str = "A", strict5: bool = False
 ) -> str:
     L: list[str] = []
     a = L.append
@@ -653,7 +933,8 @@ def write_cleaning_report(
     a("")
     a(
         f"Step 1 (line-number deletion) applied: "
-        f"**{'yes, tier(s) ' + tiers if applied_step1 else 'NO — awaiting approval'}**."
+        f"**{'yes, tier(s) ' + tiers if applied_step1 else 'NO — awaiting approval'}"
+        f"{', exact multiples of 5 only' if applied_step1 and strict5 else ''}**."
     )
     a(f"Mode: **{'apply (files written)' if apply else 'report only (no files written)'}**.")
     a("")
@@ -663,21 +944,34 @@ def write_cleaning_report(
     a("|---|---:|---:|---:|---:|---:|---:|")
     for n in TARGETS:
         i = res[n]
-        pend = len([c for c in i["step1"] if c["skip"] is None])
+        # "Pending" is every live candidate the run did not delete — Tier B
+        # running heads, Tier C content numbers, and any Tier A value that is
+        # not an exact multiple of 5. Reporting 0 here merely because Step 1
+        # ran would hide 392 candidates that are still outstanding.
+        done = {id(c) for c in i["step1_applied"]}
+        pend = len(
+            [c for c in i["step1"] if c["skip"] is None and id(c) not in done]
+        )
         a(
             f"| `{n}` | {i['rstrip']} | {len(i['step1_applied'])} | "
-            f"{0 if applied_step1 else pend} | {len(i['step2'])} | {i['step3']} | "
+            f"{pend} | "
+            f"{len(i['step2']) + len(i.get('step2b', []))} | {i['step3']} | "
             f"{i['lines_before']} → {i['lines_after']} |"
         )
     a("")
     tot_r = sum(res[n]["rstrip"] for n in TARGETS)
-    tot_j = sum(len(res[n]["step2"]) for n in TARGETS)
+    tot_j = sum(len(res[n]["step2"]) + len(res[n].get("step2b", [])) for n in TARGETS)
     tot_b = sum(res[n]["step3"] for n in TARGETS)
     tot_1 = sum(len(res[n]["step1_applied"]) for n in TARGETS)
-    tot_p = sum(len([c for c in res[n]["step1"] if c["skip"] is None]) for n in TARGETS)
+    tot_p = 0
+    for n in TARGETS:
+        done = {id(c) for c in res[n]["step1_applied"]}
+        tot_p += len(
+            [c for c in res[n]["step1"] if c["skip"] is None and id(c) not in done]
+        )
     a(
         f"**Totals:** {tot_r} lines rstripped · {tot_1} line numbers deleted · "
-        f"{0 if applied_step1 else tot_p} pending approval · {tot_j} joins · "
+        f"{tot_p} still pending · {tot_j} joins · "
         f"{tot_b} blank lines collapsed."
     )
     a("")
@@ -715,6 +1009,12 @@ def write_cleaning_report(
     a("(`n % 5` is 0, 1 or 2 — within 2 below — or 3 or 4 — within 2 above). It is")
     a("implemented as stated and it excludes nothing. The counts below are")
     a("therefore the counts of \"any 1-3 digit number at end of line\".")
+    a("")
+    a("`--strict5` replaces condition 3 with `n % 5 == 0`, which is what makes")
+    a("the marginal-line-number hypothesis testable — a printer sets 5, 10, 15,")
+    a("not 62 or 148. It is the basis on which this pass was approved, and it")
+    a("cuts the deletion set from 606 candidates to 214. It narrows what is")
+    a("*deleted*; the tables below still enumerate every candidate.")
     a("")
     a("Two structural guards were added, without which this pass destroys the")
     a("chapter structure of all six files:")
@@ -812,6 +1112,69 @@ def write_cleaning_report(
             a(f"| {x['lineno']} | `{x['word_before']}` → `{x['word_after']}` |")
         a("")
 
+    tot_2b = sum(len(res[n].get("step2b", [])) for n in TARGETS)
+    a("### Step 2b — the second de-hyphenation, after Step 1")
+    a("")
+    a("Step 1 can uncover a hyphen it was hiding: `…that the Obla- 10` ends in")
+    a("a digit, so the first Step 2 cannot see it, but once the `10` is deleted")
+    a("the line ends `Obla-` and the join becomes visible. Steps 2 and 3")
+    a("therefore run a second time after Step 1, which is what makes the whole")
+    a("pipeline idempotent — without it a second `--apply` produced different")
+    a("output from the first.")
+    a("")
+    if tot_2b == 0:
+        a("**No second-pass joins** — Step 1 was not applied in this run.")
+        a("")
+    else:
+        a(f"**{tot_2b} joins** only became visible after Step 1.")
+        a("")
+        a("| File | Line | Before → After |")
+        a("|---|---:|---|")
+        for n in TARGETS:
+            for x in res[n].get("step2b", []):
+                a(
+                    f"| `{n}` | {x['lineno']} | `{x['word_before']}` → "
+                    f"`{x['word_after']}` |"
+                )
+        a("")
+
+    a("### Step 2a — the standalone-word guard")
+    a("")
+    a("A second refusal rule, added after pass 1 shipped three bad joins.")
+    a("A join is held back when the continuation fragment is itself a common")
+    a("standalone English word, **unless** the joined form is attested as an")
+    a("ordinary unhyphenated token somewhere in these six files — so `him-` +")
+    a("`self` still joins, and `blue-` + `black` does not.")
+    a("")
+    tot_h = sum(
+        len(res[n]["step2_held"]) + len(res[n].get("step2b_held", []))
+        for n in TARGETS
+    )
+    tot_j2 = sum(len(res[n]["step2"]) + len(res[n].get("step2b", [])) for n in TARGETS)
+    a(
+        f"**{tot_h} of {tot_h + tot_j2} candidate joins are held back "
+        f"({100 * tot_h / max(tot_h + tot_j2, 1):.2f}%).** Every one is listed "
+        f"below; none is silently dropped."
+    )
+    a("")
+    a("| File | Line | Held back | Would have produced | Context |")
+    a("|---|---:|---|---|---|")
+    for n in TARGETS:
+        for x in res[n]["step2_held"] + res[n].get("step2b_held", []):
+            ctx = x["context"].replace("|", "\\|")
+            a(
+                f"| `{n}` | {x['lineno']} | `{x['stem']}-` / `{x['fragment']}` | "
+                f"`{x['would_have_joined']}` | `{ctx}` |"
+            )
+    if tot_h == 0:
+        a("| — | — | none | — | — |")
+    a("")
+    a("The guard refuses the join; it does not repair the line. What is left")
+    a("behind is a hyphen that still needs an editor. The three corrected by")
+    a("hand in this pass and the ones still outstanding are tracked in")
+    a("`MANUAL_REVIEW.md`.")
+    a("")
+
     a("## Step 3 — blank lines")
     a("")
     a("| File | Runs of 3+ blank lines collapsed to 2 |")
@@ -824,6 +1187,13 @@ def write_cleaning_report(
     a("Footnotes were not moved, translator introductions were not moved, and OCR")
     a("misspellings were not corrected. All three are catalogued in")
     a("`MANUAL_REVIEW.md` with line numbers.")
+    a("")
+    a(f"Nor was any Step 1 candidate outside the approved set touched: {tot_p} of")
+    a("the 606 remain, being Tier B running heads (260), Tier C content numbers")
+    a("(43), and Tier A values that are not exact multiples of 5 (89). Each wants")
+    a("its own pass. Five hyphens the guard refused are likewise still hyphens,")
+    a("and eight of the deletions that *were* made look like content rather than")
+    a("marginal furniture — `MANUAL_REVIEW.md` §4 and §5.")
     a("")
     return "\n".join(L) + "\n"
 
@@ -906,6 +1276,87 @@ INTRO_ANCHORS = {
         "capitals, which the OCR preserved as literal capitals).",
     ),
 }
+
+# What each still-outstanding held-back join should read, established by
+# reading the surrounding page. Keyed by (file, stem, fragment). All five are
+# two-column footnote interleaving: the true continuation sits in the other
+# column further down the page, so this script — which is not allowed to move
+# text — cannot repair them. Contrast HELD_JOIN_REPAIRS, which holds the three
+# that could be resolved in place.
+HELD_JOIN_NOTES = {
+    ("87-didascalia.md", "trans", "children"):
+        "`translator` — continuation `lator` is in the next column",
+    ("87-didascalia.md", "cor", "right"):
+        "`correct` — continuation `rect` is in the next column",
+    ("87-didascalia.md", "money", "its"):
+        "`money-changers` — continuation `changers` is in the next column",
+    ("87-didascalia.md", "Xan", "month"):
+        "`Xanthicus` — continuation `thicus` is in the next column",
+    ("87-didascalia.md", "per", "you"):
+        "`pernicious` — continuation `nicious` is in the next column",
+}
+
+# Step 1 deletions that are probably content, not marginal line numbers. Keyed
+# by an anchor string rather than a line number so the entry survives reruns.
+SUSPECT_DELETIONS = [
+    (
+        "86-qalementos.md",
+        "Le sABBAT (fol. 59 v° b à fol.",
+        "60",
+        "the second half of a folio range, `fol. 59 v° b à fol. 60`",
+        "high",
+    ),
+    (
+        "86-qalementos.md",
+        "Abou-Taleb mourut au mois de Schewal de l’an",
+        "10",
+        "a year — *died in the month of Shawwal of the year 10*",
+        "high",
+    ),
+    (
+        "86-qalementos.md",
+        "‘O xaréhoyoc obroc",
+        "150",
+        "Greek ὑπ’ ἀριθμὸν 150, *under catalogue number 150*",
+        "high",
+    ),
+    (
+        "86-qalementos.md",
+        "GNAYPAPR ÉTÉPOV creudiv",
+        "160",
+        "Greek ἀριθμόν 160, *number 160*",
+        "high",
+    ),
+    (
+        "86-qalementos.md",
+        "uno Emo EN Jade CE Mise",
+        "550",
+        "too large for a printer's margin, which runs 5–50",
+        "medium",
+    ),
+    (
+        "86-qalementos.md",
+        "POS MJradas 40010 aauro",
+        "230",
+        "too large for a printer's margin",
+        "medium",
+    ),
+    (
+        "86-qalementos.md",
+        "Îl 2 S à",
+        "430",
+        "too large for a printer's margin; the line is OCR wreckage",
+        "medium",
+    ),
+    (
+        "86-qalementos.md",
+        "LE TROPAIRE O Movoyevñc.",
+        "255",
+        "too large for a printer's margin",
+        "medium",
+    ),
+]
+
 
 def write_manual_review(res: dict) -> str:
     L: list[str] = []
@@ -1082,6 +1533,46 @@ def write_manual_review(res: dict) -> str:
             at_shown = at
         a(f"| `{n}` | {at_shown} | {note} |")
     a("")
+
+    a("## 4. Hyphens the de-hyphenation guard refused to join")
+    a("")
+    a("`word-` at end of line is normally joined to the next line. The guard")
+    a("refuses when the continuation fragment is a whole English word and the")
+    a("joined form is not attested anywhere in the six files — see *Step 2a* in")
+    a("`CLEANING_REPORT.md`. Refusing is not repairing: each line below still")
+    a("carries a hyphen that an editor has to resolve, and most of them are")
+    a("two-column footnote interleaving, where the true continuation is further")
+    a("down the page in the other column.")
+    a("")
+    a("| File | Line | Reads | Correct reading |")
+    a("|---|---:|---|---|")
+    for n in TARGETS:
+        for x in res[n]["step2_held"] + res[n].get("step2b_held", []):
+            frag = f"`{x['stem']}-` / `{x['fragment']}`"
+            note = HELD_JOIN_NOTES.get((n, x["stem"], x["fragment"]), "**unresolved**")
+            a(f"| `{n}` | {x['lineno']} | {frag} | {note} |")
+    a("")
+    a("Three further joins the guard caught have already been resolved and are")
+    a("no longer in this list, because `HELD_JOIN_REPAIRS` in the script now")
+    a("performs the correct merge: `blue-black` (a colour compound, hyphen")
+    a("kept), `this type` (two words) and `Phari the bishop` (a manuscript")
+    a("variant inside a footnote).")
+    a("")
+
+    a("## 5. Step 1 deletions to re-examine")
+    a("")
+    a("Tier A means the classifier saw ordinary prose before the number. It has")
+    a("no rule for `fol.`, for French `l'an`, or for Greek `ἀριθμόν`, so a few")
+    a("numbers that are content rather than marginal furniture were sorted into")
+    a("Tier A and deleted with the approved batch. They are listed here so the")
+    a("next pass can restore them; all are in the French Qalementos.")
+    a("")
+    a("| File | Line | Deleted | What it probably was | Confidence |")
+    a("|---|---:|---:|---|---|")
+    for n, ln, tok, what, conf in SUSPECT_DELETIONS:
+        at = find_line(res[n]["lines"], ln)
+        a(f"| `{n}` | {at or '?'} | `{tok}` | {what} | {conf} |")
+    a("")
     return "\n".join(L) + "\n"
 
 
@@ -1099,14 +1590,85 @@ HANDOFF_HEADER = """# Handoff — OCR cleaning pass 1, six broader-canon files
 >
 > Backups taken before any modification: `backups/<name>.md.bak` for all six.
 >
-> **State on handoff:** Steps 0, 2 and 3 are applied. Step 1 — deletion of
-> absorbed printer line numbers — is **written and tested but NOT applied**,
-> pending human approval of the candidate list. Run
-> `python3 scripts/clean_ocr.py --apply --step1-approved --tiers A` to apply
-> the recommended tier once approved.
+> **State on handoff:** Steps 0, 2, 2a, 2b and 3 are applied, and Step 1 is
+> applied for **Tier A restricted to exact multiples of 5** — 214 deletions,
+> approved by the maintainer. The command that reproduces the shipped files
+> exactly, from the backups, is:
+>
+> ```
+> python3 scripts/clean_ocr.py --apply --step1-approved --tiers A --strict5
+> ```
+>
+> **392 of the 606 Step 1 candidates remain undeleted** and are indexed in
+> `MANUAL_REVIEW.md`: Tier B running heads (260), Tier C content numbers (43),
+> and Tier A values that are not exact multiples of 5 (89). Each needs its own
+> pass; none was touched here.
 >
 > Everything below the first horizontal rule is `CLEANING_REPORT.md` and then
 > `MANUAL_REVIEW.md`, each reproduced word for word.
+
+---
+
+## Pass 2 — {date}
+
+Three things changed after pass 1 shipped.
+
+**1. Three bad de-hyphenation joins were found and fixed.** Pass 1 joined
+`blue-` / `black` into `blueblack`, `this-` / `type` into `thistype`, and
+`Phari-` / `the` into `Pharithe`. The first is a real colour compound whose
+hyphen belongs to the text, the second is two words with a spurious OCR hyphen,
+and the third is inside a critical footnote quoting a manuscript variant, where
+the word boundary carries the sense.
+
+**2. A standalone-word guard was added to Step 2.** It refuses a join when the
+continuation fragment is itself a common standalone English word, unless the
+joined form is attested as an ordinary unhyphenated token somewhere in the six
+files — so `him-` + `self` still joins and `blue-` + `black` does not. Run
+against the 981 joins pass 1 made, it flags **8 (0.82%), and all 8 are genuine
+errors** — no false positives. Three are the ones above; the other five are
+two-column footnote interleaving in `87-didascalia.md`, where the scraper put
+the wrong column's first word on the continuation line (`money-` / `its`, where
+the real reading is `money-changers`). Those five are held, not repaired: the
+true continuation is elsewhere on the page and this script may not move text.
+
+The word list is English-only, as briefed. Adding common French words for
+`86-qalementos.md` was tried and rejected — it took the flag count from 8 to 20
+and every one of the 12 extra flags was a false alarm on a correctly-joined
+French word (`grâ-ces`, `déli-ces`, `vipè-res`, `canonia-les`).
+
+**3. The pipeline was not idempotent, and now is.** Pass 1's header claimed
+Steps 1 and 2 could not interact, on the grounds that a line ending in a hyphen
+cannot also end in a digit. That holds one way only. Step 1 deletes a trailing
+number and can thereby *expose* a hyphen that Step 2 could not previously see:
+
+```
+Concerning the reminder that the Obla- 10     <- Step 2 sees no trailing hyphen
+Concerning the reminder that the Obla-        <- after Step 1 it does
+```
+
+Six lines in the corpus are like this. Until Step 1 was actually applied the
+defect was invisible; once applied, a second `--apply` produced different files
+from the first. Steps 2 and 3 now run again after Step 1, and
+`--selftest` asserts convergence on all six files.
+
+### Still outstanding
+
+| What | Count | Where |
+|---|---:|---|
+| Tier B running heads | 260 | `MANUAL_REVIEW.md`, Step 1 tables |
+| Tier C content numbers | 43 | `MANUAL_REVIEW.md`, Step 1 tables |
+| Tier A, not a multiple of 5 | 89 | `MANUAL_REVIEW.md`, Step 1 tables |
+| Held-back hyphens (footnote columns) | 5 | `MANUAL_REVIEW.md` §4 |
+| Tier A deletions that look like content | 8 | `MANUAL_REVIEW.md` §5 |
+| Suspected OCR misspellings | — | `MANUAL_REVIEW.md` §1 |
+| Footnote placement | — | `MANUAL_REVIEW.md` §2 |
+
+The last row of concern: **eight of the 214 approved deletions were probably
+content, not marginal furniture** — all in `86-qalementos.md`, all cases the
+Tier classifier has no rule for (`fol. 59 v° b à fol. 60`, `de l'an 10`, Greek
+`ὑπ' ἀριθμὸν 150`). They were deleted because the approval was explicit and
+numeric; §5 of `MANUAL_REVIEW.md` lists them with line numbers so the next pass
+can restore them.
 
 ---
 
@@ -1128,8 +1690,55 @@ def write_handoff(cleaning: str, manual: str, date: str) -> str:
     ) + "\n"
 
 
+def selftest(tiers: str, strict5: bool) -> int:
+    """Run the pipeline twice over each backup and assert the output settles.
+
+    Exists because it did not. The first version ran Step 2 before Step 1 and
+    declared the two passes non-interacting; Step 1 then uncovered six hyphens
+    that Step 2 had been unable to see, and a second `--apply` silently
+    produced different files from the first. Nothing writes to disk here.
+    """
+    corpus: dict[str, list[str]] = {}
+    for name in TARGETS:
+        backup = BACKUPS / f"{name}.bak"
+        corpus[name], _ = load(backup if backup.exists() else CANON / name)
+    lexicon = corpus_lexicon(corpus)
+
+    bad = 0
+    for name in TARGETS:
+        base = corpus[name]
+        once, _ = run_passes(
+            list(base), True, tiers, "\n".join(base), lexicon, strict5, name
+        )
+        twice, _ = run_passes(
+            list(once), True, tiers, "\n".join(once), lexicon, strict5, name
+        )
+        if once == twice:
+            print(f"  ok        {name}  ({len(base)} → {len(once)} lines, stable)")
+            continue
+        bad += 1
+        drift = [i for i, (a, b) in enumerate(zip(once, twice)) if a != b]
+        print(
+            f"  NOT IDEMPOTENT  {name}  "
+            f"{len(once)} vs {len(twice)} lines, {len(drift)} lines differ"
+        )
+        for i in drift[:5]:
+            print(f"      pass 1: {once[i]!r}")
+            print(f"      pass 2: {twice[i]!r}")
+    print(
+        f"\nselftest: {len(TARGETS) - bad}/{len(TARGETS)} files idempotent"
+        + ("" if bad else " — all stable")
+    )
+    return 1 if bad else 0
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument(
+        "--selftest",
+        action="store_true",
+        help="assert the pipeline is idempotent; writes nothing",
+    )
     p.add_argument("--backup", action="store_true", help="copy targets to backups/")
     p.add_argument("--report", action="store_true", help="analyse, write reports only")
     p.add_argument("--apply", action="store_true", help="write cleaned files")
@@ -1151,10 +1760,20 @@ def main() -> int:
         "AB (adds running-head page numbers), ABC (adds risky). See "
         "CLEANING_REPORT.md for what each tier contains.",
     )
+    p.add_argument(
+        "--strict5",
+        action="store_true",
+        help="narrow Step 1 deletion to numbers that are an exact multiple of "
+        "5. Without it the tier gate alone admits every integer, because "
+        "'near a multiple of 5' is vacuously true (see near_multiple_of_5).",
+    )
     args = p.parse_args()
     tiers = args.tiers.upper()
     if set(tiers) - set("ABC"):
         p.error("--tiers accepts only the letters A, B, C")
+
+    if args.selftest:
+        return selftest(tiers, args.strict5)
 
     if args.backup:
         for d in do_backup():
@@ -1167,11 +1786,16 @@ def main() -> int:
         return 1
 
     res = process(
-        apply=args.apply, step1_approved=args.step1_approved, tiers=tiers
+        apply=args.apply,
+        step1_approved=args.step1_approved,
+        tiers=tiers,
+        strict5=args.strict5,
     )
     print_step1_candidates(res)
 
-    cleaning = write_cleaning_report(res, args.step1_approved, args.apply, tiers)
+    cleaning = write_cleaning_report(
+        res, args.step1_approved, args.apply, tiers, args.strict5
+    )
     manual = write_manual_review(res)
     (REPO / "CLEANING_REPORT.md").write_text(cleaning, encoding="utf-8")
     (REPO / "MANUAL_REVIEW.md").write_text(manual, encoding="utf-8")

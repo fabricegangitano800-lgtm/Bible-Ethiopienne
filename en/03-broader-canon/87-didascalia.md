@@ -1858,7 +1858,8 @@ who hast made heaven and earth with all that in them
 Lit. serve in. Lit. on account of. The
 
 ' P, Benonim. AC Fé Be- word must be translated as
-vevyéu, i.e. the valley of the above to give sense. The transchildren of Hinnom. lator has confused the two
+vevyéu, i.e. the valley of the above to give sense. The trans-
+children of Hinnom. lator has confused the two
 
 % The Greek has oiwsl{ero. meanings of the preposition
 In the extraordinary mistrans- .
@@ -3205,7 +3206,8 @@ accusation, nor sit with him that is unjust, lest thou
 become an unjust witness; nor join thyself with a
 multitude to do iniquity.’’
 
-*® Pp feadeth. Perhaps the with AC ahd is probably corright reading is “bringeth rect.
+*® Pp feadeth. Perhaps the with AC ahd is probably cor-
+right reading is “bringeth rect.
 
 down.”” A very slight change
 would be necessary.
@@ -3682,7 +3684,7 @@ come, a stranger, let the bishop, who is like unto him,
 receive him, and let him sit with him, and let (the
 bishop) show him honour. Then let him ask him to
 teach and admonish *' the people; ** for it is said, “A
-prophet is not had in honour in his own city.’ 5
+prophet is not had in honour in his own city.’
 Entreat him * to offer up the sacrifice. But if, by
 reason of fear, he refuseth,®® let them all the more
 entreat him to bestow a blessing on the people. And if
@@ -4381,7 +4383,8 @@ iniquity. If he prayeth for them, he grieveth Christ.
 "© Or, approved. ** P omits: and trembling.
 ** P adds: our Lord, *§ P bishops.
 *© P adds: and said. ** Lit. interest.
-"A per perceislanles i P omits: and moneyits: he treasury. ora changers.
+"A per perceislanles i P omits: and money-
+its: he treasury. ora changers.
 
 eet pay oe ° the ungodly and the
 f P of that which they had. eyil-doers.
@@ -4763,7 +4766,7 @@ devour it in your sight.” *
 ‘© P two or three. avenger.
 «7 P shalt. * P in him shall be fulfilled.
 
-*« P without the authority of “ P absurdly reads: Pharithe bishop, and (he is) to sees. AC has: Assyrians. The
+*« P without the authority of “ P absurdly reads: Phari the bishop, and (he is) to sees. AC has: Assyrians. The
 
 minister to the presbyter. source of the quotation is not
 “ P fulfil (it) with a good known.
@@ -5971,7 +5974,8 @@ did not thrust him away, for He knew the evil of his
 heart. And while we were eating with Him, our Lord
 desired to admonish him; and behold He gave us to
 
-* The name of the fourth possibly a translation of Xanmonth in Ethionic. thicus. the month which is
+* The name of the fourth possibly a translation of Xan-
+month in Ethionic. thicus. the month which is
 
 5 Ter is the Ethiopic, Tobi the
 Cootic name of this month.
@@ -6363,7 +6367,7 @@ day, and keep himself from evil-doing. For our Lord
 saith, “ lhe sons of the bridegroom cannot fast so long
 as the bridegroom is with them, but days will come when
 the bridegroom shall be taken from them: then shall
-they fast.’ 5
+they fast.’
 
 [v., 19.] For in these six days the Jews took our
 Lord from us, and crucified Him on the Cross, and
@@ -6516,7 +6520,7 @@ clause is doubtful. in AC is: He (Samuel) named
 
 27) inh 4254305 anointed.
 
-3° The translator seems 10
+3° The translator seems
 
 -.
 
@@ -7465,7 +7469,8 @@ as touching the catechumens when they understand the
 teaching, baptize them into the name to the Father,
 
 37 These words come in awk- in AC,
-wardly here. In AC the former “© In AC the clause charsentence runs on: to deceive acterises the books as ‘“‘peryou who love Christ and us His nicious and repugnant to the
+wardly here. In AC the former “© In AC the clause charsentence runs on: to deceive acterises the books as ‘“‘per-
+you who love Christ and us His nicious and repugnant to the
 servants. truth.’*
 
 °° The Eth. word (meaning : “' Lit, even as vanity.
@@ -7537,7 +7542,7 @@ come, they will be evil, even as our Lord saith in the
 Gospel, “In the latter days faith and love shall grow
 less, and sin shall be multiplied, and there shall come
 false Christs and false prophets, and they shall do
-signs in heaven and seduce many of the elect.’ 5
+signs in heaven and seduce many of the elect.’
 Behold then let us pray to God to save us from their
 error by Jesus Christ, and to deliver us from the
 ungodly people, that we may confirm the Church and
