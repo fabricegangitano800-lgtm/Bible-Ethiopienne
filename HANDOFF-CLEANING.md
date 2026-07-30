@@ -17,14 +17,85 @@
 >
 > Backups taken before any modification: `backups/<name>.md.bak` for all six.
 >
-> **State on handoff:** Steps 0, 2 and 3 are applied. Step 1 — deletion of
-> absorbed printer line numbers — is **written and tested but NOT applied**,
-> pending human approval of the candidate list. Run
-> `python3 scripts/clean_ocr.py --apply --step1-approved --tiers A` to apply
-> the recommended tier once approved.
+> **State on handoff:** Steps 0, 2, 2a, 2b and 3 are applied, and Step 1 is
+> applied for **Tier A restricted to exact multiples of 5** — 214 deletions,
+> approved by the maintainer. The command that reproduces the shipped files
+> exactly, from the backups, is:
+>
+> ```
+> python3 scripts/clean_ocr.py --apply --step1-approved --tiers A --strict5
+> ```
+>
+> **392 of the 606 Step 1 candidates remain undeleted** and are indexed in
+> `MANUAL_REVIEW.md`: Tier B running heads (260), Tier C content numbers (43),
+> and Tier A values that are not exact multiples of 5 (89). Each needs its own
+> pass; none was touched here.
 >
 > Everything below the first horizontal rule is `CLEANING_REPORT.md` and then
 > `MANUAL_REVIEW.md`, each reproduced word for word.
+
+---
+
+## Pass 2 — 2026-07-30
+
+Three things changed after pass 1 shipped.
+
+**1. Three bad de-hyphenation joins were found and fixed.** Pass 1 joined
+`blue-` / `black` into `blueblack`, `this-` / `type` into `thistype`, and
+`Phari-` / `the` into `Pharithe`. The first is a real colour compound whose
+hyphen belongs to the text, the second is two words with a spurious OCR hyphen,
+and the third is inside a critical footnote quoting a manuscript variant, where
+the word boundary carries the sense.
+
+**2. A standalone-word guard was added to Step 2.** It refuses a join when the
+continuation fragment is itself a common standalone English word, unless the
+joined form is attested as an ordinary unhyphenated token somewhere in the six
+files — so `him-` + `self` still joins and `blue-` + `black` does not. Run
+against the 981 joins pass 1 made, it flags **8 (0.82%), and all 8 are genuine
+errors** — no false positives. Three are the ones above; the other five are
+two-column footnote interleaving in `87-didascalia.md`, where the scraper put
+the wrong column's first word on the continuation line (`money-` / `its`, where
+the real reading is `money-changers`). Those five are held, not repaired: the
+true continuation is elsewhere on the page and this script may not move text.
+
+The word list is English-only, as briefed. Adding common French words for
+`86-qalementos.md` was tried and rejected — it took the flag count from 8 to 20
+and every one of the 12 extra flags was a false alarm on a correctly-joined
+French word (`grâ-ces`, `déli-ces`, `vipè-res`, `canonia-les`).
+
+**3. The pipeline was not idempotent, and now is.** Pass 1's header claimed
+Steps 1 and 2 could not interact, on the grounds that a line ending in a hyphen
+cannot also end in a digit. That holds one way only. Step 1 deletes a trailing
+number and can thereby *expose* a hyphen that Step 2 could not previously see:
+
+```
+Concerning the reminder that the Obla- 10     <- Step 2 sees no trailing hyphen
+Concerning the reminder that the Obla-        <- after Step 1 it does
+```
+
+Six lines in the corpus are like this. Until Step 1 was actually applied the
+defect was invisible; once applied, a second `--apply` produced different files
+from the first. Steps 2 and 3 now run again after Step 1, and
+`--selftest` asserts convergence on all six files.
+
+### Still outstanding
+
+| What | Count | Where |
+|---|---:|---|
+| Tier B running heads | 260 | `MANUAL_REVIEW.md`, Step 1 tables |
+| Tier C content numbers | 43 | `MANUAL_REVIEW.md`, Step 1 tables |
+| Tier A, not a multiple of 5 | 89 | `MANUAL_REVIEW.md`, Step 1 tables |
+| Held-back hyphens (footnote columns) | 5 | `MANUAL_REVIEW.md` §4 |
+| Tier A deletions that look like content | 8 | `MANUAL_REVIEW.md` §5 |
+| Suspected OCR misspellings | — | `MANUAL_REVIEW.md` §1 |
+| Footnote placement | — | `MANUAL_REVIEW.md` §2 |
+
+The last row of concern: **eight of the 214 approved deletions were probably
+content, not marginal furniture** — all in `86-qalementos.md`, all cases the
+Tier classifier has no rule for (`fol. 59 v° b à fol. 60`, `de l'an 10`, Greek
+`ὑπ' ἀριθμὸν 150`). They were deleted because the approval was explicit and
+numeric; §5 of `MANUAL_REVIEW.md` lists them with line numbers so the next pass
+can restore them.
 
 ---
 
@@ -43,21 +114,21 @@ Produced by `scripts/clean_ocr.py`. Six files in scope, no others:
 
 Backups of all six, taken before any modification, are in `backups/`.
 
-Step 1 (line-number deletion) applied: **NO — awaiting approval**.
+Step 1 (line-number deletion) applied: **yes, tier(s) A, exact multiples of 5 only**.
 Mode: **apply (files written)**.
 
 ## Summary
 
 | File | Trailing-space lines stripped | Line numbers deleted | Line numbers pending | De-hyphen joins | Blank lines collapsed | Lines before → after |
 |---|---:|---:|---:|---:|---:|---:|
-| `80-serata-seyon.md` | 662 | 0 | 49 | 0 | 0 | 969 → 969 |
-| `81-teezaz.md` | 2469 | 0 | 179 | 0 | 0 | 3272 → 3272 |
+| `80-serata-seyon.md` | 662 | 44 | 5 | 4 | 0 | 969 → 965 |
+| `81-teezaz.md` | 2469 | 149 | 30 | 2 | 0 | 3272 → 3270 |
 | `82-gessew.md` | 336 | 0 | 4 | 0 | 0 | 620 → 620 |
-| `84-mashafa-kidan-1.md` | 0 | 0 | 87 | 89 | 0 | 4574 → 4485 |
-| `86-qalementos.md` | 8628 | 0 | 161 | 662 | 0 | 11658 → 10996 |
-| `87-didascalia.md` | 0 | 0 | 126 | 230 | 0 | 9463 → 9233 |
+| `84-mashafa-kidan-1.md` | 0 | 1 | 86 | 89 | 0 | 4574 → 4485 |
+| `86-qalementos.md` | 8628 | 16 | 145 | 662 | 0 | 11658 → 10996 |
+| `87-didascalia.md` | 0 | 4 | 122 | 225 | 0 | 9463 → 9238 |
 
-**Totals:** 12095 lines rstripped · 0 line numbers deleted · 606 pending approval · 981 joins · 0 blank lines collapsed.
+**Totals:** 12095 lines rstripped · 214 line numbers deleted · 392 still pending · 982 joins · 0 blank lines collapsed.
 
 ## Step 0 — trailing whitespace
 
@@ -88,6 +159,12 @@ Condition 3 is **vacuous**: every integer is within 2 of a multiple of 5
 (`n % 5` is 0, 1 or 2 — within 2 below — or 3 or 4 — within 2 above). It is
 implemented as stated and it excludes nothing. The counts below are
 therefore the counts of "any 1-3 digit number at end of line".
+
+`--strict5` replaces condition 3 with `n % 5 == 0`, which is what makes
+the marginal-line-number hypothesis testable — a printer sets 5, 10, 15,
+not 62 or 148. It is the basis on which this pass was approved, and it
+cuts the deletion set from 606 candidates to 214. It narrows what is
+*deleted*; the tables below still enumerate every candidate.
 
 Two structural guards were added, without which this pass destroys the
 chapter structure of all six files:
@@ -164,30 +241,30 @@ tiered and only tier A is recommended for deletion:
 | 388 | `35` | prose | `…and some of them they shall question, and some of them` |
 | 444 | `5` | prose | `…work), according as it has been given him from God;` |
 | 451 | `10` | prose | `…Concerning the reminder that the Obla-` |
-| 456 | `15` | prose | `…with certainty. And said Yuhanes : Have ye forgotten,` |
-| 461 | `20` | prose | `…concerning Maryam : See her laughing. And said` |
-| 470 | `25` | prose | `…Said Kefa : It is not fitting for women to` |
-| 475 | `50` | prose | `…should help the needy ? Said Filepos : O brethren,` |
+| 455 | `15` | prose | `…with certainty. And said Yuhanes : Have ye forgotten,` |
+| 460 | `20` | prose | `…concerning Maryam : See her laughing. And said` |
+| 469 | `25` | prose | `…Said Kefa : It is not fitting for women to` |
+| 474 | `50` | prose | `…should help the needy ? Said Filepos : O brethren,` |
 | 525 | `5` | prose | `…us the holy Apostles, thy helpers in thy Church (work-` |
-| 530 | `10` | prose | `…chosen for the pontificate, that he may feed thy flock` |
-| 535 | `15` | prose | `…authority to forgive sin according to thy commandment,` |
-| 546 | `35` | prose | `…them shall salute him with the mouth, kissing him who` |
-| 550 | `30` | prose | `…gfiving thanks : The Lord (be) with you all. And the` |
+| 528 | `10` | prose | `…chosen for the pontificate, that he may feed thy flock` |
+| 533 | `15` | prose | `…authority to forgive sin according to thy commandment,` |
+| 544 | `35` | prose | `…them shall salute him with the mouth, kissing him who` |
+| 548 | `30` | prose | `…gfiving thanks : The Lord (be) with you all. And the` |
 | 599 | `5` | prose | `…— to them who take of it, that it may be to them for holi-` |
-| 604 | `10` | prose | `…Church now and always and for ever and ever. Am€n.` |
-| 610 | `15` | prose | `…various meaning of each one, but also with the other words,` |
-| 615 | `20` | prose | `…receive it.` |
-| 622 | `25` | prose | `…Jesus Christ, to grant us to receive with blessing this` |
-| 684 | `5` | prose | `…And the presbyter shall say (the prayer of) laying on` |
-| 689 | `10` | prose | `…Keep and confirm in them thy fear by thy greatness;` |
-| 712 | `25` | prose | `…we said before he shall pray, saying : My God, the` |
-| 787 | `15` | prose | `…the Father of our Lord and our Saviour Jesus Christ,` |
-| 792 | `20` | prose | `…thy holy of holies * that which is offered to thee by thine` |
-| 880 | `35` | prose | `…Concerning new persons who wish to be` |
-| 943 | `15` | prose | `…adulteress, or a man without pity, or a man who does` |
-| 947 | `20` | prose | `…by the sun, or soothsayer, or interpreter of dreams, or` |
+| 601 | `10` | prose | `…Church now and always and for ever and ever. Am€n.` |
+| 607 | `15` | prose | `…various meaning of each one, but also with the other words,` |
+| 612 | `20` | prose | `…receive it.` |
+| 619 | `25` | prose | `…Jesus Christ, to grant us to receive with blessing this` |
+| 681 | `5` | prose | `…And the presbyter shall say (the prayer of) laying on` |
+| 686 | `10` | prose | `…Keep and confirm in them thy fear by thy greatness;` |
+| 709 | `25` | prose | `…we said before he shall pray, saying : My God, the` |
+| 784 | `15` | prose | `…the Father of our Lord and our Saviour Jesus Christ,` |
+| 789 | `20` | prose | `…thy holy of holies * that which is offered to thee by thine` |
+| 877 | `35` | prose | `…Concerning new persons who wish to be` |
+| 940 | `15` | prose | `…adulteress, or a man without pity, or a man who does` |
+| 944 | `20` | prose | `…by the sun, or soothsayer, or interpreter of dreams, or` |
 | 954 | `25` | prose | `…Concerning Concubines. If there is any-` |
-| 959 | `30` | prose | `…shall receive her, but if she had been near another man,` |
+| 955 | `30` | prose | `…shall receive her, but if she had been near another man,` |
 
 **Tier B — RUNNING PAGE HEAD — number sits on page furniture (5)**
 
@@ -196,8 +273,8 @@ tiered and only tier A is recommended for deletion:
 | 121 | `29` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
 | 288 | `33` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
 | 439 | `37` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 519 | `39` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 677 | `43` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 518 | `39` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 674 | `43` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
 
 ### `81-teezaz.md` — 179 candidates
 
@@ -206,189 +283,189 @@ tiered and only tier A is recommended for deletion:
 | Line | Number | Kind | 60 chars of preceding context |
 |---:|---:|---|---|
 | 97 | `5` | prose | `…him and kill him before he receives baptism for the for-` |
-| 107 | `15` | prose | `…them ; and if they have done thus they shall hear the` |
-| 117 | `25` | prose | `…instruct those who shall be baptised that they should` |
-| 122 | `30` | prose | `…be baptised shall fast on Friday, and the bishop shall` |
-| 170 | `5` | prose | `…Satan in it, and it is named oil which has been exorcised` |
-| 175 | `10` | prose | `…right And let the presbyter, having taken every one of` |
-| 180 | `15` | prose | `…saying : All unclean spirits shall depart from him. Thus` |
-| 190 | `25` | prose | `…Amen. And he who shall be baptised shall also say` |
-| 254 | `15` | prose | `…Christ, and the cup, the wine mixed, that it may become` |
-| 259 | `20` | prose | `…the promise which he promised to our fathers, saying : I` |
-| 316 | `5` | prose | `…people while the deacons break the bread. And the` |
+| 106 | `15` | prose | `…them ; and if they have done thus they shall hear the` |
+| 116 | `25` | prose | `…instruct those who shall be baptised that they should` |
+| 121 | `30` | prose | `…be baptised shall fast on Friday, and the bishop shall` |
+| 169 | `5` | prose | `…Satan in it, and it is named oil which has been exorcised` |
+| 174 | `10` | prose | `…right And let the presbyter, having taken every one of` |
+| 179 | `15` | prose | `…saying : All unclean spirits shall depart from him. Thus` |
+| 189 | `25` | prose | `…Amen. And he who shall be baptised shall also say` |
+| 253 | `15` | prose | `…Christ, and the cup, the wine mixed, that it may become` |
+| 258 | `20` | prose | `…the promise which he promised to our fathers, saying : I` |
+| 315 | `5` | prose | `…people while the deacons break the bread. And the` |
 | 321 | `10` | prose | `…other days they shall give (it) according to the com-` |
-| 328 | `15` | prose | `…we have often said. The widows and virgins shall fast,` |
-| 333 | `20` | prose | `…they bring that which is proper to bring into the church,` |
-| 338 | `25` | prose | `…before they partake. It is Eulogia (awlogiya) — everyone` |
-| 403 | `5` | prose | `…bishop again asks them at the supper. If the believers` |
-| 423 | `15` | prose | `…should be zealots among the peoples, all of us equal and` |
-| 443 | `25` | prose | `…and give the Eulogia. If there is any who takes it away,` |
-| 453 | `30` | prose | `…and standing in the midst of all the Faithful, being about` |
-| 497 | `5` | prose | `…of their own bread, for it is Eulogia and not Eucharist` |
-| 504 | `10` | prose | `…shall receive the bread of blessing from the presbyter or` |
-| 509 | `15` | prose | `…take the Eulogia from the hand of the presbyter if he` |
-| 514 | `10` | prose | `…the laymen it is not proper that they should make the` |
-| 521 | `25` | prose | `…widows and those who are aged, he shall satisfy them` |
-| 526 | `30` | prose | `…immediately, and each of them shall do as they wish` |
-| 576 | `5` | prose | `…each one ^ which was made thou gavest size and place :` |
-| 581 | `10` | prose | `…longer be one born of flesh, but may abide truly in thine` |
-| 587 | `15` | prose | `…again we beseech God the almighty, the Father of the` |
-| 598 | `25` | prose | `…m darkness into light, and from ignorance into the knowledge` |
-| 675 | `50` | prose | `…potions, both those which are drunk, and those which are` |
-| 733 | `15` | prose | `…and at each of the names of the Holy Trinity, he` |
-| 743 | `25` | prose | `…the Father and the Son and the Holy Sfnrit, and at` |
-| 799 | `5` | prose | `…them) with the Lord our God. And the bishop shall` |
-| 809 | `5` | prose | `…thy benefit : when the world was gone astray thou savedst J` |
-| 819 | `25` | prose | `…holiness and seal of the Holy Spirit upon every person` |
-| 824 | `30` | prose | `…Spirit ; and cause that they may be named (his) temple,` |
-| 875 | `5` | prose | `…and our Saviour Jesus Christ, to thee have humbled` |
-| 880 | `10` | prose | `…hear their prayer. Give them to know the power of the` |
-| 885 | `15` | prose | `…for to thee is glory and power and might, now, etc` |
-| 891 | `30` | prose | `…shall celebrate, saying : The Lord (be) with you alL` |
-| 896 | `25` | prose | `…thanks to the Lord. And they who are present shall` |
-| 901 | `30` | prose | `…and say the invocation of the coming of the Holy` |
-| 950 | `5` | prose | `…stretching out his hands, he confesses God, saying : I` |
-| 970 | `25` | prose | `…saying each of their names. And after the confession of` |
-| 976 | `30` | prose | `…humbled themselves ; and to thee they have subdued` |
-| 1035 | `15` | prose | `…Christ, who hast regenerated us thy servants and thy` |
-| 1045 | `25` | prose | `…And breathe thrice, and then anoint them with the` |
-| 1050 | `30` | prose | `…him take the chrism from the bishop and anoint them,` |
-| 1101 | `5` | prose | `…say : There is not here a catechumen who is not one` |
-| 1123 | `25` | prose | `…creation we offer to thee this milk and honey which` |
-| 1175 | `5` | prose | `…the Holy Spirit for ever and ever. Amen.` |
-| 1191 | `90` | prose | `…the pregnant or the sick. They who cannot fast the` |
-| 1196 | `35` | prose | `…Pentakoste he shall fast in compensation. It is not the` |
-| 1253 | `5` | prose | `…But ye shall therefore take the greatest care that none of` |
-| 1258 | `10` | prose | `…mercy towards thee : and thou shalt be as having denied` |
-| 1265 | `15` | prose | `…Concerning the Deacons and Presbyters.` |
-| 1269 | `20` | prose | `…every day, unless sickness of body prevents them. And` |
-| 1276 | `25` | prose | `…Concerning the grave. No man shall` |
-| 1281 | `30` | prose | `…bishop shall sustain him with what they offer to the` |
-| 1334 | `5` | prose | `…the ancient law commanded to give the bread which` |
-| 1339 | `10` | prose | `…the heavens. And again pray at the sixth hour ; for` |
-| 1345 | `15` | prose | `…Christ prayed, and made all the world darkness : and` |
-| 1351 | `20` | prose | `…God who faileth not, who remembered his righteous` |
-| 1356 | `25` | prose | `…And therefore thou also as thou makest beginning of` |
-| 1362 | `30` | prose | `…a wife, both of you pray. And if she has not yet` |
-| 1410 | `5` | prose | `…signifies that thou makest it in faith. Not for` |
-| 1415 | `10` | prose | `…outwardly with the seal of the Word. He trembles` |
-| 1420 | `15` | prose | `…slain, and he commanded to smear the blood on the` |
-| 1424 | `30` | prose | `…foreheads thus sealed with the hand, then we shall` |
-| 1429 | `35` | prose | `…may keep it, ye who have sense, if ye heard and kept` |
-| 1494 | `15` | prose | `…Since the power is his, and ours the faith and diligence,` |
-| 1510 | `30` | prose | `…Lord Christ for the Jews like Moses healed all infirmity` |
-| 1559 | `5` | prose | `…Let not therefore any who do a sign and miracle` |
-| 1564 | `10` | prose | `…or knowledge, or discerning of spirits, or the word of` |
-| 1570 | `15` | prose | `…magnify himself nor boasted over his prophet Aaron.` |
-| 1575 | `20` | prose | `…of Ailon, because the day was not sufficient for the` |
-| 1580 | `25` | prose | `…And the seven thousand who were in Esrael, the holy ones` |
-| 1584 | `30` | prose | `…Elesewon did not neglect his assistant when he was` |
-| 1652 | `15` | prose | `…impious if they prophesy do not reveal their wickedness` |
-| 1725 | `5` | prose | `…from gods, and from dead things keep, and from blood and` |
-| 1731 | `10` | prose | `…the next ; and if he has need, the third also ; and if he` |
-| 1737 | `15` | prose | `…is a prophet : if he lives the life of God, he is a true` |
-| 1750 | `25` | prose | `…the ancient prophets.` |
-| 1816 | `15` | prose | `…(of the church) and the (other) widows shall sit by` |
-| 1822 | `30` | prose | `…enter and make them sit in separate places.` |
-| 1829 | `25` | prose | `…And if any other man or woman comes in lay dress,` |
-| 1834 | `30` | prose | `…ministering to command places for them, but remain` |
-| 1902 | `15` | prose | `…him) all the people shall assemble ; the presbyters, and` |
-| 1912 | `25` | prose | `…the men of his own house well, and has he conducted his` |
-| 1976 | `15` | prose | `…they may wash their hands as a likeness of those who` |
-| 1985 | `25` | prose | `…any bear malice in his heart against another, nor any` |
-| 2058 | `25` | prose | `…And thou, bishop, ordain the presbyter, and lay hand` |
-| 2064 | `30` | prose | `…Concerning the Deaconesses and Subdeaconesses and` |
-| 2129 | `15` | prose | `…who is with you should be ordained by bishops.` |
-| 2140 | `35` | prose | `…commandment, and he shall not be deposed, nor he who` |
-| 2147 | `30` | prose | `…himself. And he shall ordain men. And he shall offer` |
-| 2197 | `5` | prose | `…are the servants of the deacons.` |
-| 2207 | `15` | prose | `…Statute 6i. Concerning that which is left of the` |
-| 2212 | `20` | prose | `…the bishop, and three shall be given to the presbyter,` |
-| 2217 | `25` | prose | `…veryone shall perform his ordinance. And there is not in the` |
-| 2278 | `5` | prose | `…that he should be cured, and that he should not come into` |
-| 2284 | `10` | prose | `…and the adulterers and drinks with them, let him leave` |
-| 2291 | `15` | prose | `…If there is a man who makes idols, if he wishes` |
-| 2297 | `20` | prose | `…shall leave their former work or be rejected.` |
-| 2303 | `25` | prose | `…shall not do it. Or he who plays the harp, or he who` |
-| 2310 | `30` | prose | `…manner if there is a witch, or woman who guides to` |
-| 2367 | `5` | prose | `…left (the occupations) they shall be accepted, otherwise` |
-| 2374 | `10` | prose | `…if she took another she shall be repudiated.` |
-| 2380 | `15` | prose | `…we have commanded. If he loves her he shall first` |
-| 2386 | `20` | prose | `…And if there is a man among us, and he did wickedly,` |
-| 2392 | `25` | prose | `…he may be in the number of those who do virtuously,` |
-| 2397 | `30` | prose | `…quickly (or slowly) in its time, but it shall be (a matter)` |
-| 2476 | `30` | prose | `…his glory and his work, that he might be known that he` |
-| 2527 | `5` | prose | `…the week (sabu'a) of the Pascha (Fasika). The first` |
-| 2532 | `10` | prose | `…the first week (samun) because our Lord and our God` |
-| 2537 | `15` | prose | `…not do work on the day of the feast of the fortieth,` |
-| 2542 | `20` | prose | `…manifested, he who came down upon the believers in our` |
-| 2547 | `25` | prose | `…Jesus Christ, of our Lady Mary, the Saviour of the` |
-| 2552 | `30` | prose | `…the Holy Spirit descended upon him like the form of a` |
-| 2606 | `5` | prose | `…because of unbelievers, thou, bishop, make prayer in` |
-| 2611 | `10` | prose | `…pollute it As the pure man sanctifies the church, so it` |
-| 2617 | `15` | prose | `…and three they shall pray, because our Lord said : Where` |
-| 2623 | `20` | prose | `…partakes of the holy Mystery should be defiled.` |
-| 2630 | `25` | prose | `…be excommunicated and go out of the church.` |
-| 2700 | `15` | prose | `…Concerning those who are persecuted for` |
-| 2770 | `15` | prose | `…as was right for his service ; that which the chief priests` |
-| 2781 | `25` | prose | `…to Saol, when he thought to offer sacrifice of his own` |
-| 2787 | `30` | prose | `…And God has made known to us by the declaration of` |
-| 2847 | `15` | prose | `…as he is the Chief Priest for us, so he offered spiritual` |
-| 2852 | `20` | prose | `…Order of ordination of priesthood like us. And after his` |
-| 2911 | `5` | prose | `…to us thine angel the good guide. And have mercy upon` |
-| 2914 | `10` | prose | `…was named over us. Be forgiving to us and forsake us` |
-| 2925 | `20` | prose | `…healing give to them life, the Lord our God.` |
-| 2932 | `35` | prose | `…away from them all disease and all suffering. Speedily` |
-| 2941 | `50` | prose | `…art the overseer of all flesh, and of those who are troubled` |
-| 2992 | `5` | prose | `…water its furrows. Bring the sowing and the harvest,` |
-| 3000 | `10` | prose | `…For the poor of thy people, and for all those who hope` |
-| 3010 | `20` | prose | `…the sowing and the harvest. May he grant rich favour,` |
-| 3017 | `25` | prose | `…pleased (and) bring the sowing and the harvest, which` |
-| 3025 | `30` | prose | `…For the poor of thy people and for all who call upon` |
-| 3073 | `5` | prose | `…Speedily let thy mercy find us, O Lord.` |
-| 3104 | `50` | prose | `…for those who offer an offering to the holy, one, catholic` |
-| 3155 | `5` | prose | `…etc., Lord of the living, Life of the dead, and Hope` |
-| 3160 | `10` | prose | `…for ever and ever, with whom is the treasure of life, for` |
-| 3165 | `15` | prose | `…orphans {lit. offspring of the dead) ; and for the soul of` |
-| 3170 | `20` | prose | `…in the bosom of Abreham, Yeshak, and Ya'ekob, in the` |
-| 3174 | `25` | prose | `…kingdom ; for there is no death to thy servants, but` |
-| 3179 | `30` | prose | `…lived one hour upon the earth. Do thou grant passings` |
-| 3252 | `25` | prose | `…beseech thee for the blessed Papas N. In keeping keep` |
+| 326 | `15` | prose | `…we have often said. The widows and virgins shall fast,` |
+| 331 | `20` | prose | `…they bring that which is proper to bring into the church,` |
+| 336 | `25` | prose | `…before they partake. It is Eulogia (awlogiya) — everyone` |
+| 401 | `5` | prose | `…bishop again asks them at the supper. If the believers` |
+| 421 | `15` | prose | `…should be zealots among the peoples, all of us equal and` |
+| 441 | `25` | prose | `…and give the Eulogia. If there is any who takes it away,` |
+| 451 | `30` | prose | `…and standing in the midst of all the Faithful, being about` |
+| 495 | `5` | prose | `…of their own bread, for it is Eulogia and not Eucharist` |
+| 502 | `10` | prose | `…shall receive the bread of blessing from the presbyter or` |
+| 507 | `15` | prose | `…take the Eulogia from the hand of the presbyter if he` |
+| 512 | `10` | prose | `…the laymen it is not proper that they should make the` |
+| 519 | `25` | prose | `…widows and those who are aged, he shall satisfy them` |
+| 524 | `30` | prose | `…immediately, and each of them shall do as they wish` |
+| 574 | `5` | prose | `…each one ^ which was made thou gavest size and place :` |
+| 579 | `10` | prose | `…longer be one born of flesh, but may abide truly in thine` |
+| 585 | `15` | prose | `…again we beseech God the almighty, the Father of the` |
+| 596 | `25` | prose | `…m darkness into light, and from ignorance into the knowledge` |
+| 673 | `50` | prose | `…potions, both those which are drunk, and those which are` |
+| 731 | `15` | prose | `…and at each of the names of the Holy Trinity, he` |
+| 741 | `25` | prose | `…the Father and the Son and the Holy Sfnrit, and at` |
+| 797 | `5` | prose | `…them) with the Lord our God. And the bishop shall` |
+| 807 | `5` | prose | `…thy benefit : when the world was gone astray thou savedst J` |
+| 817 | `25` | prose | `…holiness and seal of the Holy Spirit upon every person` |
+| 822 | `30` | prose | `…Spirit ; and cause that they may be named (his) temple,` |
+| 873 | `5` | prose | `…and our Saviour Jesus Christ, to thee have humbled` |
+| 878 | `10` | prose | `…hear their prayer. Give them to know the power of the` |
+| 883 | `15` | prose | `…for to thee is glory and power and might, now, etc` |
+| 889 | `30` | prose | `…shall celebrate, saying : The Lord (be) with you alL` |
+| 894 | `25` | prose | `…thanks to the Lord. And they who are present shall` |
+| 899 | `30` | prose | `…and say the invocation of the coming of the Holy` |
+| 948 | `5` | prose | `…stretching out his hands, he confesses God, saying : I` |
+| 968 | `25` | prose | `…saying each of their names. And after the confession of` |
+| 974 | `30` | prose | `…humbled themselves ; and to thee they have subdued` |
+| 1033 | `15` | prose | `…Christ, who hast regenerated us thy servants and thy` |
+| 1043 | `25` | prose | `…And breathe thrice, and then anoint them with the` |
+| 1048 | `30` | prose | `…him take the chrism from the bishop and anoint them,` |
+| 1099 | `5` | prose | `…say : There is not here a catechumen who is not one` |
+| 1121 | `25` | prose | `…creation we offer to thee this milk and honey which` |
+| 1173 | `5` | prose | `…the Holy Spirit for ever and ever. Amen.` |
+| 1189 | `90` | prose | `…the pregnant or the sick. They who cannot fast the` |
+| 1194 | `35` | prose | `…Pentakoste he shall fast in compensation. It is not the` |
+| 1251 | `5` | prose | `…But ye shall therefore take the greatest care that none of` |
+| 1256 | `10` | prose | `…mercy towards thee : and thou shalt be as having denied` |
+| 1263 | `15` | prose | `…Concerning the Deacons and Presbyters.` |
+| 1267 | `20` | prose | `…every day, unless sickness of body prevents them. And` |
+| 1274 | `25` | prose | `…Concerning the grave. No man shall` |
+| 1279 | `30` | prose | `…bishop shall sustain him with what they offer to the` |
+| 1332 | `5` | prose | `…the ancient law commanded to give the bread which` |
+| 1337 | `10` | prose | `…the heavens. And again pray at the sixth hour ; for` |
+| 1343 | `15` | prose | `…Christ prayed, and made all the world darkness : and` |
+| 1349 | `20` | prose | `…God who faileth not, who remembered his righteous` |
+| 1354 | `25` | prose | `…And therefore thou also as thou makest beginning of` |
+| 1360 | `30` | prose | `…a wife, both of you pray. And if she has not yet` |
+| 1408 | `5` | prose | `…signifies that thou makest it in faith. Not for` |
+| 1413 | `10` | prose | `…outwardly with the seal of the Word. He trembles` |
+| 1418 | `15` | prose | `…slain, and he commanded to smear the blood on the` |
+| 1422 | `30` | prose | `…foreheads thus sealed with the hand, then we shall` |
+| 1427 | `35` | prose | `…may keep it, ye who have sense, if ye heard and kept` |
+| 1492 | `15` | prose | `…Since the power is his, and ours the faith and diligence,` |
+| 1508 | `30` | prose | `…Lord Christ for the Jews like Moses healed all infirmity` |
+| 1557 | `5` | prose | `…Let not therefore any who do a sign and miracle` |
+| 1562 | `10` | prose | `…or knowledge, or discerning of spirits, or the word of` |
+| 1568 | `15` | prose | `…magnify himself nor boasted over his prophet Aaron.` |
+| 1573 | `20` | prose | `…of Ailon, because the day was not sufficient for the` |
+| 1578 | `25` | prose | `…And the seven thousand who were in Esrael, the holy ones` |
+| 1582 | `30` | prose | `…Elesewon did not neglect his assistant when he was` |
+| 1650 | `15` | prose | `…impious if they prophesy do not reveal their wickedness` |
+| 1723 | `5` | prose | `…from gods, and from dead things keep, and from blood and` |
+| 1729 | `10` | prose | `…the next ; and if he has need, the third also ; and if he` |
+| 1735 | `15` | prose | `…is a prophet : if he lives the life of God, he is a true` |
+| 1748 | `25` | prose | `…the ancient prophets.` |
+| 1814 | `15` | prose | `…(of the church) and the (other) widows shall sit by` |
+| 1820 | `30` | prose | `…enter and make them sit in separate places.` |
+| 1827 | `25` | prose | `…And if any other man or woman comes in lay dress,` |
+| 1832 | `30` | prose | `…ministering to command places for them, but remain` |
+| 1900 | `15` | prose | `…him) all the people shall assemble ; the presbyters, and` |
+| 1910 | `25` | prose | `…the men of his own house well, and has he conducted his` |
+| 1974 | `15` | prose | `…they may wash their hands as a likeness of those who` |
+| 1983 | `25` | prose | `…any bear malice in his heart against another, nor any` |
+| 2056 | `25` | prose | `…And thou, bishop, ordain the presbyter, and lay hand` |
+| 2062 | `30` | prose | `…Concerning the Deaconesses and Subdeaconesses and` |
+| 2127 | `15` | prose | `…who is with you should be ordained by bishops.` |
+| 2138 | `35` | prose | `…commandment, and he shall not be deposed, nor he who` |
+| 2145 | `30` | prose | `…himself. And he shall ordain men. And he shall offer` |
+| 2195 | `5` | prose | `…are the servants of the deacons.` |
+| 2205 | `15` | prose | `…Statute 6i. Concerning that which is left of the` |
+| 2210 | `20` | prose | `…the bishop, and three shall be given to the presbyter,` |
+| 2215 | `25` | prose | `…veryone shall perform his ordinance. And there is not in the` |
+| 2276 | `5` | prose | `…that he should be cured, and that he should not come into` |
+| 2282 | `10` | prose | `…and the adulterers and drinks with them, let him leave` |
+| 2289 | `15` | prose | `…If there is a man who makes idols, if he wishes` |
+| 2295 | `20` | prose | `…shall leave their former work or be rejected.` |
+| 2301 | `25` | prose | `…shall not do it. Or he who plays the harp, or he who` |
+| 2308 | `30` | prose | `…manner if there is a witch, or woman who guides to` |
+| 2365 | `5` | prose | `…left (the occupations) they shall be accepted, otherwise` |
+| 2372 | `10` | prose | `…if she took another she shall be repudiated.` |
+| 2378 | `15` | prose | `…we have commanded. If he loves her he shall first` |
+| 2384 | `20` | prose | `…And if there is a man among us, and he did wickedly,` |
+| 2390 | `25` | prose | `…he may be in the number of those who do virtuously,` |
+| 2395 | `30` | prose | `…quickly (or slowly) in its time, but it shall be (a matter)` |
+| 2474 | `30` | prose | `…his glory and his work, that he might be known that he` |
+| 2525 | `5` | prose | `…the week (sabu'a) of the Pascha (Fasika). The first` |
+| 2530 | `10` | prose | `…the first week (samun) because our Lord and our God` |
+| 2535 | `15` | prose | `…not do work on the day of the feast of the fortieth,` |
+| 2540 | `20` | prose | `…manifested, he who came down upon the believers in our` |
+| 2545 | `25` | prose | `…Jesus Christ, of our Lady Mary, the Saviour of the` |
+| 2550 | `30` | prose | `…the Holy Spirit descended upon him like the form of a` |
+| 2604 | `5` | prose | `…because of unbelievers, thou, bishop, make prayer in` |
+| 2609 | `10` | prose | `…pollute it As the pure man sanctifies the church, so it` |
+| 2615 | `15` | prose | `…and three they shall pray, because our Lord said : Where` |
+| 2621 | `20` | prose | `…partakes of the holy Mystery should be defiled.` |
+| 2628 | `25` | prose | `…be excommunicated and go out of the church.` |
+| 2698 | `15` | prose | `…Concerning those who are persecuted for` |
+| 2768 | `15` | prose | `…as was right for his service ; that which the chief priests` |
+| 2779 | `25` | prose | `…to Saol, when he thought to offer sacrifice of his own` |
+| 2785 | `30` | prose | `…And God has made known to us by the declaration of` |
+| 2845 | `15` | prose | `…as he is the Chief Priest for us, so he offered spiritual` |
+| 2850 | `20` | prose | `…Order of ordination of priesthood like us. And after his` |
+| 2909 | `5` | prose | `…to us thine angel the good guide. And have mercy upon` |
+| 2912 | `10` | prose | `…was named over us. Be forgiving to us and forsake us` |
+| 2923 | `20` | prose | `…healing give to them life, the Lord our God.` |
+| 2930 | `35` | prose | `…away from them all disease and all suffering. Speedily` |
+| 2939 | `50` | prose | `…art the overseer of all flesh, and of those who are troubled` |
+| 2990 | `5` | prose | `…water its furrows. Bring the sowing and the harvest,` |
+| 2998 | `10` | prose | `…For the poor of thy people, and for all those who hope` |
+| 3008 | `20` | prose | `…the sowing and the harvest. May he grant rich favour,` |
+| 3015 | `25` | prose | `…pleased (and) bring the sowing and the harvest, which` |
+| 3023 | `30` | prose | `…For the poor of thy people and for all who call upon` |
+| 3071 | `5` | prose | `…Speedily let thy mercy find us, O Lord.` |
+| 3102 | `50` | prose | `…for those who offer an offering to the holy, one, catholic` |
+| 3153 | `5` | prose | `…etc., Lord of the living, Life of the dead, and Hope` |
+| 3158 | `10` | prose | `…for ever and ever, with whom is the treasure of life, for` |
+| 3163 | `15` | prose | `…orphans {lit. offspring of the dead) ; and for the soul of` |
+| 3168 | `20` | prose | `…in the bosom of Abreham, Yeshak, and Ya'ekob, in the` |
+| 3172 | `25` | prose | `…kingdom ; for there is no death to thy servants, but` |
+| 3177 | `30` | prose | `…lived one hour upon the earth. Do thou grant passings` |
+| 3250 | `25` | prose | `…beseech thee for the blessed Papas N. In keeping keep` |
 
 **Tier B — RUNNING PAGE HEAD — number sits on page furniture (30)**
 
 | Line | Number | Kind | 60 chars of preceding context |
 |---:|---:|---|---|
-| 164 | `153` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 238 | `55` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 310 | `57` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 393 | `159` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 570 | `163` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 644 | `65` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 717 | `167` | running_head | `…TRANSLATIOH OF THE ETHIOPIC TEXT` |
-| 793 | `169` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 868 | `171` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 944 | `73` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 1018 | `75` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 1095 | `177` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 1169 | `79` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 1328 | `83` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 1478 | `87` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 1552 | `89` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 1882 | `97` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
-| 2110 | `203` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2271 | `207` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2361 | `209` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2442 | `211` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2519 | `213` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2683 | `217` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2756 | `219` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2831 | `221` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2904 | `223` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 2985 | `225` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 3005 | `15` | running_head | `…PRAYER FOR THE FRUIT OF THE EARTH` |
-| 3148 | `229` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
-| 3223 | `1` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 23` |
+| 163 | `153` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 237 | `55` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 309 | `57` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 391 | `159` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 568 | `163` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 642 | `65` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 715 | `167` | running_head | `…TRANSLATIOH OF THE ETHIOPIC TEXT` |
+| 791 | `169` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 866 | `171` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 942 | `73` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 1016 | `75` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 1093 | `177` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 1167 | `79` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 1326 | `83` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 1476 | `87` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 1550 | `89` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 1880 | `97` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 1` |
+| 2108 | `203` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2269 | `207` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2359 | `209` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2440 | `211` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2517 | `213` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2681 | `217` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2754 | `219` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2829 | `221` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2902 | `223` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 2983 | `225` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 3003 | `15` | running_head | `…PRAYER FOR THE FRUIT OF THE EARTH` |
+| 3146 | `229` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT` |
+| 3221 | `1` | running_head | `…TRANSLATION OF THE ETHIOPIC TEXT 23` |
 
 ### `82-gessew.md` — 4 candidates
 
@@ -695,39 +772,39 @@ tiered and only tier A is recommended for deletion:
 | 1265 | `23` | prose | `…in all his iniquity which he hath done, the sinner shall` |
 | 1312 | `1` | prose | `…compassionate to those who turn` |
 | 1613 | `12` | prose | `…out a good shepherd, and a meek and patient teacher` |
-| 1869 | `18` | prose | `…with 8vos.` |
-| 1948 | `37` | prose | `…anger.’”` |
-| 2436 | `2` | prose | `…E` |
-| 2551 | `1` | prose | `…to-day have begotten you.’’` |
-| 2710 | `44` | prose | `…them) ‘Judge in righteousness and uprightness ”’;` |
-| 2715 | `47` | prose | `…for your judgment shall not be acceptable.”` |
-| 2752 | `3` | prose | `…the way of life. The bishop ought to walk in this` |
-| 3654 | `48` | prose | `…and have mercy upon thee,*? and give thee peace.”` |
-| 3685 | `5` | prose | `…prophet is not had in honour in his own city.’` |
-| 4174 | `4` | prose | `…may pray for him,‘? and entreat on his behalf. Ye` |
-| 4232 | `1` | prose | `…“4 and make offerings to the Church. And` |
-| 4280 | `76` | prose | `…neither is it right for other women to teach. For` |
-| 4546 | `1` | prose | `…o hath given alms to their sj` |
-| 4818 | `2` | prose | `…H` |
-| 4880 | `7` | prose | `…ye not an offering of the reward of fornication.”` |
-| 5263 | `4` | prose | `…eternal life.”` |
-| 5353 | `36` | prose | `…and body in Gehenna.”` |
-| 6306 | `4` | prose | `…me. oe` |
-| 6366 | `5` | prose | `…they fast.’` |
-| 6381 | `2` | prose | `…K` |
-| 6421 | `73` | prose | `…" Lit. save this man alive. te: stat` |
-| 6429 | `18` | prose | `…said, “Thus do ye in remembrance of me.” 17 Finish` |
-| 6519 | `10` | prose | `…3° The translator seems` |
-| 7307 | `7` | prose | `…them."` |
-| 7412 | `38` | prose | `…children 8 (and) forbid them not to come unto me.”` |
-| 7540 | `5` | prose | `…signs in heaven and seduce many of the elect.’` |
-| 7750 | `1` | prose | `…the whole world is mine, with the fulness thereof.` |
-| 7826 | `7` | prose | `…walk in his ways, and seek him with all their heart.”` |
-| 7931 | `2` | prose | `…M` |
-| 8055 | `2` | prose | `…in the sight of the Lord is the death of the righteous.”` |
-| 8129 | `1` | prose | `…people, even unto the people of Israel, ‘And behold` |
-| 8227 | `18` | prose | `…anger.”` |
-| 8884 | `4` | prose | `…(he that cometh thereto) may be worthy. to keep Thy` |
+| 1870 | `18` | prose | `…with 8vos.` |
+| 1949 | `37` | prose | `…anger.’”` |
+| 2437 | `2` | prose | `…E` |
+| 2552 | `1` | prose | `…to-day have begotten you.’’` |
+| 2711 | `44` | prose | `…them) ‘Judge in righteousness and uprightness ”’;` |
+| 2716 | `47` | prose | `…for your judgment shall not be acceptable.”` |
+| 2753 | `3` | prose | `…the way of life. The bishop ought to walk in this` |
+| 3656 | `48` | prose | `…and have mercy upon thee,*? and give thee peace.”` |
+| 3687 | `5` | prose | `…prophet is not had in honour in his own city.’` |
+| 4176 | `4` | prose | `…may pray for him,‘? and entreat on his behalf. Ye` |
+| 4234 | `1` | prose | `…“4 and make offerings to the Church. And` |
+| 4282 | `76` | prose | `…neither is it right for other women to teach. For` |
+| 4549 | `1` | prose | `…o hath given alms to their sj` |
+| 4821 | `2` | prose | `…H` |
+| 4883 | `7` | prose | `…ye not an offering of the reward of fornication.”` |
+| 5266 | `4` | prose | `…eternal life.”` |
+| 5356 | `36` | prose | `…and body in Gehenna.”` |
+| 6310 | `4` | prose | `…me. oe` |
+| 6370 | `5` | prose | `…they fast.’` |
+| 6385 | `2` | prose | `…K` |
+| 6425 | `73` | prose | `…" Lit. save this man alive. te: stat` |
+| 6433 | `18` | prose | `…said, “Thus do ye in remembrance of me.” 17 Finish` |
+| 6523 | `10` | prose | `…3° The translator seems` |
+| 7311 | `7` | prose | `…them."` |
+| 7416 | `38` | prose | `…children 8 (and) forbid them not to come unto me.”` |
+| 7545 | `5` | prose | `…signs in heaven and seduce many of the elect.’` |
+| 7755 | `1` | prose | `…the whole world is mine, with the fulness thereof.` |
+| 7831 | `7` | prose | `…walk in his ways, and seek him with all their heart.”` |
+| 7936 | `2` | prose | `…M` |
+| 8060 | `2` | prose | `…in the sight of the Lord is the death of the righteous.”` |
+| 8134 | `1` | prose | `…people, even unto the people of Israel, ‘And behold` |
+| 8232 | `18` | prose | `…anger.”` |
+| 8889 | `4` | prose | `…(he that cometh thereto) may be worthy. to keep Thy` |
 
 **Tier B — RUNNING PAGE HEAD — number sits on page furniture (83)**
 
@@ -751,80 +828,80 @@ tiered and only tier A is recommended for deletion:
 | 1627 | `35` | running_head | `…THE ETHIOPIC DIDASCALIA` |
 | 1738 | `37` | running_head | `…THE ETHIOPIC DIDASCALIA` |
 | 1826 | `39` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2020 | `43` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2114 | `45` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2212 | `47` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2300 | `49` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2493 | `53` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2593 | `55` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2687 | `57` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2783 | `59` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2877 | `61` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 2984 | `63` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3082 | `65` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3177 | `67` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3283 | `69` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3366 | `71` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3486 | `73` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3581 | `75` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3662 | `77` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3798 | `79` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3894 | `81` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 3984 | `83` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4104 | `85` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4198 | `87` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4295 | `89` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4483 | `93` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4585 | `95` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4678 | `97` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4854 | `101` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 4983 | `103` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5076 | `105` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5157 | `107` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5242 | `109` | running_head | `…THE EYTHIOPIC DIDASCALIA` |
-| 5424 | `113` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5514 | `115` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5621 | `117` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5709 | `119` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5797 | `121` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 5943 | `123` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6056 | `125` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6248 | `129` | running_head | `…THE ETINOPIC DIDASCALIA` |
-| 6336 | `131` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6427 | `133` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6523 | `135` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6620 | `137` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6726 | `139` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 6825 | `141` | running_head | `…THE ‘ETHIOPIC DIDASCALIA` |
-| 6918 | `143` | running_head | `…THE ETHIOPIC DIDASCALIA,` |
-| 7023 | `145` | running_head | `…THE ETIHOPIC DIDASCALIA` |
-| 7114 | `147` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 7201 | `149` | running_head | `…THE ETHIOPIC: DIDASCALIA` |
-| 7388 | `153` | running_head | `…THLE EQYHLOPIC DIDASCALIA` |
-| 7482 | `155` | running_head | `…THE EVHIOPIC DIDASCALIA` |
-| 7778 | `161` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 7870 | `163` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 7977 | `165` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8066 | `167` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8153 | `169` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8253 | `171` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8357 | `173` | running_head | `…HE ETHIOPIC DIDASCALIA` |
-| 8451 | `175` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8532 | `177` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8616 | `179` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8719 | `181` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8806 | `183` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8898 | `185` | running_head | `…THE ETHIOPIC DIDASCALIA` |
-| 8992 | `187` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2021 | `43` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2115 | `45` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2213 | `47` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2301 | `49` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2494 | `53` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2594 | `55` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2688 | `57` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2784 | `59` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2878 | `61` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 2985 | `63` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3083 | `65` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3178 | `67` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3285 | `69` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3368 | `71` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3488 | `73` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3583 | `75` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3664 | `77` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3800 | `79` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3896 | `81` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 3986 | `83` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4106 | `85` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4200 | `87` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4297 | `89` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4486 | `93` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4588 | `95` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4681 | `97` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4857 | `101` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 4986 | `103` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5079 | `105` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5160 | `107` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5245 | `109` | running_head | `…THE EYTHIOPIC DIDASCALIA` |
+| 5427 | `113` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5517 | `115` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5624 | `117` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5712 | `119` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5800 | `121` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 5946 | `123` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6060 | `125` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6252 | `129` | running_head | `…THE ETINOPIC DIDASCALIA` |
+| 6340 | `131` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6431 | `133` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6527 | `135` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6624 | `137` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6730 | `139` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 6829 | `141` | running_head | `…THE ‘ETHIOPIC DIDASCALIA` |
+| 6922 | `143` | running_head | `…THE ETHIOPIC DIDASCALIA,` |
+| 7027 | `145` | running_head | `…THE ETIHOPIC DIDASCALIA` |
+| 7118 | `147` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 7205 | `149` | running_head | `…THE ETHIOPIC: DIDASCALIA` |
+| 7392 | `153` | running_head | `…THLE EQYHLOPIC DIDASCALIA` |
+| 7487 | `155` | running_head | `…THE EVHIOPIC DIDASCALIA` |
+| 7783 | `161` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 7875 | `163` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 7982 | `165` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8071 | `167` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8158 | `169` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8258 | `171` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8362 | `173` | running_head | `…HE ETHIOPIC DIDASCALIA` |
+| 8456 | `175` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8537 | `177` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8621 | `179` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8724 | `181` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8811 | `183` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8903 | `185` | running_head | `…THE ETHIOPIC DIDASCALIA` |
+| 8997 | `187` | running_head | `…THE ETHIOPIC DIDASCALIA` |
 
 **Tier C — RISKY — folio citation, referring noun, or enumeration (4)**
 
 | Line | Number | Kind | 60 chars of preceding context |
 |---:|---:|---|---|
-| 3080 | `264` | enumeration | `…*° P and when ye do thus, “Ps 17,` |
-| 6425 | `4` | enumeration | `…" Cf. Isa 14, 19. Ts 27,` |
-| 8012 | `10` | enumeration | `…°° The Eth. word is not given °¢ Lev 20,` |
-| 9163 | `1` | enumeration | `…three of these words are found in the Eth. N.T. in Mt 28,` |
+| 3081 | `264` | enumeration | `…*° P and when ye do thus, “Ps 17,` |
+| 6429 | `4` | enumeration | `…" Cf. Isa 14, 19. Ts 27,` |
+| 8017 | `10` | enumeration | `…°° The Eth. word is not given °¢ Lev 20,` |
+| 9168 | `1` | enumeration | `…three of these words are found in the Eth. N.T. in Mt 28,` |
 
 ## Step 2 — de-hyphenation
 
@@ -859,12 +936,12 @@ None — this file has no hyphen line-breaks.
 | 443 | `over- / come` → `overcome` |
 | 490 | `over- / thrown` → `overthrown` |
 | 501 | `blas- / pheme` → `blaspheme` |
-| 508 | `blue- / black` → `blueblack` |
+| 508 | `blue- / black` → `blue-black` |
 | 721 | `habita- / tion` → `habitation` |
 | 742 | `com- / mandments` → `commandments` |
 | 748 | `command- / ments` → `commandments` |
 | 798 | `de- / tached` → `detached` |
-| 849 | `this- / type` → `thistype` |
+| 849 | `this- / type` → `this type` |
 | 878 | `accord- / ing` → `according` |
 | 929 | `de- / livering` → `delivering` |
 | 985 | `reason- / ing` → `reasoning` |
@@ -1606,7 +1683,7 @@ None — this file has no hyphen line-breaks.
 | 11650 | `pratique- / ront` → `pratiqueront` |
 | 11655 | `jus- / tice` → `justice` |
 
-### `87-didascalia.md` — 230 joins
+### `87-didascalia.md` — 225 joins
 
 | Line | Before → After |
 |---:|---|
@@ -1638,7 +1715,6 @@ None — this file has no hyphen line-breaks.
 | 1632 | `understand- / ing` → `understanding` |
 | 1640 | `peace- / maker` → `peacemaker` |
 | 1789 | `con- / verted` → `converted` |
-| 1889 | `trans- / children` → `transchildren` |
 | 1920 | `com- / passion` → `compassion` |
 | 1936 | `supplica- / tion` → `supplication` |
 | 1990 | `com- / mitteth` → `committeth` |
@@ -1666,7 +1742,6 @@ None — this file has no hyphen line-breaks.
 | 3233 | `pro- / ceedeth` → `proceedeth` |
 | 3236 | `upright- / ness` → `uprightness` |
 | 3253 | `testi- / mony` → `testimony` |
-| 3264 | `cor- / right` → `corright` |
 | 3275 | `Jeru- / salem` → `Jerusalem` |
 | 3326 | `con- / demnation` → `condemnation` |
 | 3328 | `upright- / ness` → `uprightness` |
@@ -1695,7 +1770,6 @@ None — this file has no hyphen line-breaks.
 | 4234 | `concern- / ing` → `concerning` |
 | 4360 | `Magde- / lene` → `Magdelene` |
 | 4453 | `com- / mand` → `command` |
-| 4469 | `money- / its` → `moneyits` |
 | 4499 | `know- / ledge` → `knowledge` |
 | 4508 | `com- / mand` → `command` |
 | 4535 | `con- / demnation` → `condemnation` |
@@ -1703,7 +1777,7 @@ None — this file has no hyphen line-breaks.
 | 4638 | `under- / stand` → `understand` |
 | 4669 | `accord- / itp` → `accorditp` |
 | 4750 | `congre- / gation` → `congregation` |
-| 4859 | `Phari- / the` → `Pharithe` |
+| 4859 | `Phari- / the` → `Phari the` |
 | 4887 | `Where- / fore` → `Wherefore` |
 | 4974 | `drunken- / ness` → `drunkenness` |
 | 5007 | `understand- / ing` → `understanding` |
@@ -1743,7 +1817,6 @@ None — this file has no hyphen line-breaks.
 | 6051 | `what- / soever` → `whatsoever` |
 | 6064 | `reckon- / ing` → `reckoning` |
 | 6081 | `reckon- / ing` → `reckoning` |
-| 6107 | `Xan- / month` → `Xanmonth` |
 | 6237 | `taker- / away` → `takeraway` |
 | 6316 | `com- / manded` → `commanded` |
 | 6318 | `com- / pleted` → `completed` |
@@ -1786,7 +1859,6 @@ None — this file has no hyphen line-breaks.
 | 7572 | `trans- / gressors` → `transgressors` |
 | 7589 | `un- / yodly` → `unyodly` |
 | 7643 | `char- / sentence` → `charsentence` |
-| 7643 | `per- / you` → `peryou` |
 | 7663 | `any- / thing` → `anything` |
 | 7669 | `condemna- / tion` → `condemnation` |
 | 7673 | `forgive- / ness` → `forgiveness` |
@@ -1841,6 +1913,49 @@ None — this file has no hyphen line-breaks.
 | 9383 | `trans- / lation` → `translation` |
 | 9455 | `Edin- / burgh` → `Edinburgh` |
 
+### Step 2b — the second de-hyphenation, after Step 1
+
+Step 1 can uncover a hyphen it was hiding: `…that the Obla- 10` ends in
+a digit, so the first Step 2 cannot see it, but once the `10` is deleted
+the line ends `Obla-` and the join becomes visible. Steps 2 and 3
+therefore run a second time after Step 1, which is what makes the whole
+pipeline idempotent — without it a second `--apply` produced different
+output from the first.
+
+**6 joins** only became visible after Step 1.
+
+| File | Line | Before → After |
+|---|---:|---|
+| `80-serata-seyon.md` | 451 | `Obla- / tion` → `Oblation` |
+| `80-serata-seyon.md` | 525 | `work- / ing` → `working` |
+| `80-serata-seyon.md` | 599 | `holi- / ness` → `holiness` |
+| `80-serata-seyon.md` | 954 | `any- / thing` → `anything` |
+| `81-teezaz.md` | 97 | `for- / giveness` → `forgiveness` |
+| `81-teezaz.md` | 321 | `com- / mandment` → `commandment` |
+
+### Step 2a — the standalone-word guard
+
+A second refusal rule, added after pass 1 shipped three bad joins.
+A join is held back when the continuation fragment is itself a common
+standalone English word, **unless** the joined form is attested as an
+ordinary unhyphenated token somewhere in these six files — so `him-` +
+`self` still joins, and `blue-` + `black` does not.
+
+**5 of 987 candidate joins are held back (0.51%).** Every one is listed below; none is silently dropped.
+
+| File | Line | Held back | Would have produced | Context |
+|---|---:|---|---|---|
+| `87-didascalia.md` | 1861 | `trans-` / `children` | `transchildren` | `vevyéu, i.e. the valley of the above to give sense. The trans- ⏎ children of Hinnom. lator has confused the two` |
+| `87-didascalia.md` | 3209 | `cor-` / `right` | `corright` | `*® Pp feadeth. Perhaps the with AC ahd is probably cor- ⏎ right reading is “bringeth rect.` |
+| `87-didascalia.md` | 4386 | `money-` / `its` | `moneyits` | `"A per perceislanles i P omits: and money- ⏎ its: he treasury. ora changers.` |
+| `87-didascalia.md` | 5977 | `Xan-` / `month` | `Xanmonth` | `* The name of the fourth possibly a translation of Xan- ⏎ month in Ethionic. thicus. the month which is` |
+| `87-didascalia.md` | 7472 | `per-` / `you` | `peryou` | `wardly here. In AC the former “© In AC the clause charsentence runs on: to deceive acterises the books as ‘“‘per- ⏎ you who love Christ and us His nicious and repugnant to the` |
+
+The guard refuses the join; it does not repair the line. What is left
+behind is a hyphen that still needs an editor. The three corrected by
+hand in this pass and the ones still outstanding are tracked in
+`MANUAL_REVIEW.md`.
+
 ## Step 3 — blank lines
 
 | File | Runs of 3+ blank lines collapsed to 2 |
@@ -1857,6 +1972,13 @@ None — this file has no hyphen line-breaks.
 Footnotes were not moved, translator introductions were not moved, and OCR
 misspellings were not corrected. All three are catalogued in
 `MANUAL_REVIEW.md` with line numbers.
+
+Nor was any Step 1 candidate outside the approved set touched: 392 of
+the 606 remain, being Tier B running heads (260), Tier C content numbers
+(43), and Tier A values that are not exact multiples of 5 (89). Each wants
+its own pass. Five hyphens the guard refused are likewise still hyphens,
+and eight of the deletions that *were* made look like content rather than
+marginal furniture — `MANUAL_REVIEW.md` §4 and §5.
 
 ---
 
@@ -1902,24 +2024,24 @@ this table. Everything else, brief-named or not:
 | `80-serata-seyon.md` | 57 | `K^fas` | `Kefas` | yes | 'e' read as '^' |
 | `80-serata-seyon.md` | 57 | `K^f` | `(letter unknown)` | — | caret substituted for a letter |
 | `80-serata-seyon.md` | 296 | `P^t` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 633 | `g^n` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 759 | `g^i` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 789 | `g^r` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 890 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 891 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 630 | `g^n` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 756 | `g^i` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 786 | `g^r` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 887 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 888 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
 | `81-teezaz.md` | 65 | `pnayer` | `prayer` | yes | 'r' read as 'n' |
-| `81-teezaz.md` | 207 | `t^n` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 250 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 407 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 736 | `b^y` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 741 | `b^i` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 815 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1072 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1163 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1309 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1499 | `g^c` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1715 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 3130 | `r^e` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 206 | `t^n` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 249 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 405 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 734 | `b^y` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 739 | `b^i` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 813 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1070 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1161 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1307 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1497 | `g^c` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1713 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 3128 | `r^e` | `(letter unknown)` | — | caret substituted for a letter |
 | `84-mashafa-kidan-1.md` | 47 | `Ir came` | `It came` | — | drop-capital 'It' read as 'Ir' |
 | `86-qalementos.md` | 55 | `Buck` | `Buch` | yes | German 'Buch' misread |
 | `86-qalementos.md` | 55 | `Schriflen` | `Schriften` | — | German 'Schriften', 't' read as 'l' |
@@ -1932,24 +2054,24 @@ this table. Everything else, brief-named or not:
 | `87-didascalia.md` | 1077 | `EVTIIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
 | `87-didascalia.md` | 1170 | `ETHLOPIC` | `ETHIOPIC` | — | running-head title corrupted |
 | `87-didascalia.md` | 1263 | `EVIIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 5242 | `EYTHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 6248 | `ETINOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7023 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7342 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7388 | `EQYHLOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7482 | `EVHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 5245 | `EYTHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 6252 | `ETINOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7027 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7346 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7392 | `EQYHLOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7487 | `EVHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
 
 ### Full occurrence index
 
 | File | Pattern | Count | Lines |
 |---|---|---:|---|
 | `80-serata-seyon.md` | `K^fas` | 1 | 57 |
-| `80-serata-seyon.md` | `ao` | 6 | 142, 420, 540, 657, 832, 873 |
-| `80-serata-seyon.md` | `caret-for-letter` | 7 | 57, 296, 633, 759, 789, 890-891 |
-| `80-serata-seyon.md` | `lo` | 7 | 220, 258, 337, 567, 645, 781, 938 |
-| `81-teezaz.md` | `ao` | 21 | 67, 185, 433, 592, 628, 664, 703, 738, 853, 1118, 1388, 1614, 1704, 1981, 2095, 2465, 2583, 3052, 3135, 3209, 3245 |
-| `81-teezaz.md` | `caret-for-letter` | 12 | 207, 250, 407, 736, 741, 815, 1072, 1163, 1309, 1499, 1715, 3130 |
-| `81-teezaz.md` | `lo` | 46 | 49, 102, 137, 249, 362, 413, 618, 656, 691, 766, 916, 991, 1030, 1181, 1377, 1449, 1489, 1526, 1600, 1647, 1688, 1811, 1896, 1970, 2005, 2040, 2081, 2122, 2163, 2202, 2333, 2454, 2568, 2654, 2661-2662, 2693, 2730, 2766, 2842, 2879, 3039, 3081, 3120, 3197, 3235 |
+| `80-serata-seyon.md` | `ao` | 6 | 142, 420, 538, 654, 829, 870 |
+| `80-serata-seyon.md` | `caret-for-letter` | 7 | 57, 296, 630, 756, 786, 887-888 |
+| `80-serata-seyon.md` | `lo` | 7 | 220, 258, 337, 565, 642, 778, 935 |
+| `81-teezaz.md` | `ao` | 21 | 67, 184, 431, 590, 626, 662, 701, 736, 851, 1116, 1386, 1612, 1702, 1979, 2093, 2463, 2581, 3050, 3133, 3207, 3243 |
+| `81-teezaz.md` | `caret-for-letter` | 12 | 206, 249, 405, 734, 739, 813, 1070, 1161, 1307, 1497, 1713, 3128 |
+| `81-teezaz.md` | `lo` | 46 | 49, 101, 136, 248, 360, 411, 616, 654, 689, 764, 914, 989, 1028, 1179, 1375, 1447, 1487, 1524, 1598, 1645, 1686, 1809, 1894, 1968, 2003, 2038, 2079, 2120, 2161, 2200, 2331, 2452, 2566, 2652, 2659-2660, 2691, 2728, 2764, 2840, 2877, 3037, 3079, 3118, 3195, 3233 |
 | `81-teezaz.md` | `pnayer` | 1 | 65 |
 | `84-mashafa-kidan-1.md` | `Ir came` | 1 | 47 |
 | `84-mashafa-kidan-1.md` | `lo` | 1 | 1787 |
@@ -1960,7 +2082,7 @@ this table. Everything else, brief-named or not:
 | `86-qalementos.md` | `Schriflen` | 1 | 55 |
 | `86-qalementos.md` | `ao` | 7 | 2761, 2811, 5450, 5457, 5491, 6214, 8612 |
 | `86-qalementos.md` | `lo` | 16 | 2831, 4218, 5674, 5677, 5686, 5689, 5729, 5789, 5982, 6287, 6290, 6300, 6303, 7505, 9103, 9739 |
-| `87-didascalia.md` | `DIDASCALIA-head` | 10 | 978, 1077, 1170, 1263, 5242, 6248, 7023, 7342, 7388, 7482 |
+| `87-didascalia.md` | `DIDASCALIA-head` | 10 | 978, 1077, 1170, 1263, 5245, 6252, 7027, 7346, 7392, 7487 |
 | `87-didascalia.md` | `WOLY` | 1 | 48 |
 | `87-didascalia.md` | `shecp` | 1 | 61 |
 
@@ -2018,15 +2140,15 @@ and deleting it alone would leave the head text stranded in the text.
 
 ### `80-serata-seyon.md`
 
-- **Footnote bodies** (5): 348, 403, 651, 716, 886
-- **Running heads** (15): 79, 157, 244, 324, 395, 478, 553, 593, 630, 728, 770, 807, 850, 888, 926
-- **Marker lines** (3): 209, 768, 816
+- **Footnote bodies** (5): 348, 403, 648, 713, 883
+- **Running heads** (15): 79, 157, 244, 324, 395, 477, 551, 591, 627, 725, 767, 804, 847, 885, 923
+- **Marker lines** (3): 209, 765, 813
 
 ### `81-teezaz.md`
 
-- **Footnote bodies** (27): 284, 368, 544, 612, 760, 771, 910, 985, 1015, 1087, 1137, 1143, 1148, 1154, 1300, 1324, 1470, 1549, 1926, 1950, 2022, 2667, 2747, 2863, 2972, 3034, 3063
-- **Running heads** (63): 91, 126, 164, 198, 272, 349, 393, 570, 717, 793, 868, 904, 979, 1055, 1095, 1130, 1587, 1676, 1718, 1760, 1800, 1837, 1920, 1959, 1993, 2067, 2110, 2150, 2228, 2271, 2316, 2361, 2442, 2479, 2519, 2555, 2683, 2756, 2790, 2831, 2866, 2890, 2904, 2918, 2947, 2956, 2979, 2985, 3005, 3028, 3030, 3056, 3083, 3085, 3107, 3122, 3148, 3150, 3182, 3188, 3217, 3260, 3272
-- **Marker lines** (8): 726, 1062, 1598, 1624, 1935, 1990, 2901, 3089
+- **Footnote bodies** (27): 283, 366, 542, 610, 758, 769, 908, 983, 1013, 1085, 1135, 1141, 1146, 1152, 1298, 1322, 1468, 1547, 1924, 1948, 2020, 2665, 2745, 2861, 2970, 3032, 3061
+- **Running heads** (63): 91, 125, 163, 197, 271, 347, 391, 568, 715, 791, 866, 902, 977, 1053, 1093, 1128, 1585, 1674, 1716, 1758, 1798, 1835, 1918, 1957, 1991, 2065, 2108, 2148, 2226, 2269, 2314, 2359, 2440, 2477, 2517, 2553, 2681, 2754, 2788, 2829, 2864, 2888, 2902, 2916, 2945, 2954, 2977, 2983, 3003, 3026, 3028, 3054, 3081, 3083, 3105, 3120, 3146, 3148, 3180, 3186, 3215, 3258, 3270
+- **Marker lines** (8): 724, 1060, 1596, 1622, 1933, 1988, 2899, 3087
 
 ### `82-gessew.md`
 
@@ -2047,8 +2169,8 @@ and deleting it alone would leave the head text stranded in the text.
 
 ### `87-didascalia.md`
 
-- **Footnote bodies** (293): 68, 74, 76, 115, 120, 163, 171, 259-260, 264, 344, 346, 352, 354, 365, 408, 455, 497, 543, 547, 584-585, 587, 627, 639, 684, 731, 738, 776, 778, 829, 874, 877-878, 920, 923, 928, 970, 1024, 1027, 1125, 1207, 1210, 1218, 1253, 1255, 1257, 1259, 1261, 1296, 1305, 1308, 1310, 1337, 1342, 1394, 1478, 1480, 1488, 1521, 1580-1581, 1584, 1624, 1677, 1690, 1778, 1780, 1817-1818, 1821-1822, 1875, 1881, 1971, 2072, 2156, 2164, 2202, 2256 …
-- **Running heads** (175): 46, 48, 76, 122, 171, 217, 264, 308, 365, 411, 455, 547, 592, 639, 689, 738, 783, 829, 880, 928, 978, 1027, 1077, 1125, 1170, 1263, 1310, 1344, 1394, 1441, 1488, 1535, 1584, 1627, 1690, 1738, 1780, 1826, 1881, 1971, 2020, 2072, 2114, 2164, 2212, 2300, 2345, 2493, 2544, 2593, 2641, 2687, 2739, 2783, 2831, 2877, 2984, 3037, 3082, 3131, 3177, 3237, 3283, 3333, 3366, 3443, 3486, 3535, 3581, 3625, 3662, 3753, 3798, 3847, 3894, 3941, 3984, 4059, 4104, 4149 …
+- **Footnote bodies** (293): 68, 74, 76, 115, 120, 163, 171, 259-260, 264, 344, 346, 352, 354, 365, 408, 455, 497, 543, 547, 584-585, 587, 627, 639, 684, 731, 738, 776, 778, 829, 874, 877-878, 920, 923, 928, 970, 1024, 1027, 1125, 1207, 1210, 1218, 1253, 1255, 1257, 1259, 1261, 1296, 1305, 1308, 1310, 1337, 1342, 1394, 1478, 1480, 1488, 1521, 1580-1581, 1584, 1624, 1677, 1690, 1778, 1780, 1817-1818, 1821-1822, 1876, 1882, 1972, 2073, 2157, 2165, 2203, 2257 …
+- **Running heads** (175): 46, 48, 76, 122, 171, 217, 264, 308, 365, 411, 455, 547, 592, 639, 689, 738, 783, 829, 880, 928, 978, 1027, 1077, 1125, 1170, 1263, 1310, 1344, 1394, 1441, 1488, 1535, 1584, 1627, 1690, 1738, 1780, 1826, 1882, 1972, 2021, 2073, 2115, 2165, 2213, 2301, 2346, 2494, 2545, 2594, 2642, 2688, 2740, 2784, 2832, 2878, 2985, 3038, 3083, 3132, 3178, 3239, 3285, 3335, 3368, 3445, 3488, 3537, 3583, 3627, 3664, 3755, 3800, 3849, 3896, 3943, 3986, 4061, 4106, 4151 …
 - **Marker lines** (718): 57, 108, 112, 133, 148, 152, 155, 157, 161, 164, 174, 179, 189, 197, 220, 231-232, 240, 248, 251, 254, 274, 279, 294, 319, 321, 326, 341, 360, 380, 387, 414, 418, 424, 427, 429, 435, 440-441, 459 …
 
 ## 3. Introduction / sacred-text boundary
@@ -2066,3 +2188,46 @@ where they are.
 | `84-mashafa-kidan-1.md` | 47 | No translator introduction. Sacred text begins under `## Prologue` with *Ir came to pass, after our Lord rose from the dead…* (`Ir` is an OCR failure of the drop-capital `It`). Editorial matter does appear below, but as **footnotes**, not as a prefatory block — footnote 2, discussing Codex S. and the Copto-Arabic version, is at line 63. |
 | `86-qalementos.md` | 97 | **The one file with a real translator introduction.** A blockquote note added by the repository's scraper sits just under `## Text`; Grébaut's own `INTRODUCTION` heading is at line 49 and his prefatory essay runs to line 96 — it cites Nau, Dillmann and the Tübingen manuscript and describes the seven Books. Sacred text begins at `# Livre Premier.`, with the incipit at line 102. Everything from 49 to 96 is Grébaut, not Qalementos, and should be moved out of `## Text` in a later pass. |
 | `87-didascalia.md` | 46 | No translator introduction. `## Chapter 1` carries the work's own title as an `###` heading at line 44, and the sacred text begins with the invocation *IN THE NAME OF GOD THE FATHER ALMIGHTY…* (printed in small capitals, which the OCR preserved as literal capitals). |
+
+## 4. Hyphens the de-hyphenation guard refused to join
+
+`word-` at end of line is normally joined to the next line. The guard
+refuses when the continuation fragment is a whole English word and the
+joined form is not attested anywhere in the six files — see *Step 2a* in
+`CLEANING_REPORT.md`. Refusing is not repairing: each line below still
+carries a hyphen that an editor has to resolve, and most of them are
+two-column footnote interleaving, where the true continuation is further
+down the page in the other column.
+
+| File | Line | Reads | Correct reading |
+|---|---:|---|---|
+| `87-didascalia.md` | 1861 | `trans-` / `children` | `translator` — continuation `lator` is in the next column |
+| `87-didascalia.md` | 3209 | `cor-` / `right` | `correct` — continuation `rect` is in the next column |
+| `87-didascalia.md` | 4386 | `money-` / `its` | `money-changers` — continuation `changers` is in the next column |
+| `87-didascalia.md` | 5977 | `Xan-` / `month` | `Xanthicus` — continuation `thicus` is in the next column |
+| `87-didascalia.md` | 7472 | `per-` / `you` | `pernicious` — continuation `nicious` is in the next column |
+
+Three further joins the guard caught have already been resolved and are
+no longer in this list, because `HELD_JOIN_REPAIRS` in the script now
+performs the correct merge: `blue-black` (a colour compound, hyphen
+kept), `this type` (two words) and `Phari the bishop` (a manuscript
+variant inside a footnote).
+
+## 5. Step 1 deletions to re-examine
+
+Tier A means the classifier saw ordinary prose before the number. It has
+no rule for `fol.`, for French `l'an`, or for Greek `ἀριθμόν`, so a few
+numbers that are content rather than marginal furniture were sorted into
+Tier A and deleted with the approved batch. They are listed here so the
+next pass can restore them; all are in the French Qalementos.
+
+| File | Line | Deleted | What it probably was | Confidence |
+|---|---:|---:|---|---|
+| `86-qalementos.md` | 7818 | `60` | the second half of a folio range, `fol. 59 v° b à fol. 60` | high |
+| `86-qalementos.md` | 6737 | `10` | a year — *died in the month of Shawwal of the year 10* | high |
+| `86-qalementos.md` | 10018 | `150` | Greek ὑπ’ ἀριθμὸν 150, *under catalogue number 150* | high |
+| `86-qalementos.md` | 10222 | `160` | Greek ἀριθμόν 160, *number 160* | high |
+| `86-qalementos.md` | 6213 | `550` | too large for a printer's margin, which runs 5–50 | medium |
+| `86-qalementos.md` | 6203 | `230` | too large for a printer's margin | medium |
+| `86-qalementos.md` | 6835 | `430` | too large for a printer's margin; the line is OCR wreckage | medium |
+| `86-qalementos.md` | 9182 | `255` | too large for a printer's margin | medium |

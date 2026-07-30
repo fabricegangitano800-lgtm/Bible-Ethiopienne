@@ -94,8 +94,7 @@ church who teaches, or a layman, he shall do likewise.
 And if a catechumen was arrested for the name of our Lord
 Jesus Christ, he shall not be doubtful about the testimony
 (which he gives) ; because if they overpower and injure
-him and kill him before he receives baptism for the for- 5
-giveness of his sin, he shall be justified ; because he was
+him and kill him before he receives baptism for the forgiveness of his sin, he shall be justified ; because he was
 baptised in his own blood.
 
 Statute 34, Concerning him who is baptised. When
@@ -104,7 +103,7 @@ shall examine their life ; if they lived in the fear of God
 before they are baptised, if they honoured the widow, or
 if they visited the sick, or if they did all good, and if
 there is witness in their favour from those who bring
-them ; and if they have done thus they shall hear the 15
+them ; and if they have done thus they shall hear the
 Gospel from the time^ that they were set apart, and
 they shall lay hand upon them and every day instruct
 them. And when the day draws near on which they
@@ -114,12 +113,12 @@ was found who was not pure, they shall put him
 aside by himself; for he has not hearkened to the
 word of instruction with faith ; because it is not proper
 to baptise (///. do to) an utter alien. And they shall
-instruct those who shall be baptised that they should 25
+instruct those who shall be baptised that they should
 wash and be exorcised on the fifth day of the
 week (sabbath) ; and if there was a menstruous woman
 among them, she shall be put aside, that she may be
 baptised on another day. And those who desire to
-be baptised shall fast on Friday, and the bishop shall 30
+be baptised shall fast on Friday, and the bishop shall
 
 ^ Reading the variant of b c.
 
@@ -167,17 +166,17 @@ down having anything alien with them into the water.
 And whenever they baptise, the bishop shall give thanks
 over the oil which is in a vessel, and it is named
 mystic oil ; and he shall take other oil and exorcise
-Satan in it, and it is named oil which has been exorcised 5
+Satan in it, and it is named oil which has been exorcised
 from every unclean spirit. And there shall be a deacon
 who will carry the oil in which (Satan) was exorcised,^ and
 he shall stand on the left of the presbyter ; and another
 deacon shall take the mystic oil, and shall stand on his
-right And let the presbyter, having taken every one of 10
+right And let the presbyter, having taken every one of
 those who shall be baptised, bid them renounce and say :
 I renounce thee, Satan, and all thine angels and all thine
 unclean works. And when he has professed this, he shall
 anoint him with the oil which he made pure from all evil, .
-saying : All unclean spirits shall depart from him. Thus 15
+saying : All unclean spirits shall depart from him. Thus
 he shall deliver to the bishop him who shall be baptised,
 naked, or to the presbyter — to him who stands at the .
 water of baptism. Let the deacon go down with him to
@@ -187,7 +186,7 @@ Lord and our Saviour Jesus Christ, and the Holy Spirit,
 giver of life to all creation, the Trinity equal in Godhead,
 one Lord, and one Kingdom and one Faith and one
 Baptism, in the holy Church Catholic, and life eternal
-Amen. And he who shall be baptised shall also say 25
+Amen. And he who shall be baptised shall also say
 again thus : Yea, I believe. And thus he shall baptise
 him and lay his hand upon him, and upon him who
 answers for him. And he shall dip him three times;
@@ -251,12 +250,12 @@ g^ve the salutation one to another with their mouths.
 And the deacons shall bring the Oblation to the bishop,
 and he shall give thanks over the bread and the cup ;
 and the bread that it may become the Body of our Lord
-Christ, and the cup, the wine mixed, that it may become 15
+Christ, and the cup, the wine mixed, that it may become
 the Blood of our Lord Christ, this which was shed for us
 and for all of us indeed who believe in him. And the
 milk and honey (shall be) mingled together, and he shall
 make them drink of them, because of the fulfilment of
-the promise which he promised to our fathers, saying : I 20
+the promise which he promised to our fathers, saying : I
 will give to you the land which floweth with milk and
 honey : this is the Body of our Lord Christ which he
 gave to us who believe in him, like food of young
@@ -313,29 +312,28 @@ written upon it a new name (which) no one knows except
 him who receives the blessing.^ And on the sabbath
 and on the first day of the week if it be possible the
 bishop himself with his own hand shall deliver to all the
-people while the deacons break the bread. And the 5
+people while the deacons break the bread. And the
 presbyters also shall break the delivered bread. And
 whenever the deacon approaches the presbyter, he shall
 hold out his robe, and the presbyter himself shall take (the
 bread) and deliver to the people with his hand. And on
-other days they shall give (it) according to the com- 10
-mandment of the bishop.
+other days they shall give (it) according to the commandment of the bishop.
 
 ## Statute 36
 
 Concerning Widows and Virgins, and at
 what time the bishop should fast. And they shall do as
-we have often said. The widows and virgins shall fast, 15
+we have often said. The widows and virgins shall fast,
 and pray in the church. And the presbyters and the
 deacons shall fast at any time they will. And likewise
 shall the people fast. And the bishop ought not to fast,
 except at the time when all the people fast ; because if
-they bring that which is proper to bring into the church, 20
+they bring that which is proper to bring into the church,
 and no (one) can be refused ; and (the man) having
 broken his own bread, he shall taste and eat with the
 other believers who are with him ; and they shall receive
 from the hand of the bishop a piece of delivered bread
-before they partake. It is Eulogia (awlogiya) — everyone 25
+before they partake. It is Eulogia (awlogiya) — everyone
 shall receive the bread which has been offered. For this
 is bread of blessing, and not the Oblation as the 'Body
 of our Lord Christ.
@@ -400,7 +398,7 @@ all the things which are suitable which he wished to ask,
 
 then again they shall be silent with modesty, until the
 
-bishop again asks them at the supper. If the believers 5
+bishop again asks them at the supper. If the believers
 
 shall be without the bishop at the supper, either from the
 
@@ -420,7 +418,7 @@ Lord and drink with moderation, having called upon the
 
 name of God. Because thus is it due to God, that we
 
-should be zealots among the peoples, all of us equal and 15
+should be zealots among the peoples, all of us equal and
 
 quiet and pure and without fault For God the Father
 
@@ -440,7 +438,7 @@ deacon) shall give thanks and shall take count there of
 
 them who take (it) away, that they minister with care
 
-and give the Eulogia. If there is any who takes it away, 25
+and give the Eulogia. If there is any who takes it away,
 
 let them bear it to widows and the sick.
 
@@ -450,7 +448,7 @@ the congregation. When the evening has come, the
 
 bishop being there, the deacon shall bring in a lamp,
 
-and standing in the midst of all the Faithful, being about 30
+and standing in the midst of all the Faithful, being about
 
 to give thanks, the bishop shall first give the salutation,
 
@@ -494,36 +492,36 @@ completed, he shall give thanks over the cup, and shall
 give of the fragments to all the Faithful. And as they
 are eating their supper the believers shall take a little
 bread from the hand of the bishop before they partake
-of their own bread, for it is Eulogia and not Eucharist 5
+of their own bread, for it is Eulogia and not Eucharist
 as of our Lord.
 
 ## Statute 38
 
 And when the bishop speaks let every
 one be silent And if the bishop is not present they
-shall receive the bread of blessing from the presbyter or 10
+shall receive the bread of blessing from the presbyter or
 from the deacon. And when the bishop speaks let all
 be silent, nor shall one answer another a word, for the
 bishop shall ask them. And if (not) the bishop but
 only the Faithful are present at the meal, they shall
-take the Eulogia from the hand of the presbyter if he 15
+take the Eulogia from the hand of the presbyter if he
 is there, and if the presbyter is not there, they shall
 take from the hand of the deacon ; and the catechumens
 also shall take their portion of the mystic bread. And
 if there are laymen only they shall eat quietly : and for
-the laymen it is not proper that they should make the 10
+the laymen it is not proper that they should make the
 Eulogia.
 
 ## Statute 39
 
 Concerning the meal of the widows. And
 if there is anyone who desires at any time to invite the
-widows and those who are aged, he shall satisfy them 25
+widows and those who are aged, he shall satisfy them
 (with food) and send them away before it shall be
 evening. And if it is not possible because of the clergy
 who have been invited, he shall give to them food
 and wine, and having given then send them away
-immediately, and each of them shall do as they wish 30
+immediately, and each of them shall do as they wish
 (with it) in their houses.
 
 l62 STATUTES OF THE APOSTLES
@@ -573,18 +571,18 @@ cerning those who gave their names] Lover of man and
 merciful author of blessing, merciful and whose habit is
 goodness, and the fountain of all blessing, thou who
 madest that which was not into that which was, with
-each one ^ which was made thou gavest size and place : 5
+each one ^ which was made thou gavest size and place :
 thou art able — remove it and take it away. Now, Lord,
 take away and remove this thy servant from wickedness
 into goodness. Grant that he may inherit the blessed *
 sonship which is in the heavens, that he may then no
-longer be one born of flesh, but may abide truly in thine 10
+longer be one born of flesh, but may abide truly in thine
 obedience: through thy only Son our Lord Jesus Christ,
 through whom to thee with him and with the Holy
 Spirit (be) glory and might now, etc.
 
 The prayer for those who gave their names. And
-again we beseech God the almighty, the Father of the 15
+again we beseech God the almighty, the Father of the
 Lord and our Saviour Jesus Christ, for those who gave
 their names, that he may open the ear of their heart
 and enlighten the eyes of their mind, and give to them
@@ -595,7 +593,7 @@ And the deacon shall say : Pray ye for those who
 gave their names.
 
 And the bishop shall say : God the almighty, thou who
-calledst thy servants, who gave their names, from darkness into light, and from ignorance into the knowledge 25
+calledst thy servants, who gave their names, from darkness into light, and from ignorance into the knowledge
 of the truth : blot out all the vestige of error from
 their thought; place thy law and thy commandment
 within their heart : and give to them knowledge which
@@ -672,7 +670,7 @@ God, who knowest what is secret, we pray and beseech
 thee, send thy Holy Spirit and his power upon this water
 and change it and sanctify it and bless it and set it against.,
 all that opposes, cause it to be against all divination and
-potions, both those which are drunk, and those which are 50
+potions, both those which are drunk, and those which are
 sprinkled, or (used) in any other way ; cause it to be for
 
 1 66 STATUTES OF THE APOSTLES
@@ -730,7 +728,7 @@ And then the priest shall go down into die water of
 the Yurdanos, taking hold o( the head of him who shall
 be baptised, and saying to him : I baptise thee in die
 name of the Father and the Son and die Holy Spirit,
-and at each of the names of the Holy Trinity, he 15
+and at each of the names of the Holy Trinity, he
 who is baptised also saying Amen. And then having
 come up from the water, they who promise for him
 shall receive him, and he uriio was b^ytised shall find
@@ -740,7 +738,7 @@ care. And if he who shall be baptised is weak, he
 shall stand up naked in the eariy morning as soon as
 one can see, and thus he who b^ises shall pour water
 upon his head, saying : I baptise thee in the name of
-the Father and the Son and the Holy Sfnrit, and at 25
+the Father and the Son and the Holy Sfnrit, and at
 each name of the Holy Trinity he pours forth once,
 and not afterwards as to alL' And after they have
 clothed him with the baptismal (robe), the Chief Priest
@@ -796,7 +794,7 @@ shall the bishop speak and say : The Lord (be) with you
 all. And the people who stand by shall say : With
 thy spirit. And the bishop shall say : Lift up your
 hearts. And they who stand by shall say : (We have
-them) with the Lord our God. And the bishop shall 5
+them) with the Lord our God. And the bishop shall
 say : Let us give thanks to the Lord. And those shall
 say: Right and just, it is meet And then the Chief
 Priest, to whom alone it belongs to consecrate the
@@ -806,7 +804,7 @@ coming of the Holy Spirit, and say thus : Right it
 is and just. We praise thee and glorify thee and
 confess thee and worship thee and give thanks to thee
 for all the mercy which thou hast done for us and all
-thy benefit : when the world was gone astray thou savedst J 5
+thy benefit : when the world was gone astray thou savedst J
 (it), having sent thine only Son, our Lord Jesus Christ,
 not to judge the world, but to save the world, and
 gather together our dispersion, that we may assemble,
@@ -816,12 +814,12 @@ which thou hast g^ven to us for healing and for using
 in other necessities, that thou wilt be willing and
 wilt send the Holy Spirit upon it, through our Lord
 Jesus Christ ; and that it may become an unction of
-holiness and seal of the Holy Spirit upon every person 25
+holiness and seal of the Holy Spirit upon every person
 of those who receive the washing of regeneration and
 forgiveness, as far as thou hast given to them : and may
 it be to them redemption and sure grace and a holy seal
 of unction and communion of their nature with the Holy
-Spirit ; and cause that they may be named (his) temple, 30
+Spirit ; and cause that they may be named (his) temple,
 through the name of our Lord and our Saviour Jesus
 
 I70 STATUTES OF THE APOSTLES
@@ -872,33 +870,33 @@ female believer who is perpetually virgin.
 
 Further (the prayer) for the laying hand upon the
 catechumens. God the almighty, the Father of the Lord
-and our Saviour Jesus Christ, to thee have humbled 5
+and our Saviour Jesus Christ, to thee have humbled
 their heads thy servants the catechumens, and to thee
 they have subdued the hardness of heart and flesh, look
 down from thy worthy dwelling-place, bless them, male
 and female, and may thine ear hearken to them and
-hear their prayer. Give them to know the power of the 10
+hear their prayer. Give them to know the power of the
 word with which they are instructed as a sure utterance ;
 and in due time impart to them, male and female, the
 washing of regeneration for the forgiveness of sin ; make
 them the temple of the Holy Spirit through Christ :
-for to thee is glory and power and might, now, etc 15
+for to thee is glory and power and might, now, etc
 
 Concerning the oil of chrism for those who
 are baptised. The bishop shall speak thus in giving
 thanks after the several bishops and presbyters and
 deacons are ready. The Chief Priest being present
-shall celebrate, saying : The Lord (be) with you alL 30
+shall celebrate, saying : The Lord (be) with you alL
 They who stand by shall say : With thy spirit And
 the bishop shall say : Lift up your hearts. They who
 are present shall say : We have (them) with the Lord
 our God. And the bishop shall say : Let us give
-thanks to the Lord. And they who are present shall 25
+thanks to the Lord. And they who are present shall
 say : Right and just, it is meet
 
 And then the Chief Priest, to whom alone it belongs to consecrate the chrism, having taken it, and
 standing in front carefully, shall offer up the prayer
-and say the invocation of the coming of the Holy 30
+and say the invocation of the coming of the Holy
 Spirit, [the bishop] thus saying: Right it is and just
 
 172 STATUTES OF THE APOSTLES
@@ -947,7 +945,7 @@ west, first they shall anathematise Satan, saying thus :
 I anathematise thee, Satan, and all thy wicked angels
 and all thy work and all thy errors and all thy orders.
 And then turning himself again towards the east and
-stretching out his hands, he confesses God, saying : I 5
+stretching out his hands, he confesses God, saying : I
 believe in one God, the Father above all, almighty, and
 in the only Son, our Lord Jesus Christ, and in the
 Holy Spirit, and in the resurrection of the body, and in
@@ -967,13 +965,13 @@ word or a dumb person or sick, the believing father and
 believing mother, or relatives knowing (them), being
 likewise believers, shall speak instead of that child or
 instead of him who has no word or instead of the sick,
-saying each of their names. And after the confession of 25
+saying each of their names. And after the confession of
 faith he says thus :
 
 (The prayer) of the laying on of hand. My Lord
 almighty, the Father of our Lord and our Saviour Jesus
 Christ, to whom thy servants and handmaids have
-humbled themselves ; and to thee they have subdued 30
+humbled themselves ; and to thee they have subdued
 the hardness of heart and flesh, look down from the
 
 174 STATUTES OF THE APOSTLES
@@ -1032,7 +1030,7 @@ who have been baptised, before the anointing with
 the chrism which has been sanctified, the bishop or
 the presbyter who baptised saying thus : Eternal God,
 almighty. Father of the Lord and our Saviour Jesus
-Christ, who hast regenerated us thy servants and thy 15
+Christ, who hast regenerated us thy servants and thy
 handmaids by water and the Holy Spirit in the washing of regeneration which thou grantedst to them for
 the forgiveness of sin, send now upon them the Holy
 Spirit, the Comforter, that therefore he may impart to
@@ -1042,12 +1040,12 @@ our Saviour Jesus Christ, through whom with him and
 with the Holy Spirit be glory and honour and might
 now, etc.
 
-And breathe thrice, and then anoint them with the 25
+And breathe thrice, and then anoint them with the
 holy chrism on the forehead and on his breast, saying
 to each one : The holy unction and the seal of the
 grace of the Holy Spirit. And he who is sealed shall
 say : Amen. And if it is a presbyter who baptises, let
-him take the chrism from the bishop and anoint them, 30
+him take the chrism from the bishop and anoint them,
 after they have been clothed with the baptismal (robe).
 
 12
@@ -1098,7 +1096,7 @@ the salutation, the chief deacon shall say : Shut the
 doors, O subdeacons. This indeed as it was said at
 the prayer of the congregation. And if the bishop
 administers the baptism, or one ordained, he shall not
-say : There is not here a catechumen who is not one 5
+say : There is not here a catechumen who is not one
 of the congregation, nor is there any adversary here.
 
 On the day alone on which they receive baptism,
@@ -1120,7 +1118,7 @@ mother by the voice of the consolations of the Holy
 Spirit And thou, O Lord, always hast given to us
 food and nourishment of thy sons, milking out the
 milk of life. According to the form and command of
-creation we offer to thee this milk and honey which 25
+creation we offer to thee this milk and honey which
 flows from the holy Church, our mother, who caused us
 to grow by her breasts, which were sanctified by thee.
 O Lord, bless it with blessing and sanctify it with sanctifying, that it may become to them who partake of it
@@ -1172,7 +1170,7 @@ for men and all the animals, that we may glorify thee,
 O God, in all the profit which thou causest to all creation
 by various fruits, through thy Son Jesus Christ our Lord,
 through whom to thee with him (be) glory, and with
-the Holy Spirit for ever and ever. Amen. 5
+the Holy Spirit for ever and ever. Amen.
 
 Concerning the fruits. The priest shall bless these
 fruits: grapes and figs and pomegranates, and fruit of
@@ -1188,12 +1186,12 @@ while ye take the fruits.
 Concerning that it is not fitting for any
 man to eat during the fasts of the Pascha (Fasika), except at the time in which it is proper to eat. For the
 following persons the fast shall not be reckoned, either
-the pregnant or the sick. They who cannot fast the 90
+the pregnant or the sick. They who cannot fast the
 two days shall fast on the sabbath, for it is necessary
 then that they should fast with bread and water. And
 if there is one on board ship or one who by some
 mischance mistook the day; being aware of it, after
-Pentakoste he shall fast in compensation. It is not the 35
+Pentakoste he shall fast in compensation. It is not the
 Pascha which he keeps, but a likeness of it after it has
 passed by : therefore in the second month he shall not
 omit (to fast), and having returned from his journey he
@@ -1250,35 +1248,35 @@ not proper to neglect it : [because] it is not seemly that
 any should be poured from the cup ; because the cup was
 blessed in the name of our Lord Jesus Christ, that thou
 shouldst receive of it, because it is the Blood of Christ.
-But ye shall therefore take the greatest care that none of 5
+But ye shall therefore take the greatest care that none of
 it be poured out or dropped, lest an alien spirit lick it up,
 and lest it should be that thou thyself should deny and
 despise the precious Blood of Christ, with which he
 redeemed thee, and became to thee the means of his
-mercy towards thee : and thou shalt be as having denied 10
+mercy towards thee : and thou shalt be as having denied
 Christ If a little of his Body has fallen, or if (any)
 has dropped from the cup, thou shalt find judgment in
 that thing with which he redeemed thee.
 
 ## Statute 46
 
-Concerning the Deacons and Presbyters. 15
+Concerning the Deacons and Presbyters.
 It is seemly that they should assemble every day with the
 bishop in the place where he is, that he may command
 them according to order. And the deacons and presbyters shall not neglect to assemble with the bishop
-every day, unless sickness of body prevents them. And 20
+every day, unless sickness of body prevents them. And
 having assembled together they shall instruct those who
 are in the churches ; and likewise having prayed, they
 shall turn each to their own work.
 
 ## Statute 47
 
-Concerning the grave. No man shall 25
+Concerning the grave. No man shall
 compel by his command to bury a man in a grave which
 is made for all the poor ; but they shall give wages to the
 hired man who digs, and to him who guards that place,
 and to him who has the care of those things. And the
-bishop shall sustain him with what they offer to the 30
+bishop shall sustain him with what they offer to the
 churches.
 
 - ' —^ — — -^-^-^
@@ -1331,35 +1329,35 @@ and glorify God : and if thou wast in another place, and
 if that hour has come to thee, pray in thy heart to God ;
 because in that hour they stripped Jesus Christ and
 nailed him upon the wood of the cross : and therefore
-the ancient law commanded to give the bread which 5
+the ancient law commanded to give the bread which
 they offer at the third hour, as a type of the Body of
 Christ and his precious Blood ; and they sacrificed the
 Iamb which was a type of the perfect Lamb, for Christ is
 the Shepherd, and he is the Bread which came down from
-the heavens. And again pray at the sixth hour ; for 10
+the heavens. And again pray at the sixth hour ; for
 
 at that hour was the hanging of our Lord Christ upon
 the wood of the cross, and the day was divided and
 darkness came : and they shall pray at that hour a strong
 prayer ; and they shall be like the word which our Lord
-Christ prayed, and made all the world darkness : and 15
+Christ prayed, and made all the world darkness : and
 the catechumens shall make a great prayer. And
 
 at the ninth hour they shall be long in prayer, and a
 prayer with glorifying, that ye may join in glorifying
 with the soul of the righteous ones, glorifying the living
-God who faileth not, who remembered his righteous 20
+God who faileth not, who remembered his righteous
 ones, and sent to them his Son, that is, his Word to
 enlighten them : because in that hour the side of Christ
 was pierced, and the blood and water flowed out : and
 then the rest of the day shone when the evening came.
-And therefore thou also as thou makest beginning of 25
+And therefore thou also as thou makest beginning of
 another day, as a likeness of the Resurrection, pray
 before thou restest thy body in thy bed. And
 
 at midnight having risen from thy bed, and having
 washed thy hand with water, pray. And if thou hast
-a wife, both of you pray. And if she has not yet 30
+a wife, both of you pray. And if she has not yet
 become a believer, go aside from her and pray alone.
 
 1 84 STATUTES OF THE APOSTLES
@@ -1407,26 +1405,26 @@ or be lost while ye always remember Christ And
 
 always be careful to seal thy forehead, for this sign
 then of the Passion is manifest against Satan, and
-signifies that thou makest it in faith. Not for 5
+signifies that thou makest it in faith. Not for
 men alone is it made manifest, but know thou that
 thou puttest on a breastplate of righteousness, and the
 adversary sees what is in the heart, the rational strength
 of the inner man, for he was sealed inwardly and
-outwardly with the seal of the Word. He trembles 10
+outwardly with the seal of the Word. He trembles
 and flees away in haste (chased) by the Holy Spirit,
 who indeed is in the man that makes within him an
 abiding place. This is that which Muse before taught
 us of the lamb of the Pascha (Fasika) which was
-slain, and he commanded to smear the blood on the 15
+slain, and he commanded to smear the blood on the
 lintel of the door and the door-posts. And the smearing declared therefore the faith which now we have,
 which dwells in us, which He gave us in the pure and
 perfect Lamb. And for this cause, if we have our
-foreheads thus sealed with the hand, then we shall 30
+foreheads thus sealed with the hand, then we shall
 be safe from those who wish to kill us. And this
 if ye learn with thanksgiving and with right faith
 ye will be indeed strengthened, and He will give you
 eternal life. This is the ordinance for you that ye
-may keep it, ye who have sense, if ye heard and kept 35
+may keep it, ye who have sense, if ye heard and kept
 all, He ^ who keeps the teaching of the Apostles will
 not be hindered by any heretics. Those are the
 perverse who went astray and corrupted the teaching of
@@ -1491,7 +1489,7 @@ Christ To those who believe this grace shall be gfiven,
 as the Lord himself teaches and shows us when he said :
 Rejoice not because the demons submit to you, but
 rejoice because your names are written in the heavens.
-Since the power is his, and ours the faith and diligence, 15
+Since the power is his, and ours the faith and diligence,
 it is clear that we work by him.
 
 It is not necessary therefore that a believer should cast
@@ -1507,7 +1505,7 @@ this people and with other lips, and they will not believe.
 For neither did the Egyptians believe God, when Moses
 the prophet worked so many signs and miracles, nor did
 the Jews, through their malice, believe him, though our
-Lord Christ for the Jews like Moses healed all infirmity 30
+Lord Christ for the Jews like Moses healed all infirmity
 and all sickness among them. Nor again did it put those
 
 1 88 STATUTES OF THE APOSTLES
@@ -1556,32 +1554,32 @@ then, not vaguely but as certain, he received a grace from
 God. So also he who has been transformed from all
 heresy.
 
-Let not therefore any who do a sign and miracle 5
+Let not therefore any who do a sign and miracle
 despise any of the believers to whom a working was not
 imparted. His own are the graces of God which are given
 through Christ. Thou indeed hast received this, and
 any of thy neighbours that ; either the word of wisdom,
-or knowledge, or discerning of spirits, or the word of 10
+or knowledge, or discerning of spirits, or the word of
 prescient instruction, or endurance, or lawful continence.
 
 Because Moses the man of God, in Egypt, when he
 worked signs did not magnify himself above the people
 Esrael, and though he was named god he did not
-magnify himself nor boasted over his prophet Aaron. 15
+magnify himself nor boasted over his prophet Aaron.
 Neither did (the son) of Newe lyasu when he was
 leading the people after him, and while he fought with
 (the people of) the lyabusewon, and made the sun to
 stand towards Gabaon and the moon towards the valley
-of Ailon, because the day was not sufficient for the 20
+of Ailon, because the day was not sufficient for the
 victory, he did not magnify himself above Fenehas and
 above Kaleb. Nor did Samuel, though he wrought so
 many signs, contemn David the beloved of God, both
 being prophets, the one chief priest and the other king.
-And the seven thousand who were in Esrael, the holy ones 25
+And the seven thousand who were in Esrael, the holy ones
 who would not worship Ba'al in bowing the knee, Elyas
 only amongst them and his assistant Eleseos were workers
 of a miracle. Neither did Elyassa despise Abdeyu keeping the law and fearing God, and he did no signs. And
-Elesewon did not neglect his assistant when he was 30
+Elesewon did not neglect his assistant when he was
 afraid of the enemy, but attended to him. And Daniel
 
 190 STATUTES OF THE APOSTLES
@@ -1649,7 +1647,7 @@ foretold, and the demons who are with him, but not on
 account of this have they so much as a spark of fear of
 God, in ignorance they are trusting to the will of the
 malice of their thoughts. It is clear then that the
-impious if they prophesy do not reveal their wickedness 15
+impious if they prophesy do not reveal their wickedness
 in their prophesying.
 
 Nor do those who cast out demons (belong) to the
@@ -1722,19 +1720,19 @@ to the humble and gentle and quiet one, and who
 trembleth at my word.
 
 But keep yourselves from the religion of demons and
-from gods, and from dead things keep, and from blood and 5
+from gods, and from dead things keep, and from blood and
 things strangled, and further, a bone shall not be broken.
 
 But concerning Apostles and Prophets according to
 the ordinance of the Gospel thus do ye. Every apostle
 who comes to you shall not remain except one day or
-the next ; and if he has need, the third also ; and if he 10
+the next ; and if he has need, the third also ; and if he
 stayed longer he is a false prophet.
 
 And every prophet who speaks in the spirit shall be
 proved, and he shall be examined that there may be no
 sin (in him). And everyone who speaks in the spirit
-is a prophet : if he lives the life of God, he is a true 15
+is a prophet : if he lives the life of God, he is a true
 prophet : by his life hitherto shall be known every false
 prophet, or a (true) prophet
 
@@ -1747,7 +1745,7 @@ truth, is a false prophet.
 And every prophet proved in truth, who acts in the
 assembly of men and acts unlawfully, shall not be judged
 by you, for his judgment is from God ; because thus did
-the ancient prophets. 25
+the ancient prophets.
 
 And he who says in the spirit. Give to me gold or
 anything else, ye shall not listen to him. And if he
@@ -1813,25 +1811,25 @@ Further, the virgins also shall sit by themselves ; if there
 is not sufficient room, they shall stand in front of the
 other women. Those who have children with them and
 are married shall sit by themselves. Also the widows
-(of the church) and the (other) widows shall sit by 15
+(of the church) and the (other) widows shall sit by
 themselves.
 
 If brothers or sisters of (other) districts should come
 in, the deacon having come shall make inquiry. If one
 has a husband or is a widow, he shall cause them to
-enter and make them sit in separate places. 30
+enter and make them sit in separate places.
 
 The presbyters also shall sit in their own several
 places. And if another presbyter should come of the
 (other) districts, they shall receive him into the place
 which is seemly for him.
 
-And if any other man or woman comes in lay dress, 25
+And if any other man or woman comes in lay dress,
 either a man of the district or from other districts, being
 brethren, thou, presbyter, while thou speakest the word
 which is concerning God, or while thou hearest or
 readest, thou shalt not respect persons, nor leave thy
-ministering to command places for them, but remain 30
+ministering to command places for them, but remain
 quiet, for the brethren shall receive them, and if they
 
 196 STATUTES OF THE APOSTLES
@@ -1899,7 +1897,7 @@ that he may be a man choice and honest and holy in
 everything, who has been chosen from the people.
 
 When they have named ^ (him) and are content (with
-him) all the people shall assemble ; the presbyters, and 15
+him) all the people shall assemble ; the presbyters, and
 the deacons, and the bishops (also), who shall assemble
 on the day of the sabbath. And he who is greatest
 shall ask of the presbyters and deacons who are among
@@ -1909,7 +1907,7 @@ shall ask them again and say to them again : Is this one
 worthy of the honourable office, and has he done rightly
 with all honesty, and has he virtue before {lit. from) God,
 and did he observe justice with man ? Is he able to order
-the men of his own house well, and has he conducted his 25
+the men of his own house well, and has he conducted his
 life in truth ? Has nothing been found against him ?
 And if all of them should answer together and say : Yes,
 thus (it is) in truth and not in partiality, and God the
@@ -1973,7 +1971,7 @@ the door be opened at the time of the holy Oblation
 (^uerban), nor enter the doors of the Faithful,
 
 And the subdeacon shall bring water to the priests, that
-they may wash their hands as a likeness of those who 15
+they may wash their hands as a likeness of those who
 are holy in their souls, and (that) we lifted (them) up
 to God. And the deacons shall close the gates, and
 no other shall come in, and he shall say : Let none of
@@ -1982,7 +1980,7 @@ should hear the word and partake of the Mystery, and ao
 let there not stand any except the Faithful, nor let any
 of the heretics stand here. O ye women, guard lest your
 children should run about here and there, or be disorderly, or lest their days should be few. And let not
-any bear malice in his heart against another, nor any 25
+any bear malice in his heart against another, nor any
 stand here who is not worthy of God : and they shall
 stand in fear and trembling, that they may be worthy of
 this work. And after this the deacon shall bring the
@@ -2055,13 +2053,13 @@ Concerning the ordination of Presbyters
 and Deacons. Concerning Subdeacons, and concerning
 Deaconesses and Subdeaconesses and female Readers.
 
-And thou, bishop, ordain the presbyter, and lay hand 25
+And thou, bishop, ordain the presbyter, and lay hand
 upon his head, while the presbyters and all the deacons
 stand by. And pray and ordain. Again, for the deacons,
 lay hand also upon them, while the presbyters and all
 the deacons stand by.
 
-Concerning the Deaconesses and Subdeaconesses and 30
+Concerning the Deaconesses and Subdeaconesses and
 female Readers, we have already spoken concerning them.
 
 202 STATUTES OF THE APOSTLES
@@ -2126,7 +2124,7 @@ presbyter or deacon, they shall lay hand upon him
 ## Statute 57
 
 Concerning that it is seemly that the bishop
-who is with you should be ordained by bishops. 15
+who is with you should be ordained by bishops.
 
 It is seemly that a bishop should be ordained by
 three bishops or by two. If one bishop alone laid hand
@@ -2137,14 +2135,14 @@ possible to gather an assembly on account of the
 ferocity of men, and not through pride and unbelief : if
 it was thus, he shall take authority from many bishops,
 and it shall be proper for him, and it shall be by their
-commandment, and he shall not be deposed, nor he who 35
+commandment, and he shall not be deposed, nor he who
 ordained him.
 
 ## Statute 58
 
 The bishop shall bless, and they shall not
 bless him. And (the bishop) shall bless the first-fruits
-himself. And he shall ordain men. And he shall offer 30
+himself. And he shall ordain men. And he shall offer
 the Oblation, and he shall administer the Eulogia
 
 204 STATUTES OF THE APOSTLES
@@ -2194,7 +2192,7 @@ is suitable for him, if the presbyter is not present. It is
 not suitable for the subdeacons to inhibit either the
 readers or the server of the Scripture and the deaconesses,
 neither those in orders nor the (lay) people, because they
-are the servants of the deacons. 5
+are the servants of the deacons.
 
 Statute 6a Concerning the first-fruits and tithes. All
 the first-fruits [and tithes] they shall bring to the bishops
@@ -2204,17 +2202,17 @@ those in orders, and for the virgins and the widows, for
 those are afflicted by poverty, because the first-fruits are
 for the priests and their ministers.
 
-Statute 6i. Concerning that which is left of the 15
+Statute 6i. Concerning that which is left of the
 Oblations. The Eulogia which is left of the Mystery
 besides {lit from) that which they offered, the deacons
 shall distribute among the priests, with the knowledge of
 the bishop or presbyter. Four parts shall be given to
-the bishop, and three shall be given to the presbyter, 20
+the bishop, and three shall be given to the presbyter,
 and to the deacon two parts, and to the others, to the
 subdeacon and to the reader and to the singers and to
 the deaconesses, one part.
 
-This then is good and acceptable before God ; everyone shall perform his ordinance. And there is not in the 25
+This then is good and acceptable before God ; everyone shall perform his ordinance. And there is not in the
 church one who did a sign, except he performed the
 ordinance in the good and honourable (manner) in which
 it should be done.^
@@ -2275,39 +2273,39 @@ that handmaid, that master of slaves shall be rejected
 from the church, because he made them impure.
 
 If there is a man who has a devil, let him be taught
-that he should be cured, and that he should not come into 5
+that he should be cured, and that he should not come into
 the church to partake of the Mystery until he is purified.
 If he was at the point of death, they may bring him to
 receive the Oblation.
 
 If there is a man who eats of the house of the heretics
-and the adulterers and drinks with them, let him leave 10
+and the adulterers and drinks with them, let him leave
 off and remove from the place of the unclean and wicked,
 or he shall be rejected.
 
 A harlot, if she wishes to come in, shall leave this habit
 or be rejected.
 
-If there is a man who makes idols, if he wishes 15
+If there is a man who makes idols, if he wishes
 to come in, he shall leave his former works or be
 rejected.
 
 If there is a man or woman and they come from
 another people, if they wish to come into our law, they
-shall leave their former work or be rejected. 20
+shall leave their former work or be rejected.
 
 If there is a man or woman of the people of the games,
 or providers (of the games), or painter, or drunkard, or
 diviner with earth and ashes, and fruit of trees, and
 anything else with which heathen sorcerers work, they
-shall not do it. Or he who plays the harp, or he who 25
+shall not do it. Or he who plays the harp, or he who
 sings to an instrument, or one who teaches singing, or
 who guides to fornication and the games, let them leave
 their works or be rejected.
 
 Or the circus-men who play in the circus ; and in like
 
-manner if there is a witch, or woman who guides to 30
+manner if there is a witch, or woman who guides to
 
 fornication, or makes sport, or a piper, or a dancer, or
 
@@ -2364,37 +2362,37 @@ those who know concerning life and death, and they shall
 not be received into our law, until they have examined
 them and proved them concerning their occupations, if
 they repented of their conduct ; and if they turned and
-left (the occupations) they shall be accepted, otherwise 5
+left (the occupations) they shall be accepted, otherwise
 they shall be rejected.
 
 ## Statute 64
 
 If there is a concubine of an unbeliever,
 if she kept herself to him alone she shall be received, and
-if she took another she shall be repudiated. 10
+if she took another she shall be repudiated.
 
 And if there is a man who became like us, and if he
 comes into our law, having a concubine or a handmaid,
 he shall keep himself, and refrain from her, because he
 is a Christian, and he shall marry according to law, as
-we have commanded. If he loves her he shall first 15
+we have commanded. If he loves her he shall first
 write for her a writing of manumission, and afterwards
 let him marry her. If she is free he shall marry her
 according to law, and if he does not do thus he shall be
 rejected.
 
-And if there is a man among us, and he did wickedly, 20
+And if there is a man among us, and he did wickedly,
 or who persuades with the fables of the heathen, and
 who does like them, let him leave off and turn himself,
 otherwise he shall be rejected.
 
 And he who requests of the believers in Christ that
-he may be in the number of those who do virtuously, 25
+he may be in the number of those who do virtuously,
 and devote themselves in quietness and purity, shall
 prove himself in virtue three years. If he was a man
 who has spiritual gift and goodness and purity, he shall
 be received (sooner), because this thing shall not be
-quickly (or slowly) in its time, but it shall be (a matter) 30
+quickly (or slowly) in its time, but it shall be (a matter)
 of good mind and devotion and prudence.
 
 2IO STATUTES OF THE APOSTLES
@@ -2473,7 +2471,7 @@ that the sabbath was not first honoured by men, but by
 God, its maker and creator, was it honoured. And he
 honoured it and blessed it, and it was instituted as a
 rest for man and beast, and chiefly for a memorial of
-his glory and his work, that he might be known that he 30
+his glory and his work, that he might be known that he
 is the maker and creator of aU. And he said : Keep my
 
 212 STATUTES OF THE APOSTLES
@@ -2524,32 +2522,32 @@ and in that also which is to come.
 ## Statute 67
 
 And further, they shall not do work in
-the week (sabu'a) of the Pascha (Fasika). The first 5
+the week (sabu'a) of the Pascha (Fasika). The first
 week (samun), the great one which is of the Passion, in
 which our Lord was crucified ; and that which comes
 after it, the week (samun) of Fasika, which is the feast of
 the Resurrection of our Lord and our Saviour. And
-the first week (samun) because our Lord and our God 10
+the first week (samun) because our Lord and our God
 was crucified in it ; and the second week (samun) because
 he rose in it from the dead. They shall not do any
 work on those days, and they shall know that he died
 and rose again from the dead. And further, they shall
-not do work on the day of the feast of the fortieth, 15
+not do work on the day of the feast of the fortieth,
 which is the day of the feast of the Ascension of our
 Lord Jesus Christ, and he made an end on it And
 further, they shall not do work on the day of the feast of
 the fiftieth, because the Holy Spirit, the Paraklltos, was
-manifested, he who came down upon the believers in our 20
+manifested, he who came down upon the believers in our
 Lord Christ. And further, they shall not do work on
 the day of the Nativity, which is of the Birth of our Lord
 Christ, because the grace of God was given quickly to
 men, when God was born, the Word, who is our Lord
-Jesus Christ, of our Lady Mary, the Saviour of the 25
+Jesus Christ, of our Lady Mary, the Saviour of the
 world. And further, they shall not do work on the feast
 of the day of the Epifanya, because on that day the
 Divinity of our Lord Christ was shown, and the Father
 bore testimony to his Son in the baptismal place, and
-the Holy Spirit descended upon him like the form of a 30
+the Holy Spirit descended upon him like the form of a
 dove, and he was shown before all the people ; and those
 
 214 STATUTES OF THE APOSTLES
@@ -2603,31 +2601,31 @@ of the day.
 ## Statute 69
 
 And if ye cannot go to the church
-because of unbelievers, thou, bishop, make prayer in 5
+because of unbelievers, thou, bishop, make prayer in
 thy house, that the servants of God mingle not with the
 assembly of the impious ; because it is not the place which
 sanctifies the man, but the man sanctifies the place. And
 if the impious seize the place, flee from it, because they
-pollute it As the pure man sanctifies the church, so it 10
+pollute it As the pure man sanctifies the church, so it
 is defiled by the unclean.
 
 And if ye cannot assemble together in a house or in the
 church, each one shall sing psalms where he is by himself,
 and shall read the Scripture and pray. If there are two
-and three they shall pray, because our Lord said : Where 15
+and three they shall pray, because our Lord said : Where
 there are two and three gathered together in my Name,
 there am I in their midst.
 
 And the believers shall not pray with a catechumen
 in the (same) house, because it is not right that he who
-partakes of the holy Mystery should be defiled. 20
+partakes of the holy Mystery should be defiled.
 
 The servants of God shall not pray with the heretics,
 nor in the house (of any) — Who would join light with
 darkness, and believers with doubters ?
 
 Believing men or women, if they live with slaves, shall
-be excommunicated and go out of the church. 25
+be excommunicated and go out of the church.
 
 ## Statute 70
 
@@ -2697,7 +2695,7 @@ to those who ask and go where there is drinking.
 
 ## Statute 71
 
-Concerning those who are persecuted for 15
+Concerning those who are persecuted for
 the Faith. And those who flee from city to city for the
 Faith and in remembrance of the word of our Lord : and
 they know that the spirit is willing but the flesh is weak,
@@ -2767,7 +2765,7 @@ he commanded the holy Law. And he ordained this lo
 ordinance, and as was proper that they should fulfil it, concerning the ordination of the priesthood, and what was
 suitable for the priests, and what was suitable for the
 levites : and he separated each as was proper for him and
-as was right for his service ; that which the chief priests 15
+as was right for his service ; that which the chief priests
 were commanded to do and which was not proper to be
 done by the priests, and not by the decree of the law to
 be done ; and that which the priests were commanded,
@@ -2778,13 +2776,13 @@ transgressed and stepped out of his service which he
 received, he should be condemned to death.
 
 And this is abundantly plain to us from what happened
-to Saol, when he thought to offer sacrifice of his own 25
+to Saol, when he thought to offer sacrifice of his own
 will, before that the prophet and chief priest Samuel
 came, and caused to come upon himself sin and a curse,
 for ever. The prophet was not afraid because of the
 anointing with which he anointed him to be king.
 
-And God has made known to us by the declaration of 30
+And God has made known to us by the declaration of
 the great thing which happened to king 'Ozyan. Not long
 
 220 STATUTES OF THE APOSTLES
@@ -2844,12 +2842,12 @@ and further, we all of us ordained withal presbyters and
 deacons. And the first Presbyter, the only true Chief
 Priest, is our Lord Jesus Christ, who did not grasp for
 himself the honour, but the Father ordained him. And
-as he is the Chief Priest for us, so he offered spiritual 15
+as he is the Chief Priest for us, so he offered spiritual
 sacrifice to God the Father before he was crucified, and
 he commanded us to do likewise. And there were others
 with us who believe in him, but he does not grant to all
 who believe in him to be priests, nor to obtain the
-Order of ordination of priesthood like us. And after his 20
+Order of ordination of priesthood like us. And after his
 Ascension we offered according to the ordinance of the
 holy bloodless Oblation. And we ordained bishops and
 presbyters and deacons in number seven, and amongst
@@ -2908,10 +2906,10 @@ The deacon shall say : Pray.
 O Lord the almighty, do thou cause us to be in all
 peace and health throughout the day, for thou hast kept
 us throughout the night Thou, Lord, the almighty, send
-to us thine angel the good guide. And have mercy upon 5
+to us thine angel the good guide. And have mercy upon
 us according to the greatness of thy mercy, and according to the multitude of thy clemency blot out our wickedness. And none of us is an alien and a backslider, put us
 not away from thy favour, because of thy name which
-was named over us. Be forgiving to us and forsake us 10
+was named over us. Be forgiving to us and forsake us
 not. Grant us to obtain favour before thee and before
 Christ thy Son, through, etc.
 
@@ -2922,14 +2920,14 @@ PRAYER FOR THE SICK
 And again we beseech the almighty God, the Father,
 etc., for the sick brethren, that he may remove all sickness and all suffering from them. Having taken away
 the spirit of disease, may he who has authority for all
-healing give to them life, the Lord our God. 20
+healing give to them life, the Lord our God.
 
 The deacon shall say : Pray for the sick.
 
 God the almighty, the Father, etc., we pray thee and
 we beseech thee for the sick brethren. Grant to them
 life. Take away the spirit of sickness. Cause to pass
-away from them all disease and all suffering. Speedily 35
+away from them all disease and all suffering. Speedily
 let thy mercy find us, O Lord.
 
 The deacon shall say : Let us all say.
@@ -2938,7 +2936,7 @@ The people shall say : Have mercy upon us.
 
 Physician of the soul and physician of the body, thou
 
-art the overseer of all flesh, and of those who are troubled 50
+art the overseer of all flesh, and of those who are troubled
 
 with unclean spirits; deliver every tormented and
 
@@ -2989,7 +2987,7 @@ The deacon shall say : Pray.
 Lord our God the almighty, we pray thee and we
 beseech thee, send thy rains into the place where they
 are needed. Make to rejoice the face of the earth, and
-water its furrows. Bring the sowing and the harvest, 5
+water its furrows. Bring the sowing and the harvest,
 and bless the circle of the year with thy goodness.
 Speedily let thy mercy find us, O Lord.
 
@@ -2997,7 +2995,7 @@ The deacon shall say : Let us all say.
 
 The people shall say : O Lord, have mercy upon us.
 
-For the poor of thy people, and for all those who hope 10
+For the poor of thy people, and for all those who hope
 in thee, work with us according to thy clemency, and
 nourish our mind with the doctrine of the Godhead, and
 with understanding which is from thee, through, etc.
@@ -3007,14 +3005,14 @@ PRAYER FOR THE FRUIT OF THE EARTH 15
 And again we beseech the almighty God, the Father
 etc., for the fruit of the earth, that he may increase the
 fruit of the earth, and that he may be pleased to bring
-the sowing and the harvest. May he grant rich favour, 20
+the sowing and the harvest. May he grant rich favour,
 the Lord our God.
 
 The deacon shall say : Pray for the fruit of the earth.
 
 Lord our God the almighty, we pray thee and we
 beseech thee, increase the fruit of the earth, and be
-pleased (and) bring the sowing and the harvest, which 25
+pleased (and) bring the sowing and the harvest, which
 is from thy goodness. Speedily let thy mercy find us,
 O Lord.
 
@@ -3022,7 +3020,7 @@ The deacon shall say : Let us all say.
 
 The people shall say : O Lord, have mercy upon us.
 
-For the poor of thy people and for all who call upon 30
+For the poor of thy people and for all who call upon
 thy holy and blessed name, through, etc.
 
 226 STATUTES OF THE APOSTLES
@@ -3070,7 +3068,7 @@ beseech thee for the king of this land, the lover of God,
 our king, lyasu, and grant to him what is useful for him.
 Cause to submit his enemy, the peoples who are against
 his wall& And speak in his heart for thy holy Church.
-Speedily let thy mercy find us, O Lord. 5
+Speedily let thy mercy find us, O Lord.
 
 The deacon shall say : Let us all say.
 
@@ -3101,7 +3099,7 @@ The deacon shall say : Pray for those who offer an
 offering.
 
 God the almighty, we pray thee and we beseech thee
-for those who offer an offering to the holy, one, catholic 50
+for those who offer an offering to the holy, one, catholic
 Church, to the honour of thy name, an offering and a
 
 228 STATUTES OF THE APOSTLES
@@ -3152,31 +3150,31 @@ PRAYER FOR THOSE WHO HAVE FALLEN
 ASLEEP
 
 And again we beseech the almighty God, the Father,
-etc., Lord of the living, Life of the dead, and Hope 5
+etc., Lord of the living, Life of the dead, and Hope
 of the desperate, Helper of the afflicted, Cleanser of
 sinners, who hast abolished death and burst the bonds
 of Satan (Sayetan). Thou hast granted life to the
 race of men, thee we pray and beseech, who wilt not die
-for ever and ever, with whom is the treasure of life, for 10
+for ever and ever, with whom is the treasure of life, for
 those who have fallen asleep and rested in the faith ; the
 forefathers, the bishops, (papasat), presbyters and
 deacons, and readers (anaguenestis), and monks, and
 virgins, and widows (of the order), infants, widows and
-orphans {lit. offspring of the dead) ; and for the soul of 15
+orphans {lit. offspring of the dead) ; and for the soul of
 thy servant N(egale) and for the soul of all those who are
 there in that place, whom thou calledst from among thy
 people in righteousness and in uprightness. Give rest to
 their soul in the place of pasturage by the water of rest,
-in the bosom of Abreham, Yeshak, and Ya'ekob, in the 20
+in the bosom of Abreham, Yeshak, and Ya'ekob, in the
 garden of joy, among the guides of light, thine angels,
 having united (them) with thy holy ones. And raise up
 their body in the day which thou hast appointed, according to thy holy unlying promise of thy heavenly
-kingdom ; for there is no death to thy servants, but 25
+kingdom ; for there is no death to thy servants, but
 rather a passing, and although one has sinned, and the
 law of man was hidden from them, be indulgent; for
 thou, God, art good and the lover of man ; for there is
 none pure from uncleanness before thee, even though he
-lived one hour upon the earth. Do thou grant passings 30
+lived one hour upon the earth. Do thou grant passings
 to their soul freely, without hindrance. Send the Spirit
 
 230 STATUTES OF THE APOSTLES
@@ -3249,7 +3247,7 @@ Lord our God grant rich favour.
 The deacon shall say : Pray for Papas N.
 
 Lord our God the almighty, we pray thee and we
-beseech thee for the blessed Papas N. In keeping keep 25
+beseech thee for the blessed Papas N. In keeping keep
 him for us during many years, during times of peace,
 while he fulfils the priesthood which was entrusted to
 him by thee, together with all the bishops, presbyters,

@@ -45,7 +45,7 @@ the Holy Spirit, one God. This is the Sinodos of
 the fathers, the Apostles, which they ordered for the
 direction of the Church.
 
-All hail, our sons and our daughters, in the name of 5
+All hail, our sons and our daughters, in the name of
 our Lord Jesus Christ.
 
 ## Statute 1
@@ -54,7 +54,7 @@ Said Yuhanes, Matewos and Petros and
 
 Filepos and Seme'on and Yaekob and Natnael and
 
-Tomas and K^fas and Endreyas and Bartalomewos and 10
+Tomas and K^fas and Endreyas and Bartalomewos and
 
 Yehuda and Ya'ekob the brother of our Lord : When
 
@@ -64,7 +64,7 @@ Lord Jesus Christ, our Saviour, he commanded us and
 
 said to us : Divide the earth amongst yourselves, so
 
-that every one of you may take his place according to 15
+that every one of you may take his place according to
 
 your number. Take the order of Bishops, and the
 
@@ -126,15 +126,15 @@ this word.
 
 ## Statute 4
 
-Said Petros : Thou shalt not kill life, and 5
+Said Petros : Thou shalt not kill life, and
 thou shalt not commit adultery, and thou shalt not
 corrupt young children. Thou shalt not steal, and thou
 shalt not be a soothsayer, and thou shalt not be a stargazer, and thou shalt not be a magician. And thou
-shalt not cause abortion, nor after the child is born shalt 10
+shalt not cause abortion, nor after the child is born shalt
 thou kill it. And thou shalt not covet any of thy neighbour s goods, and thou shalt not hate any man, and thou
 shalt not be a false witness. And thou shalt not be a
 speaker of evil against any. And thou shalt not think
-about doing evil, and thou shalt not be of double heart 15
+about doing evil, and thou shalt not be of double heart
 and of double tongue; because he who is of double
 tongue is a deadly snare. And thy words shall not be
 vain, and thou shalt not be false. And thou shalt not
@@ -151,7 +151,7 @@ Said Endreyas : O my son, flee from all
 evil, and hate all evil; and thou shalt not be angry,
 because anger leads to murder; because anger is an
 evil demon. And thou shalt not be envious or irascible
-or a lover of fighting, because this depraves and causes 30
+or a lover of fighting, because this depraves and causes
 to inherit evil
 
 130 STATUTES OF THK APOSTLES
@@ -228,7 +228,7 @@ with thanksgiving to God ; and know that nothing whatever happens except from Go
 
 ## Statute 2
 
-Said Tom§s : O my son, him who spoke 30
+Said Tom§s : O my son, him who spoke
 to thee the word of God which became to thee the cause
 of life, and gave to thee the signet-ring of honour, love
 as the apple of thine eye ; and be mindful of him by day
@@ -296,24 +296,24 @@ And keep that which was taught you, and you shall not
 add to it nor diminish from it. And said P^tros : O
 brethren, the Scriptures teach you concerning the rest
 of the words and the statutes, and we indeed speak that
-which was commanded us. And said all of them : 10
+which was commanded us. And said all of them :
 Petros shall speak.
 
 ## Statute 14
 
 Concerning the ordination of a Bishop.
 If it should be a district having few of the Faithful, and
-if not many people that they may form an assembly 15
+if not many people that they may form an assembly
 about the bishop, not even as many as twelve, they shall
 send a message to the Churches next to their district
 where there are many believers, that they may bring
 three believers, holy and chosen men of that district
-And they shall try them carefully concerning that which 20
+And they shall try them carefully concerning that which
 befits them for the good work : if he is a man who has
 a good character among the people, without sin, and
 without anger, and a lover of the poor, and kind, not a
 drunkard, nor adulterer, nor lover of the greater share
-for himself, nor a railer, not unfair, nor the like of that. 35
+for himself, nor a railer, not unfair, nor the like of that.
 And it is good also that he be without wife, though if he
 have married one (wife) before he is ordained bishop he
 shall live with her. *And he should be one who shares in
@@ -358,34 +358,34 @@ Concerning the ordination of a Reader
 ordained after he has been first tried. He shall not be
 of many words, nor a drunkard, nor a scoffer. And he
 50 shall be of good character, and a lover of the good ; one
-who is quick to go every day to the church, who rememTRANSLATION OF THE ETHIOPIC TEXT 1 35
+who is quick to go every day to the church, who rememTRANSLATION OF THE ETHIOPIC TEXT 1
 
 bers there the judgment ; and he shall be obedient, and
 one who reads well, and who knows the duty (lit. place) of
 him who reads, that he should do according to what he
 reads ; and one who fills the ear of others with his word,
-ought he not to do it himself? Will it not be written 5
+ought he not to do it himself? Will it not be written
 against him as a sin before God ?
 
 ## Statute 16
 
 Said Matewos : Deacons shall be ordained,
 as it is written : By the testimony of two and three
-every word shall be established. And they shall be tried 10
+every word shall be established. And they shall be tried
 concerning all the service, having the testimony of all
 the people, that they live with one wife, and have reared
 their children in purity, and such as are merciful and
 humble, and such as are not murmurers, and such as
-are not double-tongued, nor wrathful, because wrath 15
+are not double-tongued, nor wrathful, because wrath
 depraves a wise man. j And they shall not respect the
 person of the rich, nor act unjustly to the poor ; nor
 drink much wine ; and they shall work hard for the
 hidden Mystery and the beauty of the consolation.^ And
-they shall bid those of the brethren who have somewhat 90
+they shall bid those of the brethren who have somewhat
 to give to him who has nothing, and thus they shall also
 be sharers in giving. And they shall honour all with all
 honour and modesty and fear, and they shall keep themselves in all purity. And some of them they shall teach,
-and some of them they shall question, and some of them 35
+and some of them they shall question, and some of them
 they shall reprove and some they shall console. As for
 the rejected, they shall also expel them at once, and they
 shall know that those who oppose, the revilers, the rejected, are those who are your adversaries. ,
@@ -441,24 +441,23 @@ TRANSLATION OF THE ETHIOPIC TEXT 1 37
 they shall all of them please God in that which is given
 to them and ordered them. And ye shall not learn
 enmity one with another because of that which is commanded you ; but rather shall each one hasten (in his
-work), according as it has been given him from God; 5
+work), according as it has been given him from God;
 and he shall not hate nor cause a neighbour to be hated
 by an accusation. Even the angels do not overstep
 that which is defined for them.
 
 ## Statute 20
 
-Concerning the reminder that the Obla- 10
-tion is the Body of Christ, and that which comes after it
+Concerning the reminder that the Oblation is the Body of Christ, and that which comes after it
 Said Endreyas : We have already ordered this which
 was said concerning the Oblation, that it is the Body of
 Christ and his precious Blood, and we declare (it) to you
-with certainty. And said Yuhanes : Have ye forgotten, 15
+with certainty. And said Yuhanes : Have ye forgotten,
 O brethren, that on the day when our Lord offered up
 the bread and the wine he said : This is my Body and
 this is my Blood. For he did not command that they
 should treat those as common things. And said MartSl
-concerning Maryam : See her laughing. And said 20
+concerning Maryam : See her laughing. And said
 Maryam : It was not because of that that I laughed, for
 our Lord said to us : It is good that the sick should be
 healed by the whole.
@@ -467,12 +466,12 @@ healed by the whole.
 
 ## Statute 21
 
-Said Kefa : It is not fitting for women to 25
+Said Kefa : It is not fitting for women to
 raise their voice while they stand in the church, but
 rather to prostrate themselves with face toward the
 earth. Said Ya'ekob : How can they order for women a
 ministry of the Mystery, but only this ministry that they
-should help the needy ? Said Filepos : O brethren, 50
+should help the needy ? Said Filepos : O brethren,
 concerning the charitable action which a man does, (in
 
 138 STATUTES OF THE APOSTLES
@@ -522,17 +521,16 @@ of the world thou hast desired to be glorified in the
 (place) which thou chosest. And now pour out from
 thee the might of the Holy Spirit, which thou gavest
 to thy beloved Son Jesus Christ, which thou grantest to
-us the holy Apostles, thy helpers in thy Church (work- 5
-ing) with the plough of thy Cross and in the place of
+us the holy Apostles, thy helpers in thy Church (working) with the plough of thy Cross and in the place of
 thy holiness — ^to thee be glory, and praise unceasingly
 to thy Name. Give, (thou) knower of the heart, and
 send the Holy Spirit upon thy servant whom thou hast
-chosen for the pontificate, that he may feed thy flock 10
+chosen for the pontificate, that he may feed thy flock
 and minister as priest to thee without blame, serving
 thee by day and night, and supplicating to see thy face
 worthily ; that he may offer thine Oblation in thy holy
 Church ; in the Holy Spirit of the priesthood, having
-authority to forgive sin according to thy commandment, 15
+authority to forgive sin according to thy commandment,
 (and) to give the ordination of thy ordinance, and loose
 all bonds of iniquity, according to the authority which
 thou gavest to thine Apostles ; and that he may please
@@ -543,11 +541,11 @@ Father and the Son and the Holy Spirit in thy noly
 Church now and always and for ever and ever. Amen.
 
 And after the bishop has been ordained every one of
-them shall salute him with the mouth, kissing him who 35
+them shall salute him with the mouth, kissing him who
 has become a bishop, and to whom this grace has been
 imparted. And the deacon shall bring to him the Oblation ; and he then having laid his hand upon the Oblation
 with all the holy ones and the presbyters shall say, thus
-gfiving thanks : The Lord (be) with you all. And the 30
+gfiving thanks : The Lord (be) with you all. And the
 people shall say : Perfectly with thy Spirit may he be.
 
 140 STATUTES OF THE APOSTLES
@@ -596,30 +594,29 @@ to Stand before thee and minister as priests to thee. We
 pray to thee, Lord, and we beseech thee to send thy Holy
 Spirit upon this Oblation of the Church, that in joining
 (them) together thou mayest grant to them — to all of them
-— to them who take of it, that it may be to them for holi- 5
-ness, and for filling (them) with the Holy Spirit, and for
+— to them who take of it, that it may be to them for holiness, and for filling (them) with the Holy Spirit, and for
 strengthening of faith in truth, that thee they may glorify
 and praise through thy Son our Saviour Jesus Christ,
 through whom to thee be glory and might in the holy
-Church now and always and for ever and ever. Am€n. 10
+Church now and always and for ever and ever. Am€n.
 
 Concerning the Oblation (of oil). Oil he shall offer
 according as the Oblation of bread and wine, giving y^
 thanks as in that ordinance. Whenever he does not speak i^ j
 the same words he shall give thanks according to the
-various meaning of each one, but also with the other words, 15
+various meaning of each one, but also with the other words,
 saying thus : Having sanctified oil, thou shalt grant to all
 who are anointed or receive it that with which thou
 anointedst priests and prophets; and in like manner
 strengthen those and all who taste, and sanctify them who
-receive it. 20
+receive it.
 
 And the people shall say : As it was, is and shall be
 to generation of generation and to age of age.^ Amen.
 
 The bishop shall say : And again we beseech thee.
 Almighty God, the Father of the Lord and our Saviour
-Jesus Christ, to grant us to receive with blessing this 25
+Jesus Christ, to grant us to receive with blessing this
 holy Mystery ; and that he may not condemn any of us,
 but cause worthiness in all them who take the reception
 of the holy Mystery, the Body and the Blood of Christ,
@@ -681,12 +678,12 @@ guilt or condemnation, but for the renewal of soul and
 body and spirit through, etc^ And the people shall say :
 Amen.
 
-And the presbyter shall say (the prayer of) laying on 5
+And the presbyter shall say (the prayer of) laying on
 of hand after they have received. Eternal God, almighty,
 the Father of the Lord and our Saviour Jesus Christ,
 bless thy servants and thy handmaids, protect and help
 and prosper (them) by the power of thine Archangel
-Keep and confirm in them thy fear by thy greatness; 10
+Keep and confirm in them thy fear by thy greatness;
 provide that they shall both think what is thine and
 believe what is thine and will what is thine ; gprant to
 them peace without sin and anger through, etc.
@@ -709,7 +706,7 @@ Concerning the ordination of Presbyters.
 If the bishop desires to ordain a presbyter, he shall lay
 his hand upon his head; and all the presbyters shall
 touch him and shall pray over him. In the form which
-we said before he shall pray, saying : My God, the 25
+we said before he shall pray, saying : My God, the
 Father of our Lord and our Saviour Jesus Christ, look
 down upon this thy servant, and impart to him the spirit
 
@@ -784,12 +781,12 @@ lay his hand upon him.
 
 The prayer of the ordination of deacons : God, who
 hast created all, and by thy word hast set (it) in order,
-the Father of our Lord and our Saviour Jesus Christ, 15
+the Father of our Lord and our Saviour Jesus Christ,
 whom thou sentest that he might minister according to
 thy will, and reveal to us thy secret counsel ; g^rant spirit
 and grace and diligence unto this thy servant whom thou
 hast chosen to be a deacon in our Church, and to offer in
-thy holy of holies * that which is offered to thee by thine 20
+thy holy of holies * that which is offered to thee by thine
 ordained Chief Priests to the glory of thy name ; thus
 without blame in pure life having served the degrees of
 ordination he may obtain the exalted priesthood and thy
@@ -877,7 +874,7 @@ trustworthy.
 
 ## Statute 28
 
-Concerning new persons who wish to be 35
+Concerning new persons who wish to be
 baptised, and concerning the occupations which they
 ought to leave off. New persons who are to be baptised
 in order that they may hear the word, shall be brought
@@ -940,23 +937,22 @@ magistrate with the sword or chief of praefects, and he
 who is clad in red, let him leave off or be rejected. And
 a catechumen or believer, if they wish to be a soldier,
 shall be rejected, because it is far from God. An
-adulteress, or a man without pity, or a man who does 15
+adulteress, or a man without pity, or a man who does
 that which is not proper to be mentioned, shall be rejected, because they are alien and unclean, and it is not
 fitting to bring them to be ranked in the congregation
 of the Faithful. And if it was a star-gazer and a diviner
-by the sun, or soothsayer, or interpreter of dreams, or 20
+by the sun, or soothsayer, or interpreter of dreams, or
 seducer of the people, or who puts on clothes for
 lascivious ornament or a maker of potions, let him leave
 off or be rejected.
 
 ## Statute 30
 
-Concerning Concubines. If there is any- 25
-thing which we have omitted, decide as is proper. A
+Concerning Concubines. If there is anything which we have omitted, decide as is proper. A
 man shall give up his concubine, and if she was a servant
 of the man and if she has brought up her children, and if
 she did not come near another man beside him, they
-shall receive her, but if she had been near another man, 30
+shall receive her, but if she had been near another man,
 she shall be rejected. And a man who has a concubine
 
 I50 STATUTES OF THE APOSTLES

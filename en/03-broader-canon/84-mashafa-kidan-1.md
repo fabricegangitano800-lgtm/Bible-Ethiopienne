@@ -495,7 +495,7 @@ and his left hand in darkness.
 ## Chapter 11
 
 And these are the signs of him”: his head [is] as a fiery
-flame: his right eye shot with blood, his left [eye] blueblack, and he “ hath two pupils. His eyelashes * are white ;
+flame: his right eye shot with blood, his left [eye] blue-black, and he “ hath two pupils. His eyelashes * are white ;
 
 1§8.: wickedness.
 2 §.: to cover the land of all Armenia and of Pontus and of Bithynia.
@@ -831,7 +831,7 @@ W B.: priest.
 
 64 TESTAMENT OF OUR LORD [1. 19, 20
 
-people offer for them with supplication. For there is thistype also in heaven.?
+people offer for them with supplication. For there is this type also in heaven.?
 
 Let the place of the. presbyters be within the veil, beside
 that place of commemoration.
@@ -3035,7 +3035,7 @@ for supplications of piety. For the foundation of holiness
 and life for a widow such as this is solitude For she hath
 loved none other but the God of gods, the Father which is in
 heaven. But at fixed* times let her give praise by herself, in
-the night [and] at dawn. If she be menstruous let her abide 5
+the night [and] at dawn. If she be menstruous let her abide
 in the temple and not approach the altar, not that she is as
 it were polluted, but that the altar® may have honour. Afterwards, when she fasteth and batheth, let her be assiduous [at
 the altar]. In the days of Pentecost, let her not fast. In the

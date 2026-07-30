@@ -38,24 +38,24 @@ this table. Everything else, brief-named or not:
 | `80-serata-seyon.md` | 57 | `K^fas` | `Kefas` | yes | 'e' read as '^' |
 | `80-serata-seyon.md` | 57 | `K^f` | `(letter unknown)` | — | caret substituted for a letter |
 | `80-serata-seyon.md` | 296 | `P^t` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 633 | `g^n` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 759 | `g^i` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 789 | `g^r` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 890 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
-| `80-serata-seyon.md` | 891 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 630 | `g^n` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 756 | `g^i` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 786 | `g^r` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 887 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
+| `80-serata-seyon.md` | 888 | `i^t` | `(letter unknown)` | — | caret substituted for a letter |
 | `81-teezaz.md` | 65 | `pnayer` | `prayer` | yes | 'r' read as 'n' |
-| `81-teezaz.md` | 207 | `t^n` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 250 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 407 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 736 | `b^y` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 741 | `b^i` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 815 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1072 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1163 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1309 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1499 | `g^c` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 1715 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
-| `81-teezaz.md` | 3130 | `r^e` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 206 | `t^n` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 249 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 405 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 734 | `b^y` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 739 | `b^i` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 813 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1070 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1161 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1307 | `g^v` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1497 | `g^c` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 1713 | `g^a` | `(letter unknown)` | — | caret substituted for a letter |
+| `81-teezaz.md` | 3128 | `r^e` | `(letter unknown)` | — | caret substituted for a letter |
 | `84-mashafa-kidan-1.md` | 47 | `Ir came` | `It came` | — | drop-capital 'It' read as 'Ir' |
 | `86-qalementos.md` | 55 | `Buck` | `Buch` | yes | German 'Buch' misread |
 | `86-qalementos.md` | 55 | `Schriflen` | `Schriften` | — | German 'Schriften', 't' read as 'l' |
@@ -68,24 +68,24 @@ this table. Everything else, brief-named or not:
 | `87-didascalia.md` | 1077 | `EVTIIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
 | `87-didascalia.md` | 1170 | `ETHLOPIC` | `ETHIOPIC` | — | running-head title corrupted |
 | `87-didascalia.md` | 1263 | `EVIIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 5242 | `EYTHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 6248 | `ETINOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7023 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7342 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7388 | `EQYHLOPIC` | `ETHIOPIC` | — | running-head title corrupted |
-| `87-didascalia.md` | 7482 | `EVHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 5245 | `EYTHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 6252 | `ETINOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7027 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7346 | `ETIHOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7392 | `EQYHLOPIC` | `ETHIOPIC` | — | running-head title corrupted |
+| `87-didascalia.md` | 7487 | `EVHIOPIC` | `ETHIOPIC` | — | running-head title corrupted |
 
 ### Full occurrence index
 
 | File | Pattern | Count | Lines |
 |---|---|---:|---|
 | `80-serata-seyon.md` | `K^fas` | 1 | 57 |
-| `80-serata-seyon.md` | `ao` | 6 | 142, 420, 540, 657, 832, 873 |
-| `80-serata-seyon.md` | `caret-for-letter` | 7 | 57, 296, 633, 759, 789, 890-891 |
-| `80-serata-seyon.md` | `lo` | 7 | 220, 258, 337, 567, 645, 781, 938 |
-| `81-teezaz.md` | `ao` | 21 | 67, 185, 433, 592, 628, 664, 703, 738, 853, 1118, 1388, 1614, 1704, 1981, 2095, 2465, 2583, 3052, 3135, 3209, 3245 |
-| `81-teezaz.md` | `caret-for-letter` | 12 | 207, 250, 407, 736, 741, 815, 1072, 1163, 1309, 1499, 1715, 3130 |
-| `81-teezaz.md` | `lo` | 46 | 49, 102, 137, 249, 362, 413, 618, 656, 691, 766, 916, 991, 1030, 1181, 1377, 1449, 1489, 1526, 1600, 1647, 1688, 1811, 1896, 1970, 2005, 2040, 2081, 2122, 2163, 2202, 2333, 2454, 2568, 2654, 2661-2662, 2693, 2730, 2766, 2842, 2879, 3039, 3081, 3120, 3197, 3235 |
+| `80-serata-seyon.md` | `ao` | 6 | 142, 420, 538, 654, 829, 870 |
+| `80-serata-seyon.md` | `caret-for-letter` | 7 | 57, 296, 630, 756, 786, 887-888 |
+| `80-serata-seyon.md` | `lo` | 7 | 220, 258, 337, 565, 642, 778, 935 |
+| `81-teezaz.md` | `ao` | 21 | 67, 184, 431, 590, 626, 662, 701, 736, 851, 1116, 1386, 1612, 1702, 1979, 2093, 2463, 2581, 3050, 3133, 3207, 3243 |
+| `81-teezaz.md` | `caret-for-letter` | 12 | 206, 249, 405, 734, 739, 813, 1070, 1161, 1307, 1497, 1713, 3128 |
+| `81-teezaz.md` | `lo` | 46 | 49, 101, 136, 248, 360, 411, 616, 654, 689, 764, 914, 989, 1028, 1179, 1375, 1447, 1487, 1524, 1598, 1645, 1686, 1809, 1894, 1968, 2003, 2038, 2079, 2120, 2161, 2200, 2331, 2452, 2566, 2652, 2659-2660, 2691, 2728, 2764, 2840, 2877, 3037, 3079, 3118, 3195, 3233 |
 | `81-teezaz.md` | `pnayer` | 1 | 65 |
 | `84-mashafa-kidan-1.md` | `Ir came` | 1 | 47 |
 | `84-mashafa-kidan-1.md` | `lo` | 1 | 1787 |
@@ -96,7 +96,7 @@ this table. Everything else, brief-named or not:
 | `86-qalementos.md` | `Schriflen` | 1 | 55 |
 | `86-qalementos.md` | `ao` | 7 | 2761, 2811, 5450, 5457, 5491, 6214, 8612 |
 | `86-qalementos.md` | `lo` | 16 | 2831, 4218, 5674, 5677, 5686, 5689, 5729, 5789, 5982, 6287, 6290, 6300, 6303, 7505, 9103, 9739 |
-| `87-didascalia.md` | `DIDASCALIA-head` | 10 | 978, 1077, 1170, 1263, 5242, 6248, 7023, 7342, 7388, 7482 |
+| `87-didascalia.md` | `DIDASCALIA-head` | 10 | 978, 1077, 1170, 1263, 5245, 6252, 7027, 7346, 7392, 7487 |
 | `87-didascalia.md` | `WOLY` | 1 | 48 |
 | `87-didascalia.md` | `shecp` | 1 | 61 |
 
@@ -154,15 +154,15 @@ and deleting it alone would leave the head text stranded in the text.
 
 ### `80-serata-seyon.md`
 
-- **Footnote bodies** (5): 348, 403, 651, 716, 886
-- **Running heads** (15): 79, 157, 244, 324, 395, 478, 553, 593, 630, 728, 770, 807, 850, 888, 926
-- **Marker lines** (3): 209, 768, 816
+- **Footnote bodies** (5): 348, 403, 648, 713, 883
+- **Running heads** (15): 79, 157, 244, 324, 395, 477, 551, 591, 627, 725, 767, 804, 847, 885, 923
+- **Marker lines** (3): 209, 765, 813
 
 ### `81-teezaz.md`
 
-- **Footnote bodies** (27): 284, 368, 544, 612, 760, 771, 910, 985, 1015, 1087, 1137, 1143, 1148, 1154, 1300, 1324, 1470, 1549, 1926, 1950, 2022, 2667, 2747, 2863, 2972, 3034, 3063
-- **Running heads** (63): 91, 126, 164, 198, 272, 349, 393, 570, 717, 793, 868, 904, 979, 1055, 1095, 1130, 1587, 1676, 1718, 1760, 1800, 1837, 1920, 1959, 1993, 2067, 2110, 2150, 2228, 2271, 2316, 2361, 2442, 2479, 2519, 2555, 2683, 2756, 2790, 2831, 2866, 2890, 2904, 2918, 2947, 2956, 2979, 2985, 3005, 3028, 3030, 3056, 3083, 3085, 3107, 3122, 3148, 3150, 3182, 3188, 3217, 3260, 3272
-- **Marker lines** (8): 726, 1062, 1598, 1624, 1935, 1990, 2901, 3089
+- **Footnote bodies** (27): 283, 366, 542, 610, 758, 769, 908, 983, 1013, 1085, 1135, 1141, 1146, 1152, 1298, 1322, 1468, 1547, 1924, 1948, 2020, 2665, 2745, 2861, 2970, 3032, 3061
+- **Running heads** (63): 91, 125, 163, 197, 271, 347, 391, 568, 715, 791, 866, 902, 977, 1053, 1093, 1128, 1585, 1674, 1716, 1758, 1798, 1835, 1918, 1957, 1991, 2065, 2108, 2148, 2226, 2269, 2314, 2359, 2440, 2477, 2517, 2553, 2681, 2754, 2788, 2829, 2864, 2888, 2902, 2916, 2945, 2954, 2977, 2983, 3003, 3026, 3028, 3054, 3081, 3083, 3105, 3120, 3146, 3148, 3180, 3186, 3215, 3258, 3270
+- **Marker lines** (8): 724, 1060, 1596, 1622, 1933, 1988, 2899, 3087
 
 ### `82-gessew.md`
 
@@ -183,8 +183,8 @@ and deleting it alone would leave the head text stranded in the text.
 
 ### `87-didascalia.md`
 
-- **Footnote bodies** (293): 68, 74, 76, 115, 120, 163, 171, 259-260, 264, 344, 346, 352, 354, 365, 408, 455, 497, 543, 547, 584-585, 587, 627, 639, 684, 731, 738, 776, 778, 829, 874, 877-878, 920, 923, 928, 970, 1024, 1027, 1125, 1207, 1210, 1218, 1253, 1255, 1257, 1259, 1261, 1296, 1305, 1308, 1310, 1337, 1342, 1394, 1478, 1480, 1488, 1521, 1580-1581, 1584, 1624, 1677, 1690, 1778, 1780, 1817-1818, 1821-1822, 1875, 1881, 1971, 2072, 2156, 2164, 2202, 2256 …
-- **Running heads** (175): 46, 48, 76, 122, 171, 217, 264, 308, 365, 411, 455, 547, 592, 639, 689, 738, 783, 829, 880, 928, 978, 1027, 1077, 1125, 1170, 1263, 1310, 1344, 1394, 1441, 1488, 1535, 1584, 1627, 1690, 1738, 1780, 1826, 1881, 1971, 2020, 2072, 2114, 2164, 2212, 2300, 2345, 2493, 2544, 2593, 2641, 2687, 2739, 2783, 2831, 2877, 2984, 3037, 3082, 3131, 3177, 3237, 3283, 3333, 3366, 3443, 3486, 3535, 3581, 3625, 3662, 3753, 3798, 3847, 3894, 3941, 3984, 4059, 4104, 4149 …
+- **Footnote bodies** (293): 68, 74, 76, 115, 120, 163, 171, 259-260, 264, 344, 346, 352, 354, 365, 408, 455, 497, 543, 547, 584-585, 587, 627, 639, 684, 731, 738, 776, 778, 829, 874, 877-878, 920, 923, 928, 970, 1024, 1027, 1125, 1207, 1210, 1218, 1253, 1255, 1257, 1259, 1261, 1296, 1305, 1308, 1310, 1337, 1342, 1394, 1478, 1480, 1488, 1521, 1580-1581, 1584, 1624, 1677, 1690, 1778, 1780, 1817-1818, 1821-1822, 1876, 1882, 1972, 2073, 2157, 2165, 2203, 2257 …
+- **Running heads** (175): 46, 48, 76, 122, 171, 217, 264, 308, 365, 411, 455, 547, 592, 639, 689, 738, 783, 829, 880, 928, 978, 1027, 1077, 1125, 1170, 1263, 1310, 1344, 1394, 1441, 1488, 1535, 1584, 1627, 1690, 1738, 1780, 1826, 1882, 1972, 2021, 2073, 2115, 2165, 2213, 2301, 2346, 2494, 2545, 2594, 2642, 2688, 2740, 2784, 2832, 2878, 2985, 3038, 3083, 3132, 3178, 3239, 3285, 3335, 3368, 3445, 3488, 3537, 3583, 3627, 3664, 3755, 3800, 3849, 3896, 3943, 3986, 4061, 4106, 4151 …
 - **Marker lines** (718): 57, 108, 112, 133, 148, 152, 155, 157, 161, 164, 174, 179, 189, 197, 220, 231-232, 240, 248, 251, 254, 274, 279, 294, 319, 321, 326, 341, 360, 380, 387, 414, 418, 424, 427, 429, 435, 440-441, 459 …
 
 ## 3. Introduction / sacred-text boundary
@@ -202,4 +202,47 @@ where they are.
 | `84-mashafa-kidan-1.md` | 47 | No translator introduction. Sacred text begins under `## Prologue` with *Ir came to pass, after our Lord rose from the dead…* (`Ir` is an OCR failure of the drop-capital `It`). Editorial matter does appear below, but as **footnotes**, not as a prefatory block — footnote 2, discussing Codex S. and the Copto-Arabic version, is at line 63. |
 | `86-qalementos.md` | 97 | **The one file with a real translator introduction.** A blockquote note added by the repository's scraper sits just under `## Text`; Grébaut's own `INTRODUCTION` heading is at line 49 and his prefatory essay runs to line 96 — it cites Nau, Dillmann and the Tübingen manuscript and describes the seven Books. Sacred text begins at `# Livre Premier.`, with the incipit at line 102. Everything from 49 to 96 is Grébaut, not Qalementos, and should be moved out of `## Text` in a later pass. |
 | `87-didascalia.md` | 46 | No translator introduction. `## Chapter 1` carries the work's own title as an `###` heading at line 44, and the sacred text begins with the invocation *IN THE NAME OF GOD THE FATHER ALMIGHTY…* (printed in small capitals, which the OCR preserved as literal capitals). |
+
+## 4. Hyphens the de-hyphenation guard refused to join
+
+`word-` at end of line is normally joined to the next line. The guard
+refuses when the continuation fragment is a whole English word and the
+joined form is not attested anywhere in the six files — see *Step 2a* in
+`CLEANING_REPORT.md`. Refusing is not repairing: each line below still
+carries a hyphen that an editor has to resolve, and most of them are
+two-column footnote interleaving, where the true continuation is further
+down the page in the other column.
+
+| File | Line | Reads | Correct reading |
+|---|---:|---|---|
+| `87-didascalia.md` | 1861 | `trans-` / `children` | `translator` — continuation `lator` is in the next column |
+| `87-didascalia.md` | 3209 | `cor-` / `right` | `correct` — continuation `rect` is in the next column |
+| `87-didascalia.md` | 4386 | `money-` / `its` | `money-changers` — continuation `changers` is in the next column |
+| `87-didascalia.md` | 5977 | `Xan-` / `month` | `Xanthicus` — continuation `thicus` is in the next column |
+| `87-didascalia.md` | 7472 | `per-` / `you` | `pernicious` — continuation `nicious` is in the next column |
+
+Three further joins the guard caught have already been resolved and are
+no longer in this list, because `HELD_JOIN_REPAIRS` in the script now
+performs the correct merge: `blue-black` (a colour compound, hyphen
+kept), `this type` (two words) and `Phari the bishop` (a manuscript
+variant inside a footnote).
+
+## 5. Step 1 deletions to re-examine
+
+Tier A means the classifier saw ordinary prose before the number. It has
+no rule for `fol.`, for French `l'an`, or for Greek `ἀριθμόν`, so a few
+numbers that are content rather than marginal furniture were sorted into
+Tier A and deleted with the approved batch. They are listed here so the
+next pass can restore them; all are in the French Qalementos.
+
+| File | Line | Deleted | What it probably was | Confidence |
+|---|---:|---:|---|---|
+| `86-qalementos.md` | 7818 | `60` | the second half of a folio range, `fol. 59 v° b à fol. 60` | high |
+| `86-qalementos.md` | 6737 | `10` | a year — *died in the month of Shawwal of the year 10* | high |
+| `86-qalementos.md` | 10018 | `150` | Greek ὑπ’ ἀριθμὸν 150, *under catalogue number 150* | high |
+| `86-qalementos.md` | 10222 | `160` | Greek ἀριθμόν 160, *number 160* | high |
+| `86-qalementos.md` | 6213 | `550` | too large for a printer's margin, which runs 5–50 | medium |
+| `86-qalementos.md` | 6203 | `230` | too large for a printer's margin | medium |
+| `86-qalementos.md` | 6835 | `430` | too large for a printer's margin; the line is OCR wreckage | medium |
+| `86-qalementos.md` | 9182 | `255` | too large for a printer's margin | medium |
 
