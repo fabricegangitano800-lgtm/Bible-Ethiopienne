@@ -59,3 +59,26 @@ Two things I did **not** do, since you said to keep the front matter exactly as-
 - `SOURCES.md` may want the same update.
 
 Changes are on `fix/jubilees`, uncommitted (`45-jubilees.md` modified, `scripts/` and `backups/` untracked). Want me to commit?
+
+---
+
+## Addendum — 2026-07-30 (appended after the verbatim report above; nothing above was altered)
+
+The two open items flagged at the end of the report have since been done, on the
+same `fix/jubilees` branch:
+
+- `source_url` in the front matter now points at the Global Grey transcription
+  actually used. A `note` field records that this is the Oesterley & Box 1917
+  reprint (SPCK, *Translations of Early Documents*, Series I) of Charles's 1902
+  translation — the editors' preface on that page is signed by both editors and
+  records A. and C. Black's reprint permission — and repeats the warning about
+  the sacred-texts index page.
+- The `Source URL` row of the `## Metadata` table was updated to match. That
+  table is outside the front matter, but leaving the old URL displayed would
+  have preserved the very bug being fixed.
+- `SOURCES.md` now cites Global Grey for Jubilees and carries a standing
+  scraping warning that sacred-texts.com `index.htm` pages are tables of
+  contents, not text, with the 1 Enoch index page called out as the same trap.
+
+`source` and `translation_date` are deliberately unchanged: the translation is
+still Charles 1902, and only the transcription used is new.

@@ -16,7 +16,7 @@ Complete bibliographic references for all texts used in this project.
 | Source | Content | Date | Language | Access |
 |--------|---------|------|----------|--------|
 | R.H. Charles, *The Book of Enoch* | 1 Enoch (108 chapters) | 1917 | English | [Sacred Texts](https://sacred-texts.com/bib/boe/index.htm) |
-| R.H. Charles, *The Book of Jubilees* | Jubilees (50 chapters) | 1902 | English | [Sacred Texts](https://sacred-texts.com/bib/jub/index.htm) |
+| R.H. Charles, *The Book of Jubilees* | Jubilees (50 chapters) | 1902 (Oesterley & Box 1917 reprint) | English | [Global Grey](https://www.globalgreyebooks.com/online-ebooks/r-h-charles_book-of-jubilees_complete-text.html) |
 | R.H. Charles (ed.), *Apocrypha and Pseudepigrapha of the OT* (APOT), vol. 2 | 4 Ezra, 4 Baruch, and others | 1913 | English | [Archive.org](https://archive.org/details/apocryphaandpseu02charuoft) |
 | François Martin, *Le Livre d'Hénoch* | 1 Enoch (French from Ge'ez) | 1906 | French | [Wikisource FR](https://fr.wikisource.org/wiki/Livre_d%E2%80%99H%C3%A9noch_(%C3%A9thiopien)/Livre_d%E2%80%99H%C3%A9noch) |
 
@@ -30,6 +30,18 @@ Complete bibliographic references for all texts used in this project.
 | M.R. James | Mashafa Kidan II (Epistula Apostolorum) | 1924 | English | Archive.org |
 | S. Grébaut, *Revue de l'Orient Chrétien* vol. 16-18 | Qalementos (French) | 1911-1913 | French | Gallica / Archive.org |
 | J.M. Harden, *The Ethiopic Didascalia* | Didascalia (43 chapters) | 1920 | English | Google Books |
+
+### ⚠️ Scraping warning: sacred-texts.com index pages are NOT text
+
+**Do NOT use a sacred-texts.com `index.htm` page as a text source.** These pages
+are tables of contents. For Charles's *Jubilees* the index page lists only his
+per-chapter *summaries* (~46 words per chapter); the text itself lives on the
+separate per-chapter pages. Scraping the index yielded a 2,311-word file that
+looked plausible — 50 chapter headings, continuous prose — but contained none of
+the actual book. Jubilees is now taken from the Global Grey transcription above,
+which carries the whole text in one page. The same trap applies to
+`https://sacred-texts.com/bib/boe/index.htm` for 1 Enoch: verify any
+sacred-texts extraction against a known chapter's word count before trusting it.
 
 ## 2. Modern Academic Sources
 
@@ -53,7 +65,7 @@ Complete bibliographic references for all texts used in this project.
 
 - **Ethiopian Orthodox Bible Project**: https://ethiopianorthodoxbible.wordpress.com/
 - **EOTC Official Canon**: https://www.ethiopianorthodox.org/english/canonical/books.html
-- **Sacred Texts**: https://sacred-texts.com/
+- **Sacred Texts**: https://sacred-texts.com/ — ⚠️ never scrape an `index.htm` page as text; see the scraping warning above
 - **Archive.org**: https://archive.org/
 - **Wikisource EN**: https://en.wikisource.org/
 - **Wikisource FR**: https://fr.wikisource.org/

@@ -6,7 +6,8 @@ title_geez: "መጽሐፈ ኩፋሌ"
 canon: "Narrow + Broader"
 status: "🟢 Available EN"
 source: "R.H. Charles, The Book of Jubilees (1902)"
-source_url: "https://sacred-texts.com/bib/jub/index.htm"
+source_url: "https://www.globalgreyebooks.com/online-ebooks/r-h-charles_book-of-jubilees_complete-text.html"
+note: "Text transcribed from the Oesterley & Box 1917 reprint (SPCK, Translations of Early Documents, Series I: Palestinian Jewish Texts), which reprints Charles's 1902 translation unaltered. The editors' preface is signed W.O.E. Oesterley and G.H. Box and records A. and C. Black's permission to reprint the 1902 translation. Do NOT use the sacred-texts.com index page as a source: it is a table of contents of Charles's chapter summaries, not the text."
 source_language: "English"
 translator: "R.H. Charles"
 translation_date: "1902"
@@ -30,7 +31,7 @@ chapters: 50
 | Translator | R.H. Charles |
 | Public domain | true |
 | Chapters | 50 |
-| Source URL | https://sacred-texts.com/bib/jub/index.htm |
+| Source URL | https://www.globalgreyebooks.com/online-ebooks/r-h-charles_book-of-jubilees_complete-text.html |
 
 ## Notes
 
